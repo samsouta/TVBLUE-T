@@ -20,7 +20,9 @@ type VideoProp = {
 
 export const useStateContext = () => {
     const [videos, setVideos] = useState<VideoProp[]>([]);
-    const [currentPage,setCurrentPage] = useState<number>(1)
+
+    const savedPage = localStorage.getItem('currentPage');
+    const [currentPage,setCurrentPage] = useState<number>(savedPage ? parseInt(savedPage) : 1)
     const [typePage, setTypePage] = useState<string>('Video');
     const [genCurrentPage, setGenCurrentPage] = React.useState<React.Key>("All");
     const [totalPage,setTotalPage] = useState<number>(0);

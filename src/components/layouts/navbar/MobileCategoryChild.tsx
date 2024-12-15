@@ -14,7 +14,6 @@ const MobileCategoryChild: React.FC<DataType> = ({ data }) => {
   const context = useContext(StateContext);
   const { data: allvid, isLoading: isAllvidLoading, error: allvidError } = useGetAllVideosQuery();
   const { data: vid, isLoading: isVidLoading, error: vidError } = useGetVidPageQuery();
-
   if (!context) {
     throw new Error('StateContext not found');
   }
@@ -27,7 +26,6 @@ const MobileCategoryChild: React.FC<DataType> = ({ data }) => {
     }
     return allvid?.filter((movie) => movie.genre === genCurrentPage) || [];
   }, [genCurrentPage, allvid, vid]);
-
   useEffect(() => {
     if (genCurrentPage === "All") {
       setVideos(vid?.data || []);

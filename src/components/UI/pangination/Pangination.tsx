@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Pagination } from '@nextui-org/react'
 import { useGetVidPageQuery } from '../../../redux/api/getVideoPage'
 import { StateContext } from '../../../context/StateContext';
@@ -13,11 +13,20 @@ const Pangination: React.FC = () => {
         throw new Error('StateContext not found');
     }
     const { currentPage, setCurrentPage } = context;
+    
+    // component load တုန်းက localStorage မှာရှိတဲ့ currentPage ကို set လုပ်ပါ
+    useEffect(() => {
+        const savedPage = localStorage.getItem('currentPage');
+        if (savedPage) {
+            setCurrentPage(parseInt(savedPage));
+        }
+    }, [setCurrentPage]);
 
     const handlePageChange = useCallback((newPage: number) => {
+        localStorage.setItem('currentPage', newPage.toString());
         setCurrentPage(newPage);
         window.scrollTo({
-            top: 0,
+            top: 600,
             behavior: 'smooth',
         });
         if (!isLoading) {
@@ -26,10 +35,10 @@ const Pangination: React.FC = () => {
                 setShowTVLoad(false);
             }, 2000);
 
-            // Clean up the timer when component unmounts or when isLoading changes
             return () => clearTimeout(timer);
         }
-    }, [setCurrentPage])
+    }, [setCurrentPage, isLoading]);
+
 
     if (showTVLoad) return <TvLoader />
     if (error) return <p className=' text-red-700 text-xl' >ERROR::* Please refresh page and try again later</p>

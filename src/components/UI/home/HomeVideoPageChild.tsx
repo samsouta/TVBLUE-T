@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { SerializedError } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -23,14 +22,14 @@ type DataType = {
 type HomeVideoPageChildProps = {
   data: DataType;
   isLoading: boolean;
-  error: SerializedError | null | undefined;
 }
 
-const HomeVideoPageChild: React.FC<HomeVideoPageChildProps> = ({ data, isLoading, error }) => {
+const HomeVideoPageChild: React.FC<HomeVideoPageChildProps> = ({ data, isLoading }) => {
   const [showTVske, setShowTVske] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleDetailNavigation = useCallback((id: number) => {
     dispatch(homeDetail(id));
     navigate(`/videos/${id}`);
@@ -46,13 +45,12 @@ const HomeVideoPageChild: React.FC<HomeVideoPageChildProps> = ({ data, isLoading
       setShowTVske(true);
       const timer = setTimeout(() => {
         setShowTVske(false);
-      }, 3000);
+      }, 2000);
 
       // Clean up the timer when component unmounts or when isLoading changes
       return () => clearTimeout(timer);
     }
   }, [isLoading]);
-  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>

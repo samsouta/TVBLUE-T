@@ -12,7 +12,8 @@ type VideoDataType = {
   url:string;
 }
 type VideoProp = {
-  data:VideoDataType[];
+  movie:VideoDataType;
+  relatedMovies:VideoDataType[]
 }
 
 export const getVideoDetail = createApi({

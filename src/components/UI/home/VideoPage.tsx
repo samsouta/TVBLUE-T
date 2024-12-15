@@ -24,7 +24,7 @@ const VideoPage: React.FC = () => {
 
 
     if (isLoading) return <TvLoader />;
-    if (error) return <div className=' text-red-700 text-2xl' >Error: refresh page and try again :.. {error.message}</div>;
+    if (error) return <div className=' text-red-700 text-2xl' >Error: refresh page and try again :.</div>;
 
     return (
         <div className="mt-5">
@@ -35,7 +35,6 @@ const VideoPage: React.FC = () => {
                             key={item?.id}
                             data={item}
                             isLoading={isLoading}
-                            error={error}
                         />
                     ))
                 }

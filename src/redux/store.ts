@@ -8,6 +8,7 @@ import { Voting } from './api/Voting';
 import { getAllVideos } from './api/getAllVideos';
 import { getMostView } from './api/getMostView';
 import { getPhotoPage } from './api/getPhotoPage';
+import { postViewCount } from './api/postViewCount';
 
 
 export const store = configureStore({
@@ -20,6 +21,7 @@ export const store = configureStore({
     [getAllVideos.reducerPath]: getAllVideos.reducer,
     [getMostView.reducerPath]: getMostView.reducer,
     [getPhotoPage.reducerPath]: getPhotoPage.reducer,
+    [postViewCount.reducerPath]: postViewCount.reducer,
     // slice
     home: HomeSlice.reducer, 
   },
@@ -33,6 +35,7 @@ export const store = configureStore({
       getAllVideos.middleware,
       getMostView.middleware,
       getPhotoPage.middleware,
+      postViewCount.middleware,
     ),
 });
 

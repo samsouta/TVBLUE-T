@@ -1,13 +1,14 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useGetVideoByIdQuery } from '../../../redux/api/getVideoDetail';
 import LazyLoad from 'react-lazyload';
 import TvLoader from '../loader/TvLoader';
 import formatRelativeDate from '../../../utils/formatRelativeDate';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CommentUI from '../commentSection/CommentUI';
 import { calculateRatingPercentage } from '../../../utils/calculateRatingPercentage';
 import ShareModelUI from '../commentSection/ShareModelUI';
 import RelatedVideo from './RelatedVideo';
+import { useIncrementViewMutation } from '../../../redux/api/postViewCount';
 
 // Define the correct type for movie data
 type DataType = {
@@ -28,10 +29,12 @@ const HomeDetail: React.FC = () => {
     const videoId = parseInt(vidId || "10", 10);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
+    const navigate = useNavigate();
+
 
     // Get video data by ID
-    const { data, isFetching, error } = useGetVideoByIdQuery(videoId);
-
+    const { data, isLoading, error } = useGetVideoByIdQuery(videoId);
+    const [incrementView] = useIncrementViewMutation();
     // Check if data is present, and handle the case where it might be undefined
     const video = data?.movie || {} as DataType;
     const RelatedVids = data?.relatedMovies || [] as DataType[];
@@ -39,6 +42,25 @@ const HomeDetail: React.FC = () => {
         RatingTotal: video?.rating_total,
         RatingCount: video?.rating_count,
     };
+
+    // turnback
+    useEffect(() => {
+        // Initial pushState to make sure history is handled correctly
+        window.history.pushState({}, document.title, window.location.href);
+
+        const handlePopState = () => {
+            navigate(-1);  // go back to previous page
+            const scrollPosition = (document.documentElement.scrollHeight - window.innerHeight) / 2;
+            window.scrollTo(0, scrollPosition);
+        };
+
+        window.addEventListener("popstate", handlePopState);
+
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+        };
+    }, [navigate]);
+    ///-------------
 
     // Calculate relative date and rating percentage
     const relativeDate = formatRelativeDate(video?.posted_date);
@@ -51,12 +73,16 @@ const HomeDetail: React.FC = () => {
         setIsModalOpen(true);
     }, [setIsModalOpen]);
 
-    if (isFetching) {
-        return <TvLoader />;
-    }
+    const handleVideoPlayed = useCallback((videoId: number) => {
+        if (videoId) {
+            incrementView({ videoId });
+        }
+    }, [incrementView]);
+
+    if(isLoading) return <TvLoader/>
 
     if (error || !data) {
-        return <div className="text-red-600">Error fetching movie data</div>;
+        return <div className="text-red-600 mt-28">Error fetching movie data</div>;
     }
 
     return (
@@ -74,6 +100,7 @@ const HomeDetail: React.FC = () => {
                                     title="Video Player"
                                     sandbox="allow-scripts allow-same-origin allow-presentation"
                                     allowFullScreen
+                                    onLoad={() => handleVideoPlayed(data?.movie.id)}
                                 />
                                 <div className="cursor-not-allowed absolute bottom-0 z-50 right-14 rounded-md bg-transparent w-8 h-8"></div>
                             </div>
@@ -94,10 +121,10 @@ const HomeDetail: React.FC = () => {
             <div className="mt-10 mx-auto mb-20">
                 <h2 className="text-xl md:text-2xl head-font ms-2 text-white mb-4">Related Videos</h2>
                 <div className="flex-wrap grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {RelatedVids.map((item:DataType) => (
+                    {RelatedVids.map((item: DataType) => (
                         <RelatedVideo
                             key={item.id}
-                            isLoading={isFetching}
+                            isLoading={isLoading}
                             data={item}
                             setIsProcessing={setIsProcessing}
                         />
