@@ -1,40 +1,41 @@
 // Utility function to handle search
 
-type DataItem = {
+type DataType = {
     id: number;
     title: string;
     description: string;
-    posted_date: string;
-    genre: string;
+    genre:string;
     duration: string;
-    view_count: string;
+    posted_date: string;
     rating_count: string;
     rating_total: string;
     url: string;
-  };
-  type DataArray = DataItem[];
+    img_path:string;
+    view_count: string;
+};
+
+
+
 export const HandleSearch = (
     searchQuery: string, 
-    setVideos: React.Dispatch<React.SetStateAction<any[]>>, 
-    allvid: DataArray[] | undefined,
-    vidPage:DataArray[],
+    setSearchVideos: React.Dispatch<React.SetStateAction<DataType[] | undefined>>, 
+    allvid: DataType[] | undefined,
     setSearchQuery: React.Dispatch<React.SetStateAction<string>>
 ) => {
     
     if (searchQuery.trim() === "") {
-        setVideos(vidPage);
-        return; 
+        window.location.href = "/";  // Use window.location for navigation
+        return;
     }
 
     // Normalize the query and filter videos based on the title
     const normalizedQuery = searchQuery.trim().toLowerCase();
-
     // Filter movies by title, ensure to map to full video object
-    const filtered = allvid.filter((video) =>
-        video.title.toLowerCase().includes(normalizedQuery)  
-    );
+    const filtered = allvid?.filter((vid:DataType)=>(
+        vid.title.toLowerCase().includes(normalizedQuery)
+    ))
 
-    setVideos(filtered);
+    setSearchVideos(filtered);
     window.scrollTo({ top: window.scrollY + 200, behavior: 'smooth' });
 
     setSearchQuery('');

@@ -12,18 +12,22 @@ type VideoDataType = {
   rating_count: string;
   rating_total: string;
   url: string;
+  img_path:string
 };
 
 // Define the types for the context data
 type StateContextDataType = {
-  videos: VideoDataType[];
-  setVideos: React.Dispatch<React.SetStateAction<VideoDataType[]>>;
+  searchVideos: VideoDataType[] | undefined;
+  setSearchVideos: React.Dispatch<React.SetStateAction<VideoDataType[] | undefined>>;
   typePage: string;
   setTypePage: React.Dispatch<React.SetStateAction<string>>;
-  genCurrentPage: React.Key;
-  setGenCurrentPage: React.Dispatch<React.SetStateAction<React.Key>>;
-  totalPage:number;
-  setTotalPage:React.Dispatch<React.SetStateAction<number>>;
+  genCurrentPage: string;
+  setGenCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+  currentPage:number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+
+  totalPage: number;
+  setTotalPage: React.Dispatch<React.SetStateAction<number>>;
 
   mostView: boolean;
   setMostView: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,8 +37,10 @@ type StateContextDataType = {
   setTopRates: React.Dispatch<React.SetStateAction<boolean>>;
   topVid: string;
   setTopVid: React.Dispatch<React.SetStateAction<string>>;
-  currentPage: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+
+  isOpen:boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
 };
 
 export const StateContext = createContext<StateContextDataType | undefined>(undefined);
@@ -45,42 +51,48 @@ interface StateContextProviderProps {
 
 export const StateContextProvider: React.FC<StateContextProviderProps> = ({ children }) => {
   const {
-    videos, setVideos,
+    searchVideos, setSearchVideos,
     typePage, setTypePage,
     genCurrentPage, setGenCurrentPage,
-    totalPage,setTotalPage,
+    currentPage, setCurrentPage,
+    totalPage, setTotalPage,
 
     mostView, setMostView,
     popular, setPopular,
     topRates, setTopRates,
     topVid, setTopVid,
-    currentPage, setCurrentPage
+
+    isOpen, setIsOpen
   } = useStateContext(); // Ensure this hook is implemented correctly
 
   const data = useMemo(
     () => ({
-      videos, setVideos,
+      searchVideos, setSearchVideos,
       typePage, setTypePage,
       genCurrentPage, setGenCurrentPage,
-      totalPage,setTotalPage,
+      currentPage, setCurrentPage,
+      totalPage, setTotalPage,
 
       mostView, setMostView,
       popular, setPopular,
       topRates, setTopRates,
       topVid, setTopVid,
-      currentPage, setCurrentPage,
+      
+      isOpen, setIsOpen
     }),
     [
-      videos, setVideos,
+      searchVideos, setSearchVideos,
       typePage, setTypePage,
       genCurrentPage, setGenCurrentPage,
-      totalPage,setTotalPage,
+      currentPage, setCurrentPage,
+      totalPage, setTotalPage,
 
       mostView, setMostView,
       popular, setPopular,
       topRates, setTopRates,
       topVid, setTopVid,
-      currentPage, setCurrentPage,
+
+      isOpen, setIsOpen
     ]
   );
 

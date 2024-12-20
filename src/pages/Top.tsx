@@ -1,8 +1,21 @@
 import React, { useContext } from 'react'
 import { StateContext } from '../context/StateContext';
 import { useGetMostViewsQuery } from '../redux/api/getMostView';
-import TopChild from '../components/UI/top/TopChild';
 import { useParams } from 'react-router-dom';
+import HomeVideoPageChild from '../components/UI/home/HomeVideoPageChild';
+
+type DataType = {
+    id: number;
+    description: string;
+    posted_date: string;
+    rating_count: string;
+    rating_total: string;
+    title: string;
+    url: string;
+    img_path: string;
+    view_count: string;
+    duration: string;
+  }
 
 const Top: React.FC = () => {
     const { title } = useParams();
@@ -12,6 +25,7 @@ const Top: React.FC = () => {
     }
     const { topVid } = context;
     const { data, isLoading, error } = useGetMostViewsQuery(topVid);
+    const vid = data?.data || [] as DataType[]
     const errorToPass: null | undefined = error ? null : undefined;
 
     return (
@@ -19,10 +33,10 @@ const Top: React.FC = () => {
             <div className='flex justify-center mb-6'>
                 <h1 className='text-4xl text-[var(--light-blue)] merriweather-black'>{title}</h1>
             </div>
-            <div className="flex-wrap grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
                 {
-                    data?.data.map((item) => (
-                        <TopChild
+                    vid.map((item) => (
+                        <HomeVideoPageChild
                             key={item?.id}
                             data={item}
                             isLoading={isLoading}

@@ -10,6 +10,7 @@ type VideoDataType = {
   rating_count:string;
   rating_total:string;
   url:string;
+  img_path:string;
 }
 type VideoProp = {
   movie:VideoDataType;

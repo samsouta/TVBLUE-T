@@ -11,17 +11,20 @@ import RelatedVideo from './RelatedVideo';
 import { useIncrementViewMutation } from '../../../redux/api/postViewCount';
 
 // Define the correct type for movie data
-type DataType = {
-    id: number;
-    title: string;
-    description: string;
-    duration: string;
-    posted_date: string;
-    rating_count: string;
-    rating_total: string;
-    url: string;
-    view_count: string;
-};
+type VideoDataType = {
+    id:number;
+    title:string;
+    description:string;
+    posted_date:string;
+    genre:string;
+    duration:string;
+    view_count:string;
+    rating_count:string;
+    rating_total:string;
+    url:string;
+    img_path:string;
+  }
+  
 
 
 const HomeDetail: React.FC = () => {
@@ -36,8 +39,8 @@ const HomeDetail: React.FC = () => {
     const { data, isLoading, error } = useGetVideoByIdQuery(videoId);
     const [incrementView] = useIncrementViewMutation();
     // Check if data is present, and handle the case where it might be undefined
-    const video = data?.movie || {} as DataType;
-    const RelatedVids = data?.relatedMovies || [] as DataType[];
+    const video = data?.movie || {} as VideoDataType;
+    const relatedVids = data?.relatedMovies || [] as VideoDataType[];
     const videoRating = {
         RatingTotal: video?.rating_total,
         RatingCount: video?.rating_count,
@@ -120,8 +123,8 @@ const HomeDetail: React.FC = () => {
             {/* Related Videos */}
             <div className="mt-10 mx-auto mb-20">
                 <h2 className="text-xl md:text-2xl head-font ms-2 text-white mb-4">Related Videos</h2>
-                <div className="flex-wrap grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {RelatedVids.map((item: DataType) => (
+                <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
+                    {relatedVids.map((item) => (
                         <RelatedVideo
                             key={item.id}
                             isLoading={isLoading}

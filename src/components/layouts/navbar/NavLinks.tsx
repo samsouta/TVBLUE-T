@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { MenuItems } from '../../../data/navbar';
-import GategoryBtn from './Gategorybtn';
+import GategoryBtn from './catagoryBtn/Gategorybtn';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { StateContext } from '../../../context/StateContext';
 
@@ -12,7 +12,7 @@ const NavLinks: React.FC = () => {
   if (!context) {
     throw new Error('StateContext not found');
   }
-  const { topVid,setTopVid } = context;
+  const { setTopVid } = context;
 
   const handleSidebar = (path: string, text: string) => {
     const formattedPath = path.split('/').pop();
@@ -45,7 +45,7 @@ const NavLinks: React.FC = () => {
           </a>
         );
       })}
-      {location.pathname === '/' && <GategoryBtn />}
+     <GategoryBtn />
     </div>
   )
 }

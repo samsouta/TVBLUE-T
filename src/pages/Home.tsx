@@ -16,13 +16,13 @@ const Home: React.FC = () => {
   const { typePage } = context;
 
   return (
-    <div className='mt-20 flex flex-col mx-1 gap-y-8'>
+    <div className='mt-20 flex flex-col mx-1 lg:mx-4 gap-y-8'>
       {/* Slider */}
       <HomeSlider />
 
       {/* Tabs for selecting type */}
       <div className='' >
-        <MobileCategory/>
+        {/* <MobileCategory/> */}
         <HomePageType />
       </div>
 

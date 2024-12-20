@@ -1,27 +1,33 @@
-import React, { useContext } from 'react';
-import { useGetAllgenreQuery } from '../../../redux/api/getAllGern';
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import React, { useCallback, useContext } from 'react';
+import { useGetAllgenreQuery } from '../../../../redux/api/getAllGern';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { ChevronDown, Film } from 'lucide-react';
-import { StateContext } from '../../../context/StateContext';
+import { StateContext } from '../../../../context/StateContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const GategoryBtn: React.FC = () => {
     const { data, error, isLoading } = useGetAllgenreQuery();
     const genres = data?.genres || [];
 
+    const nav = useNavigate()
     const context = useContext(StateContext);
     if (!context) {
         throw new Error('StateContext not found');
     }
-    const { setGenCurrentPage } = context;
+    const { setGenCurrentPage,setCurrentPage ,setIsOpen} = context;
 
-    const HandleAction = (key: React.Key) => {
+    const HandleAction = useCallback((key: string) => {
+        nav(`/categories/${key}`)
         setGenCurrentPage(key)
+        setIsOpen(false)
         window.scrollBy({
-            top: 400, 
+            top: 0,
             behavior: 'smooth',
         });
-    }
+        localStorage.removeItem('currentPage');
+        setCurrentPage(1)
+    },[setGenCurrentPage,setCurrentPage])
 
 
     // Error and Loading Handling
@@ -39,12 +45,13 @@ const GategoryBtn: React.FC = () => {
                 className='bg-[var(--medium-blue)]'
             >
                 <DropdownTrigger >
-
-                    <Button className='open-sans text-[--soft-blue] text-md  hover:text-[--white] bg-transparent' variant="flat">
-                        <Film className=' text-sm' />
+                    <a className=' flex gap-x-2 items-center open-sans text-[--soft-blue] cursor-pointer text-md bg-transparent hover:bg-transparent hover:text-[--soft-blue] '>
+                        <Film className='text-sm' />
                         Categories
-                        <ChevronDown className=' text-sm' />
-                    </Button>
+                        <ChevronDown className='text-sm' />
+                    </a>
+
+
                 </DropdownTrigger>
                 <DropdownMenu
                     onAction={HandleAction}
@@ -52,14 +59,8 @@ const GategoryBtn: React.FC = () => {
                     // onSelectionChange={(key)=> genCurrentPage === key}
                     className='h-[200px] overflow-y-scroll'
                     aria-label="Category Actions"
+                    variant="flat"
                 >
-                    <DropdownItem
-                        className='open-sans text-[--white]'
-                        key={'All'}
-
-                    >
-                        All
-                    </DropdownItem>
                     {genres.map((gen, index) => (
                         <DropdownItem
                             className='open-sans text-[--white]'

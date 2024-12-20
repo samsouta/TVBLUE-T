@@ -3,12 +3,10 @@ import { motion } from 'framer-motion';
 import { MenuItems } from '../../../data/navbar';
 import { useNavigate } from 'react-router-dom';
 import { StateContext } from '../../../context/StateContext';
-type MobileMenuListProps = {
-    isopen: boolean;
-}
+import GategoryBtn from './catagoryBtn/Gategorybtn';
 
-const MobileMenuList: React.FC<MobileMenuListProps> = ({ isopen }) => {
-    const [isOpen, setIsOpen] = useState(isopen);
+
+const MobileMenuList: React.FC = () => {
     const toggleSidebar = () => setIsOpen(!isOpen);
     const nav = useNavigate()
 
@@ -16,7 +14,7 @@ const MobileMenuList: React.FC<MobileMenuListProps> = ({ isopen }) => {
     if (!context) {
         throw new Error('StateContext not found');
     }
-    const { setTopVid } = context;
+    const { setTopVid,isOpen, setIsOpen } = context;
 
 
 
@@ -71,14 +69,16 @@ const MobileMenuList: React.FC<MobileMenuListProps> = ({ isopen }) => {
                             >
                                 <a
                                     onClick={() => handleSidebar(item.path, item?.text)}
-                                    className="flex cursor-pointer items-center space-x-3 p-2 rounded-lg hover:bg-[var(--a-color)] transition-colors duration-300"
+                                    className="flex open-sans text-[--soft-blue] text-md  hover:text-[--white] cursor-pointer items-center space-x-3 p-2 rounded-lg hover:bg-[var(--a-color)] transition-colors duration-300"
                                 >
                                     <item.icon size={20} />
                                     <span>{item.text}</span>
                                 </a>
                             </motion.li>
                         ))}
+                        <div><GategoryBtn /></div>
                     </ul>
+                    
                 </div>
             </motion.nav>
             {isOpen && (

@@ -3,7 +3,7 @@ import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
 import { StateContext } from '../../../context/StateContext';
 import { useGetAllVideosQuery } from '../../../redux/api/getAllVideos';
 import TvLoader from '../../UI/loader/TvLoader';
-import { useGetVidPageQuery } from '../../../redux/api/getVideoPage';
+import { useGetGenChineseQuery } from '../../../redux/api/getVideoPage';
 
 
 type DataType = {
@@ -13,7 +13,7 @@ type DataType = {
 const MobileCategoryChild: React.FC<DataType> = ({ data }) => {
   const context = useContext(StateContext);
   const { data: allvid, isLoading: isAllvidLoading, error: allvidError } = useGetAllVideosQuery();
-  const { data: vid, isLoading: isVidLoading, error: vidError } = useGetVidPageQuery();
+  const { data: vid, isLoading: isVidLoading, error: vidError } = useGetGenChineseQuery();
   if (!context) {
     throw new Error('StateContext not found');
   }

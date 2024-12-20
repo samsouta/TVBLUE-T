@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { List } from 'lucide-react';
 import MobileMenuList from './MobileMenuList';
+import { StateContext } from '../../../context/StateContext';
 
 const MobileMenu: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
+     const context = useContext(StateContext);
+    if (!context) {
+        throw new Error('StateContext not found');
+    }
+    const { isOpen, setIsOpen } = context;
     return (
         <div>
             <button
@@ -14,7 +19,7 @@ const MobileMenu: React.FC = () => {
             </button>
 
             {isOpen && (
-                <MobileMenuList isopen={isOpen}/>
+                <MobileMenuList/>
             )}
         </div>
     )

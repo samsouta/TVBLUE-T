@@ -1,41 +1,24 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { Search } from 'lucide-react';
 import { HandleSearch } from '../../../utils/HandleSearch';
-import { useGetVidPageQuery } from '../../../redux/api/getVideoPage';
 import { StateContext } from '../../../context/StateContext';
 import { useGetAllVideosQuery } from '../../../redux/api/getAllVideos';
-import { createTheme, Input, MantineProvider } from '@mantine/core'
+import { useNavigate } from 'react-router-dom';
 
-// const theme = createTheme({
-//     components: {
-//       Input: Input.extend({
-//         classNames: {
-//           input: classes.input,
-//         },
-//       }),
 
-//       InputWrapper: Input.Wrapper.extend({
-//         classNames: {
-//           label: classes.label,
-//         },
-//       }),
-//     },
-//   });
 
 
 const SearchBar: React.FC = () => {
     const [isFocused, setIsFocused] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
 
-    const { data } = useGetVidPageQuery();
     const { data: allvid } = useGetAllVideosQuery();
-    const vidPage = data?.data || [];
-
+    const nav = useNavigate()
     const context = useContext(StateContext);
     if (!context) {
         throw new Error('StateContext not found');
     }
-    const { setVideos } = context;
+    const { setSearchVideos } = context;
 
 
     const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,9 +29,11 @@ const SearchBar: React.FC = () => {
     const handleSearchKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            HandleSearch(searchQuery, setVideos, allvid, vidPage, setSearchQuery); // Pass vidPage instead of data
+            HandleSearch(searchQuery, setSearchVideos, allvid, setSearchQuery); // Pass vidPage instead of data
+            nav(`/search/${searchQuery}`)
+
         }
-    }, [searchQuery, setVideos, vidPage, setSearchQuery]);
+    }, [searchQuery, setSearchVideos, setSearchQuery]);
 
     return (
         <div className={`relative transition-all duration-300 ${isFocused ? 'sm:w-60 w-40' : 'w-40'}`}>

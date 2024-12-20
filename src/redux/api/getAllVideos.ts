@@ -10,14 +10,16 @@ type DataType = {
     rating_count: string;
     rating_total: string;
     url: string;
+    img_path:string;
     view_count: string;
 };
+
 
 export const getAllVideos = createApi({
     reducerPath: 'getallvideos', // Name of the API slice
     baseQuery: fetchBaseQuery({ baseUrl: 'https://bluetv.x10.mx/api/v1/' }), // Base URL
     endpoints: (builder) => ({
-        getAllVideos: builder.query<DataType[], void>({
+        getAllVideos: builder.query<DataType[] | undefined, void>({
             query: () => 'allvideos', // Endpoint path for fetching all videos
         }),
     }),
