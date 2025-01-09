@@ -11,13 +11,16 @@ import App from './App.tsx'
 import '@mantine/core/styles.css';
 import './index.css'
 import './App.css'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <Provider store={store} >
       <StateContextProvider>
         <MantineProvider>
           <NextUIProvider>
-            <App />
+            <GoogleOAuthProvider clientId="349564838429-dpf9br3le6tja9s5p09f1gdbee69qp9r.apps.googleusercontent.com" >
+              <App />
+            </GoogleOAuthProvider>
           </NextUIProvider>
         </MantineProvider>
       </StateContextProvider>

@@ -1,24 +1,9 @@
 import React, { createContext, useMemo } from 'react';
 import { useStateContext } from './hooks/useStateContext';
 
-type VideoDataType = {
-  id: number;
-  title: string;
-  description: string;
-  posted_date: string;
-  genre: string;
-  duration: string;
-  view_count: string;
-  rating_count: string;
-  rating_total: string;
-  url: string;
-  img_path:string
-};
 
 // Define the types for the context data
 type StateContextDataType = {
-  searchVideos: VideoDataType[] | undefined;
-  setSearchVideos: React.Dispatch<React.SetStateAction<VideoDataType[] | undefined>>;
   typePage: string;
   setTypePage: React.Dispatch<React.SetStateAction<string>>;
   genCurrentPage: string;
@@ -51,7 +36,6 @@ interface StateContextProviderProps {
 
 export const StateContextProvider: React.FC<StateContextProviderProps> = ({ children }) => {
   const {
-    searchVideos, setSearchVideos,
     typePage, setTypePage,
     genCurrentPage, setGenCurrentPage,
     currentPage, setCurrentPage,
@@ -67,7 +51,6 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({ chil
 
   const data = useMemo(
     () => ({
-      searchVideos, setSearchVideos,
       typePage, setTypePage,
       genCurrentPage, setGenCurrentPage,
       currentPage, setCurrentPage,
@@ -81,7 +64,6 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({ chil
       isOpen, setIsOpen
     }),
     [
-      searchVideos, setSearchVideos,
       typePage, setTypePage,
       genCurrentPage, setGenCurrentPage,
       currentPage, setCurrentPage,

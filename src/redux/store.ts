@@ -1,41 +1,56 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { GetAllGenre } from './api/getAllGern';
-import { GetVideoPage } from './api/getVideoPage';
 import { HomeSlice } from './slice/HomeDetailSlice';
 import { getVideoDetail } from './api/getVideoDetail';
 import { comment } from './api/Comment';
 import { Voting } from './api/Voting';
-import { getAllVideos } from './api/getAllVideos';
-import { getMostView } from './api/getMostView';
 import { getPhotoPage } from './api/getPhotoPage';
 import { postViewCount } from './api/postViewCount';
+import { getMovies } from './api/getMovies';
+import { MoviesSlice } from './slice/moviesSlice';
+import { getLikeCount } from './api/getLikeCount';
+import { auth } from './api/auth';
+import { SearchEngine } from './api/searchEngine';
+import SearchEngineSlice from './slice/SearchEngineSlice';
+import { ScrollSlice } from './slice/ScrollSlice';
 
 
 export const store = configureStore({
   reducer: {
-    [GetAllGenre.reducerPath]: GetAllGenre.reducer,
-    [GetVideoPage.reducerPath]: GetVideoPage.reducer,
-    [getVideoDetail.reducerPath]: getVideoDetail.reducer,
+    /// new
     [comment.reducerPath]: comment.reducer,
-    [Voting.reducerPath]: Voting.reducer,
-    [getAllVideos.reducerPath]: getAllVideos.reducer,
-    [getMostView.reducerPath]: getMostView.reducer,
-    [getPhotoPage.reducerPath]: getPhotoPage.reducer,
     [postViewCount.reducerPath]: postViewCount.reducer,
+    [getVideoDetail.reducerPath]: getVideoDetail.reducer,
+    [getPhotoPage.reducerPath]: getPhotoPage.reducer,
+    [getMovies.reducerPath]: getMovies.reducer,
+    [getLikeCount.reducerPath]: getLikeCount.reducer,
+    [auth.reducerPath]: auth.reducer,
+    [Voting.reducerPath]: Voting.reducer,
+    [GetAllGenre.reducerPath]: GetAllGenre.reducer,
+    [SearchEngine.reducerPath]: SearchEngine.reducer,
+
     // slice
-    home: HomeSlice.reducer, 
+    home: HomeSlice.reducer,
+    movies: MoviesSlice.reducer,
+    src: SearchEngineSlice.reducer,
+    scroll: ScrollSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
-      GetAllGenre.middleware,
-      GetVideoPage.middleware,
       getVideoDetail.middleware,
       comment.middleware,
-      Voting.middleware,
-      getAllVideos.middleware,
-      getMostView.middleware,
       getPhotoPage.middleware,
       postViewCount.middleware,
+      getMovies.middleware,
+      getLikeCount.middleware,
+      Voting.middleware,
+      GetAllGenre.middleware,
+      SearchEngine.middleware,
+
+
+
+      // auth
+      auth.middleware,
     ),
 });
 

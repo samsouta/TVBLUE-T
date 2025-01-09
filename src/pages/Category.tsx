@@ -12,7 +12,7 @@ const Category: React.FC = () => {
     if (!context) {
         throw new Error('StateContext not found');
     }
-    const { genCurrentPage,currentPage, setCurrentPage } = context;
+    const { genCurrentPage, currentPage, setCurrentPage } = context;
     const { data, isLoading } = useGetVidPageQuery({ genre: genCurrentPage, page: currentPage })
     const vid = data?.data
     const vidMeta = data?.meta
@@ -32,7 +32,6 @@ const Category: React.FC = () => {
                         <HomeVideoPageChild
                             key={item?.id}
                             data={item}
-                            isLoading={isLoading}
                         />
                     ))
                 }
@@ -41,7 +40,6 @@ const Category: React.FC = () => {
                 lastPage={vidMeta?.last_page}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
-                isLoading={isLoading}
             />
         </div>
     )

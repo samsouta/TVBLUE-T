@@ -1,39 +1,36 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Search } from 'lucide-react';
-import { HandleSearch } from '../../../utils/HandleSearch';
-import { StateContext } from '../../../context/StateContext';
-import { useGetAllVideosQuery } from '../../../redux/api/getAllVideos';
 import { useNavigate } from 'react-router-dom';
-
-
-
+import { useDispatch } from 'react-redux';
+import { getQuery } from '../../../redux/slice/SearchEngineSlice';
+import { setCurrentSection } from '../../../redux/slice/ScrollSlice';
 
 const SearchBar: React.FC = () => {
     const [isFocused, setIsFocused] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-
-    const { data: allvid } = useGetAllVideosQuery();
-    const nav = useNavigate()
-    const context = useContext(StateContext);
-    if (!context) {
-        throw new Error('StateContext not found');
-    }
-    const { setSearchVideos } = context;
-
+    const dispatch = useDispatch();
+    const nav = useNavigate();
 
     const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        const query = e.target.value;
-        setSearchQuery(query);
-    }, [setSearchQuery]);
+        setSearchQuery(e.target.value);
+    }, []);
 
-    const handleSearchKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            HandleSearch(searchQuery, setSearchVideos, allvid, setSearchQuery); // Pass vidPage instead of data
-            nav(`/search/${searchQuery}`)
-
-        }
-    }, [searchQuery, setSearchVideos, setSearchQuery]);
+    const handleSearchKeyDown = useCallback(
+        async (e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === 'Enter' && searchQuery.trim()) {
+                e.preventDefault();
+                try {
+                    // Dispatch search query to Redux
+                    dispatch(getQuery(searchQuery)); // Set the search results
+                    nav(`/search/${searchQuery}`);
+                    dispatch(setCurrentSection(true))
+                } catch (err) {
+                    console.error('Search failed:', err);
+                }
+            }
+        },
+        [searchQuery, dispatch, nav]
+    );
 
     return (
         <div className={`relative transition-all duration-300 ${isFocused ? 'sm:w-60 w-40' : 'w-40'}`}>
@@ -48,7 +45,6 @@ const SearchBar: React.FC = () => {
                 onChange={handleSearchChange}
                 onKeyDown={handleSearchKeyDown}
             />
-
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
         </div>
     );

@@ -4,13 +4,13 @@ import { RotatingLines } from 'react-loader-spinner';
 const TvLoader: React.FC = () => {
   return (
     <>
-            <div className='flex justify-center items-center fixed backdrop-blur-sm inset-0 z-50 bg-opacity-50 bg-black/40'>
+            <div className='flex justify-center items-center fixed backdrop-blur-sm inset-0 z-50'>
                 <div className='flex justify-center items-center'>
                     
                     <RotatingLines
                         visible={true}
-                        height="50"
-                        width="50"
+                        height="30"
+                        width="30"
                         strokeColor="#e7efff"
                         strokeWidth="4"
                         animationDuration="0.75"

@@ -1,30 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback} from 'react'
 import { useNavigate } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 import { Card, CardFooter } from '@nextui-org/react';
 import { formatDuration } from '../../../utils/formatDuration';
 import TVSkeleton from '../loader/TVSkeleton';
-type DataType = {
-    id: number;
-    title: string;
-    description: string;
-    posted_date: string;
-    genre: string;
-    duration: string;
-    view_count: string;
-    rating_count: string;
-    rating_total: string;
-    url: string;
-    img_path: string;
-}
+import { MovieDataType } from '../../../types/MovieDataType';
+
 type RelatedVideoProps = {
-    data: DataType;
+    data: MovieDataType;
     isLoading: boolean;
     setIsProcessing: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const RelatedVideo: React.FC<RelatedVideoProps> = ({ isLoading, data, setIsProcessing }) => {
-    const [showTVske, setShowTVske] = useState(false);
+    // const [showTVske, setShowTVske] = useState(false);
 
     const nav = useNavigate();
     const HomeDetailHandle = useCallback((vid: number) => {
@@ -36,26 +25,27 @@ const RelatedVideo: React.FC<RelatedVideoProps> = ({ isLoading, data, setIsProce
                 top: 0,
                 behavior: 'smooth',
             });
-        }, 3000);
+        }, 1000);
+        window.location.reload()
     }, [nav, setIsProcessing]);
 
-    useEffect(() => {
-        if (!isLoading) {
-            setShowTVske(true);
-            const timer = setTimeout(() => {
-                setShowTVske(false);
-            }, 3000);
+    // useEffect(() => {
+    //     if (!isLoading) {
+    //         setShowTVske(true);
+    //         const timer = setTimeout(() => {
+    //             setShowTVske(false);
+    //         }, 4000);
 
-            // Clean up the timer when component unmounts or when isLoading changes
-            return () => clearTimeout(timer);
-        }
-    }, [isLoading]);
+    //         // Clean up the timer when component unmounts or when isLoading changes
+    //         return () => clearTimeout(timer);
+    //     }
+    // }, [isLoading]);
 
 
     return (
         <div>
             {
-                showTVske ? (
+                isLoading ? (
                     <TVSkeleton />
                 ) : (
                     <LazyLoad height={100} offset={100} once>
@@ -64,7 +54,7 @@ const RelatedVideo: React.FC<RelatedVideoProps> = ({ isLoading, data, setIsProce
                             radius="lg"
                             className={`border-none rounded-lg bg-transparent w-full h-[150px] sm:h-[200px] lg:h-[250px] overflow-hidden `}
                         >
-                            <img className=' w-full h-full object-fill' src={data?.img_path} alt={data?.title} />
+                            <img className=' w-full h-full object-fill' src={data?.thumbnail_url} alt={data?.title} />
 
                             {/* Footer Section */}
                             <CardFooter className="before:bg-white/10 border-white/10 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-xs ml-1 z-10">
@@ -74,7 +64,7 @@ const RelatedVideo: React.FC<RelatedVideoProps> = ({ isLoading, data, setIsProce
                                     </h5>
                                     <div>
                                         <p className="w-full text-[10px] lg:text-sm p-text text-white line-clamp-1">
-                                            {data?.title}
+                                            {data?.description}
                                         </p>
                                     </div>
                                 </div>

@@ -8,12 +8,12 @@ interface IncrementViewResponse {
 
 export const postViewCount = createApi({
   reducerPath: 'view', 
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://bluetv.x10.mx/api/v1' }), 
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://bluetv.x10.mx/api/v1/' }), 
   tagTypes: ['api'], 
   endpoints: (builder) => ({
     incrementView: builder.mutation<IncrementViewResponse, { videoId: number }>({
       query: ({ videoId }) => ({
-        url: `/movies/${videoId}/view`,
+        url: `/movie/${videoId}/view`,
         method: 'POST',
       }),
     }),

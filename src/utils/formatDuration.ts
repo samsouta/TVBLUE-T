@@ -1,5 +1,4 @@
-export function formatDuration(strsec:string) {
-    const seconds = Number(strsec)
+export function formatDuration(seconds: number) {
     if (isNaN(seconds) || seconds < 0) {
         return '00:00'; // Return a default value if invalid
     }

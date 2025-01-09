@@ -1,19 +1,39 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import cookie from 'js-cookie'; // Import js-cookie library
+
+interface IncrementViewResponse {
+  success: boolean;
+  message: string;
+  movieId: number;
+  userId: number;
+}
 
 export const Voting = createApi({
-  reducerPath: "vote",
-  tagTypes: ["api"],
-  baseQuery: fetchBaseQuery({ baseUrl: `https://bluetv.x10.mx/api/v1` }),
+  reducerPath: 'voting',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://bluetv.x10.mx/api/v1/'
+  }),
+  tagTypes: ['api'],
   endpoints: (builder) => ({
-    // Define a mutation for sending votes to the server
-    voteVideo: builder.mutation({
-      query: ({ videoId, voteType }) => ({
-        url: `/movies/${videoId}/vote`, // Assuming the endpoint to vote is like `/movies/{id}/vote`
-        method: "POST",
-        body: { type: voteType },// This will be the data you send (e.g., vote type)
+    like: builder.mutation<IncrementViewResponse, number>({
+      query: ( videoId ) => ({
+        url: `/movie/${videoId}/like`,  // Change to the correct endpoint
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${cookie.get('token')}`,
+        },
+      }),
+    }),
+    unlike: builder.mutation<IncrementViewResponse,  number >({
+      query: (videoId) => ({
+        url: `/movie/${videoId}/unlike`,
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${cookie.get('token')}`,
+        },
       }),
     }),
   }),
 });
 
-export const { useVoteVideoMutation } = Voting;
+export const { useLikeMutation, useUnlikeMutation } = Voting;

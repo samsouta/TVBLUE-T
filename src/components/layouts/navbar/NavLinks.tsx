@@ -1,13 +1,19 @@
 import React, { useContext } from 'react'
-import { MenuItems } from '../../../data/navbar';
-import GategoryBtn from './catagoryBtn/Gategorybtn';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { StateContext } from '../../../context/StateContext';
+import GenreButton from './catagoryBtn/GenreButton';
+import { GenreDataType } from '../../../types/GenreDataType';
+import { useGetAllgenreQuery } from '../../../redux/api/getAllGern';
 
 
 const NavLinks: React.FC = () => {
   const nav = useNavigate();
-  const location = useLocation()
+
+  // Fetch genres using the query hook
+  const { data, isLoading, isError } = useGetAllgenreQuery();
+  const genreList = data?.data as GenreDataType[];
+
+
   const context = useContext(StateContext);
   if (!context) {
     throw new Error('StateContext not found');
@@ -32,20 +38,13 @@ const NavLinks: React.FC = () => {
 
   return (
     <div className="hidden md:flex items-center gap-6">
-      {MenuItems.map((link) => {
-        const Icon = link.icon;
-        return (
-          <a
-            key={link.id}
-            onClick={() => handleSidebar(link.path, link?.text)}
-            className="flex items-center cursor-pointer gap-2 open-sans text-[--soft-blue] hover:text-[var(--white)] transition-colors duration-200"
-          >
-            <Icon className="h-5 w-5" />
-            <span>{link.text}</span>
-          </a>
-        );
-      })}
-     <GategoryBtn />
+      {genreList?.map((gen) => (
+        <GenreButton
+          key={gen?.id}
+          name={gen?.name}
+          tag={gen?.sub_genres}
+        />
+      ))}
     </div>
   )
 }

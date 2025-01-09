@@ -9,7 +9,7 @@ const TVNavbar: React.FC = () => {
     const [hideSearchIcon,setHideSearchIcon] = useState<boolean>(false);
     const location = useLocation()
     useEffect(() => {
-        if (location.pathname === '/') {
+        if (location.pathname === '/home') { 
             setHideSearchIcon(true);
         } else {
             setHideSearchIcon(false);

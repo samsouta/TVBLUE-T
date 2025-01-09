@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 
 
 const HomeSlider: React.FC = () => {
+
     return (
         <div className=" mt-3">
             <Swiper

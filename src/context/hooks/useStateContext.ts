@@ -1,23 +1,10 @@
 import React, { useState } from "react";
 
-type DataType = {
-    id: number;
-    title: string;
-    description: string;
-    posted_date: string;
-    genre: string;
-    duration: string;
-    view_count: string;
-    rating_count: string;
-    rating_total: string;
-    url: string;
-    img_path:string;
-};
+
 
 
 
 export const useStateContext = () => {
-    const [searchVideos, setSearchVideos] = useState<DataType[] | undefined>([]);
 
     const [typePage, setTypePage] = useState<string>('Video');
     const [genCurrentPage, setGenCurrentPage] = React.useState<string>("");
@@ -34,7 +21,6 @@ export const useStateContext = () => {
 
 
     return {
-        searchVideos, setSearchVideos,
         typePage, setTypePage,
         genCurrentPage, setGenCurrentPage,
         currentPage, setCurrentPage,

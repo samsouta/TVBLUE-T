@@ -4,30 +4,19 @@ import { FaHeart } from 'react-icons/fa';
 import { useGetCommentsQuery, usePostCommentMutation } from '../../../redux/api/comment';
 import VotingUI from './VotingUI';
 import { formatViews } from '../../../utils/formatViews';
+import { useGetLikeCountQuery } from '../../../redux/api/getLikeCount';
+import { MovieDataType } from '../../../types/MovieDataType';
 
-type DataType = {
-    id: number;
-    title: string;
-    description: string;
-    duration: string;
-    posted_date: string;
-    rating_count: string;
-    rating_total: string;
-    url: string;
-    view_count: string;
-};
 
 interface CommentUIProps {
     vidId:number;
-    ratingPercentage:ReactNode;
     relativeDate:string;
-    data:DataType;
+    data:MovieDataType;
     handleShareClick: () => void;
 }
 
 const CommentUI: React.FC<CommentUIProps> = ({
     vidId,
-    ratingPercentage,
     relativeDate,
     handleShareClick,
     data}) => {
@@ -35,6 +24,8 @@ const CommentUI: React.FC<CommentUIProps> = ({
     
     const [postComment, { isLoading }] = usePostCommentMutation();
     const { data: comments, isLoading: isFetchingComments, isError: fetchCommentsError } = useGetCommentsQuery(vidId);
+    const {data:likeCount} = useGetLikeCountQuery(vidId)
+    const totalLike = likeCount?.like_count
     
     const handleCommentSubmit = async (e:any) => {
         e.preventDefault();
@@ -57,7 +48,7 @@ const CommentUI: React.FC<CommentUIProps> = ({
                 {/* Video Info Section */}
                 <div className="bg-[var(--medium-blue)] backdrop-blur-sm rounded-xl p-6 mb-6 shadow-lg ring-1 ring-white/10">
                     <h1 className="text-md xl:text-2xl text-[var(--light-blue)]  mb-2 open-sans">
-                        {data?.title}
+                        {data?.description}
                     </h1>
                     <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
                         <div className="flex items-center gap-4">
@@ -72,7 +63,7 @@ const CommentUI: React.FC<CommentUIProps> = ({
                             <span className="text-[var(--dark-blue)]">•</span>
                             <span className="flex items-center text-[var(--soft-blue)] montserrat">
                                 <FaHeart className="text-2xl text-[var(--soft-blue)] mr-2" />
-                                {ratingPercentage}
+                                {totalLike}
                             </span>
                         </div>
                         <VotingUI id={data?.id} handleShareClick={handleShareClick} />
@@ -81,14 +72,14 @@ const CommentUI: React.FC<CommentUIProps> = ({
 
                 {/* Comments Section */}
                 <div className="bg-[var(--medium-blue)] max-h-[300px] overflow-y-scroll backdrop-blur-sm rounded-xl p-6 shadow-lg ring-1 ring-white/10">
-                    <div className="flex items-center gap-2 mb-6">
+                    {/* <div className="flex items-center gap-2 mb-6">
                         <MessageCircle className="w-5 h-5 text-[var(--light-blue)]" />
                         <h2 className="text-xl font-semibold text-[var(--light-blue)]">
                             {commentList.length} Comments
                         </h2>
-                    </div>
+                    </div> */}
 
-                    <form onSubmit={handleCommentSubmit} className="flex gap-4 mb-8">
+                    {/* <form onSubmit={handleCommentSubmit} className="flex gap-4 mb-8">
                         <img
                             src="https://i.pinimg.com/736x/54/db/c5/54dbc58a3014e8b438c3c8f149a410c9.jpg"
                             alt="TopFan"
@@ -119,9 +110,9 @@ const CommentUI: React.FC<CommentUIProps> = ({
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> */}
                     {/* Conditional Rendering */}
-                    <div className="space-y-6 ">
+                    {/* <div className="space-y-6 ">
                         {isFetchingComments ? (
                             <p className="text-neutral-medium">Loading comments...</p>
                         ) : fetchCommentsError ? (
@@ -146,7 +137,7 @@ const CommentUI: React.FC<CommentUIProps> = ({
                                 </div>
                             ))
                         )}
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

@@ -1,28 +1,41 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
 import HomeDetail from '../components/UI/home/HomeDetail'
-import Top from '../pages/Top'
 import Contact from '../pages/Contact'
-import MoreVid from '../pages/MoreVid'
 import Search from '../pages/Search'
-import Category from '../pages/Category'
-import AllvideoPage from '../pages/AllvideoPage'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
+import RouteGuard from './RouteGuard'
+import NewRelease from '../pages/typeOfmoviesPage/NewRelease'
+import Maintenance from '../pages/Maintenance'
+import TradingPage from '../pages/typeOfmoviesPage/TradingPage'
+import MoreDetail from '../pages/MoreDetail'
 
 
 const Index: React.FC = () => {
   return (
     <div>
-        <Routes>
-            <Route path={`/`} element={<Home/>} />
-            <Route path={`/videos/:id`} element={<HomeDetail/>} />
-            <Route path={`/home/:title`} element={<Top/>} />
-            <Route path={`/contact`} element={<Contact/>} />
-            <Route path={`/:genre`} element={<MoreVid/>} />
-            <Route path={`/search/:query`} element={<Search/>} />
-            <Route path={`/categories/:type`} element={<Category/>} />
-            <Route path={`/random`} element={<AllvideoPage/>} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Navigate to="/trading-now" replace />} />
+        
+        <Route path={`/home`} element={<Home />} />
+        <Route path={`/videos/:id`} element={<HomeDetail />} />
+        <Route path={`/contact`} element={<Contact />} />
+        <Route path={`/gn/:genre`} element={<MoreDetail />} />
+        <Route path={`/search/:query`} element={<Search />} />
+
+
+        {/* /// type of movies // */}
+        <Route path={`/trading-now`} element={<TradingPage />} />
+        <Route path={`/new-release`} element={<NewRelease />} />
+
+        {/* // auth  */}
+        <Route path={`/login`} element={<RouteGuard><Login /></RouteGuard>} />
+        <Route path={`/register`} element={<RouteGuard><Register /></RouteGuard>} />
+
+        <Route path={`/maintenance`} element={<Maintenance />} />
+      </Routes>
     </div>
   )
 }

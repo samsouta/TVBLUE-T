@@ -3,6 +3,8 @@ import { Tabs, Tab, Chip } from "@nextui-org/react";
 import { motion } from 'framer-motion';
 import { homePageType } from '../../../data/homePageType';
 import { StateContext } from '../../../context/StateContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const HomePageType: React.FC = () => {
     const [todayVideosCount, setTodayVideosCount] = useState(0);
@@ -13,11 +15,20 @@ const HomePageType: React.FC = () => {
     }
     const { typePage, setTypePage } = context;
 
+    const navigate = useNavigate(); 
+
+    const handleSelectionChange = (key: string) => {
+        setTypePage(String(key));
+        if (key === "Photo") { // Check if the selected tab matches "photo"
+            navigate("/maintenance"); // Navigate to the "/photo" page
+        }
+    };
+
     return (
         <div className="flex w-full flex-col">
             <Tabs size="lg" aria-label="Options"
                 selectedKey={typePage}
-                onSelectionChange={(key) => setTypePage(String(key))}
+                onSelectionChange={(key) => handleSelectionChange(String(key))}
                 items={homePageType}
                 variant="underlined"
                 classNames={{

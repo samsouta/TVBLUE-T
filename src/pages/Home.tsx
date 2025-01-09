@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
-import HomeSlider from '../components/UI/home/HomeSlider';
+import React, { useContext, useEffect } from 'react';
 import VideoPage from '../components/UI/home/VideoPage';
 import HomePageType from '../components/UI/home/HomePageType';
 import { StateContext } from '../context/StateContext';
-import MobileCategory from '../components/layouts/navbar/MobileCategory';
 import PhotoPage from '../components/UI/home/PhotoPage';
+import BuyMeCoffee from '../components/UI/BuyMeCoffee/BuyMeCoffee';
+import TradingNow from '../components/tradingNow/TradingNow';
+import Text from '../components/UI/textAnimation/Text';
 
 const Home: React.FC = () => {
   const context = useContext(StateContext);
@@ -15,10 +16,22 @@ const Home: React.FC = () => {
 
   const { typePage } = context;
 
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [])
+
   return (
-    <div className='mt-20 flex flex-col mx-1 lg:mx-4 gap-y-8'>
-      {/* Slider */}
-      <HomeSlider />
+    <div className='mt-11 flex flex-col mx-1 lg:mx-4 gap-y-8'>
+      {/* Buy me  */}
+      <div className=' flex flex-col justify-center items-center ' >
+        <Text />
+        <span className=' text-2xl md:text-4xl text-[#7FADE0] playfair-display' >Support Here</span>
+        <BuyMeCoffee />
+      </div>
 
       {/* Tabs for selecting type */}
       <div className='' >
@@ -28,6 +41,14 @@ const Home: React.FC = () => {
 
       {/* Content based on selected type */}
       <div className='' >
+        {/* tradingBtn */}
+
+        <div className=' mb-9 flex flex-col justify-center items-center' >
+          <h1 className="text-[var(--light-blue)] my-2 text-2xl lg:text-4xl playfair-display">
+            Trading Video
+          </h1>
+          <TradingNow />
+        </div>
         {typePage === 'Video' && <VideoPage />}
         {typePage === 'Photo' && <PhotoPage />}
       </div>

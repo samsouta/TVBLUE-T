@@ -4,28 +4,13 @@ import LazyLoad from 'react-lazyload';
 import TvLoader from '../loader/TvLoader';
 import formatRelativeDate from '../../../utils/formatRelativeDate';
 import { useNavigate, useParams } from 'react-router-dom';
-import CommentUI from '../commentSection/CommentUI';
-import { calculateRatingPercentage } from '../../../utils/calculateRatingPercentage';
 import ShareModelUI from '../commentSection/ShareModelUI';
-import RelatedVideo from './RelatedVideo';
 import { useIncrementViewMutation } from '../../../redux/api/postViewCount';
-
-// Define the correct type for movie data
-type VideoDataType = {
-    id:number;
-    title:string;
-    description:string;
-    posted_date:string;
-    genre:string;
-    duration:string;
-    view_count:string;
-    rating_count:string;
-    rating_total:string;
-    url:string;
-    img_path:string;
-  }
-  
-
+import { MovieDataType } from '../../../types/MovieDataType';
+import CommentUI from '../commentSection/CommentUI';
+import { useGetRelatedMovieQuery } from '../../../redux/api/getMovies';
+import RelatedVideo from './RelatedVideo';
+import TVSkeleton from '../loader/TVSkeleton';
 
 const HomeDetail: React.FC = () => {
     const { id: vidId } = useParams<{ id: string }>();
@@ -34,17 +19,22 @@ const HomeDetail: React.FC = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const navigate = useNavigate();
 
-
     // Get video data by ID
     const { data, isLoading, error } = useGetVideoByIdQuery(videoId);
+    const { data: related, isLoading: isRelatedLoading } = useGetRelatedMovieQuery(videoId);
     const [incrementView] = useIncrementViewMutation();
+
     // Check if data is present, and handle the case where it might be undefined
-    const video = data?.movie || {} as VideoDataType;
-    const relatedVids = data?.relatedMovies || [] as VideoDataType[];
-    const videoRating = {
-        RatingTotal: video?.rating_total,
-        RatingCount: video?.rating_count,
-    };
+    const video = data?.movie || {} as MovieDataType;
+    const relatedVids = related?.related_videos || [] as MovieDataType[];
+
+    // refresh page 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    }, []);
 
     // turnback
     useEffect(() => {
@@ -63,14 +53,9 @@ const HomeDetail: React.FC = () => {
             window.removeEventListener("popstate", handlePopState);
         };
     }, [navigate]);
-    ///-------------
 
     // Calculate relative date and rating percentage
     const relativeDate = formatRelativeDate(video?.posted_date);
-    const ratingPercentage = calculateRatingPercentage({
-        RatingTotal: videoRating.RatingTotal,
-        RatingCount: videoRating.RatingCount,
-    });
 
     const handleShareClick = useCallback(() => {
         setIsModalOpen(true);
@@ -82,7 +67,7 @@ const HomeDetail: React.FC = () => {
         }
     }, [incrementView]);
 
-    if(isLoading) return <TvLoader/>
+    if (isLoading) return <TvLoader />;
 
     if (error || !data) {
         return <div className="text-red-600 mt-28">Error fetching movie data</div>;
@@ -97,7 +82,7 @@ const HomeDetail: React.FC = () => {
                         <LazyLoad height={100} offset={100} once>
                             <div className="relative shadow-sm rounded-xl overflow-hidden w-full h-[250px] md:h-[500px] lg:h-[400px] xl:w-[900px] xl:h-[600px]">
                                 <iframe
-                                    src={video?.url}
+                                    src={video?.video_url}
                                     width="100%"
                                     height="100%"
                                     title="Video Player"
@@ -113,7 +98,6 @@ const HomeDetail: React.FC = () => {
                 </div>
                 <CommentUI
                     vidId={video.id}
-                    ratingPercentage={ratingPercentage}
                     relativeDate={relativeDate}
                     handleShareClick={handleShareClick}
                     data={video}
@@ -124,14 +108,20 @@ const HomeDetail: React.FC = () => {
             <div className="mt-10 mx-auto mb-20">
                 <h2 className="text-xl md:text-2xl head-font ms-2 text-white mb-4">Related Videos</h2>
                 <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
-                    {relatedVids.map((item) => (
-                        <RelatedVideo
-                            key={item.id}
-                            isLoading={isLoading}
-                            data={item}
-                            setIsProcessing={setIsProcessing}
-                        />
-                    ))}
+                    {isRelatedLoading
+                        ? Array.from({ length: 8 }).map((_, index) => (
+                              <div key={index} className="w-full">
+                                  <TVSkeleton />
+                              </div>
+                          ))
+                        : relatedVids.map((item) => (
+                              <RelatedVideo
+                                  key={item.id}
+                                  isLoading={isLoading}
+                                  data={item}
+                                  setIsProcessing={setIsProcessing}
+                              />
+                          ))}
                 </div>
             </div>
 
