@@ -17,7 +17,6 @@ const HomeDetail: React.FC = () => {
     const videoId = parseInt(vidId || "10", 10);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
-    const navigate = useNavigate();
 
     // Get video data by ID
     const { data, isLoading, error } = useGetVideoByIdQuery(videoId);
@@ -29,30 +28,14 @@ const HomeDetail: React.FC = () => {
     const relatedVids = related?.related_videos || [] as MovieDataType[];
 
     // refresh page 
-    useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo({
+    //         top: 0,
+    //         behavior: 'smooth',
+    //     });
+    // }, []);
 
-    // turnback
-    useEffect(() => {
-        // Initial pushState to make sure history is handled correctly
-        window.history.pushState({}, document.title, window.location.href);
-
-        const handlePopState = () => {
-            navigate(-1);  // go back to previous page
-            const scrollPosition = (document.documentElement.scrollHeight - window.innerHeight) / 2;
-            window.scrollTo(0, scrollPosition);
-        };
-
-        window.addEventListener("popstate", handlePopState);
-
-        return () => {
-            window.removeEventListener("popstate", handlePopState);
-        };
-    }, [navigate]);
+    
 
     // Calculate relative date and rating percentage
     const relativeDate = formatRelativeDate(video?.posted_date);

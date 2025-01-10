@@ -5,7 +5,6 @@ import { StateContext } from '../../../../context/StateContext';
 import { useNavigate } from 'react-router-dom';
 import { SubGenreDataType } from '../../../../types/GenreDataType';
 import { useDispatch } from 'react-redux';
-import { setCurrentSection } from '../../../../redux/slice/ScrollSlice';
 
 type DataType = {
     name: string;
@@ -45,7 +44,13 @@ const GenreButton: React.FC<DataType> = ({ name, tag }) => {
                 // For other genres, navigate as usual
                 localStorage.setItem('selectedGenre', selectedGenre);
                 navigate(`/gn/${selectedGenre}`, { replace: true });
-                dispatch(setCurrentSection(true))
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+                // don't need now 
+                // dispatch(setCurrentSection(true))
             }
 
             // Close dropdown
