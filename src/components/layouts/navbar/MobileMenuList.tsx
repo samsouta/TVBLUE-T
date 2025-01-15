@@ -94,7 +94,7 @@ const MobileMenuList: React.FC = () => {
                 animate={isOpen ? "open" : "closed"}
                 variants={sidebarVariants}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed top-0 right-0 h-full w-64 bg-[var(--medium-blue)] text-[var(--white)] p-5 shadow-xl z-40"
+                className="fixed top-0 right-0 h-full w-64 bg-[var(--medium-blue)] text-[var(--white)] p-5 shadow-xl z-[1000]"
             >
                 <div className="flex flex-col h-full">
                     <div>

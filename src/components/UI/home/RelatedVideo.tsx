@@ -14,7 +14,6 @@ type RelatedVideoProps = {
 
 const RelatedVideo: React.FC<RelatedVideoProps> = ({ isLoading, data, setIsProcessing }) => {
     // const [showTVske, setShowTVske] = useState(false);
-
     const nav = useNavigate();
     const HomeDetailHandle = useCallback((vid: number) => {
         nav(`/videos/${vid}`);
@@ -29,17 +28,6 @@ const RelatedVideo: React.FC<RelatedVideoProps> = ({ isLoading, data, setIsProce
         window.location.reload()
     }, [nav, setIsProcessing]);
 
-    // useEffect(() => {
-    //     if (!isLoading) {
-    //         setShowTVske(true);
-    //         const timer = setTimeout(() => {
-    //             setShowTVske(false);
-    //         }, 4000);
-
-    //         // Clean up the timer when component unmounts or when isLoading changes
-    //         return () => clearTimeout(timer);
-    //     }
-    // }, [isLoading]);
 
 
     return (

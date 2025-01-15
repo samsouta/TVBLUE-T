@@ -4,6 +4,7 @@ import { StateContext } from '../../../context/StateContext';
 import RecommentForYou from '../TypeOfVideoPage/RecommentForYou';
 import MoviesWithGenre from '../TypeOfVideoPage/MoviesWithGenre';
 import { FaArrowAltCircleUp } from "react-icons/fa";
+import ExoClickBanner2 from '../../ads/ExoClickBanner2';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -33,28 +34,50 @@ const VideoPage: React.FC = () => {
         <div className='flex flex-col gap-y-28'>
 
             <RecommentForYou />
-
+            {/* // ads/ */}
+            <ExoClickBanner2/>
+            {/* ads------- */}
             <MoviesWithGenre
                 isGenre={'uncensored'}
             />
-
+            {/* // ads/ */}
+            <ExoClickBanner2/>
+            {/* ads------- */}
             <MoviesWithGenre
                 isGenre={'uncensoredleaked'}
             />
-
+            {/* // ads/ */}
+            <ExoClickBanner2/>
+            {/* ads------- */}
             <MoviesWithGenre
                 isGenre={'chinese'}
             />
+            {/* // ads/ */}
+            <ExoClickBanner2/>
+            {/* ads------- */}
+
             <MoviesWithGenre
                 isGenre={'bigass'}
             />
+            {/* // ads/ */}
+            <ExoClickBanner2/>
+            {/* ads------- */}
+
             <MoviesWithGenre
                 isGenre={'s-cute'}
             />
+
+            {/* // ads/ */}
+            <ExoClickBanner2/>
+            {/* ads------- */}
+
             <MoviesWithGenre
                 isGenre={'censored'}
             />
 
+            {/* // ads/ */}
+            <ExoClickBanner2/>
+            {/* ads------- */}
 
 
             {

@@ -4,6 +4,8 @@ import HomeVideoPageChild from '../components/UI/home/HomeVideoPageChild';
 import Pangination from '../components/UI/pangination/Pangination';
 import { useGetMoviesWithGrenreQuery } from '../redux/api/getMovies';
 import { autoCorrect } from '../utils/autoCorrect';
+import ExoClickBanner from '../components/ads/ExoClickBanner';
+import { ScrollAlert } from '../components/UI/alert/ScrollAlert';
 
 const MoreDetail: React.FC = () => {
     const { genre } = useParams<{ genre: string }>(); // Fetch the genre from the URL
@@ -35,6 +37,9 @@ const MoreDetail: React.FC = () => {
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">
+            {/* scrollalert */}
+            <ScrollAlert/>
+            
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display">
                     {autoCorrect(genre || 'Unknown')}

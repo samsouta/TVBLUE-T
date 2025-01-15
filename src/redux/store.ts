@@ -13,6 +13,7 @@ import { auth } from './api/auth';
 import { SearchEngine } from './api/searchEngine';
 import SearchEngineSlice from './slice/SearchEngineSlice';
 import { ScrollSlice } from './slice/ScrollSlice';
+import { getGame } from './api/game/getGame';
 
 
 export const store = configureStore({
@@ -28,6 +29,9 @@ export const store = configureStore({
     [Voting.reducerPath]: Voting.reducer,
     [GetAllGenre.reducerPath]: GetAllGenre.reducer,
     [SearchEngine.reducerPath]: SearchEngine.reducer,
+
+    /// game 
+    [getGame.reducerPath]: getGame.reducer,
 
     // slice
     home: HomeSlice.reducer,
@@ -46,6 +50,9 @@ export const store = configureStore({
       Voting.middleware,
       GetAllGenre.middleware,
       SearchEngine.middleware,
+
+      // game
+      getGame.middleware,
 
 
 
