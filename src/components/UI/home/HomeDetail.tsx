@@ -13,6 +13,7 @@ import RelatedVideo from './RelatedVideo';
 import TVSkeleton from '../loader/TVSkeleton';
 import { ScrollAlert } from '../alert/ScrollAlert';
 import ExoClickBanner from '../../ads/ExoClickBanner';
+import ExoClickBanner2 from '../../ads/ExoClickBanner2';
 
 
 const HomeDetail: React.FC = () => {

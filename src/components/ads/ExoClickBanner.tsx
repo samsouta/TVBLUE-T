@@ -68,7 +68,7 @@ const ExoClickBanner: React.FC = () => {
             {/* Web Banner */}
             <div className=' ad-container' >
                 <div className="ad-item">
-                    <ins className="eas6a97888e2" data-zoneid="5513330"></ins>
+                <ins className="eas6a97888e2" data-zoneid="5513330"></ins>
                 </div>
             </div>
 

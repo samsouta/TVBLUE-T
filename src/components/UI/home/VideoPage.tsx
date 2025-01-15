@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { StateContext } from '../../../context/StateContext';
 import RecommentForYou from '../TypeOfVideoPage/RecommentForYou';
 import MoviesWithGenre from '../TypeOfVideoPage/MoviesWithGenre';
-import { FaArrowAltCircleUp } from "react-icons/fa";
 import ExoClickBanner2 from '../../ads/ExoClickBanner2';
+import { FaArrowAltCircleUp } from 'react-icons/fa';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -35,58 +35,49 @@ const VideoPage: React.FC = () => {
 
             <RecommentForYou />
             {/* // ads/ */}
-            <ExoClickBanner2/>
+            <ExoClickBanner2 />
             {/* ads------- */}
             <MoviesWithGenre
                 isGenre={'uncensored'}
             />
-            {/* // ads/ */}
-            <ExoClickBanner2/>
-            {/* ads------- */}
+
             <MoviesWithGenre
                 isGenre={'uncensoredleaked'}
             />
-            {/* // ads/ */}
-            <ExoClickBanner2/>
-            {/* ads------- */}
+
             <MoviesWithGenre
                 isGenre={'chinese'}
             />
-            {/* // ads/ */}
-            <ExoClickBanner2/>
-            {/* ads------- */}
+
 
             <MoviesWithGenre
                 isGenre={'bigass'}
             />
-            {/* // ads/ */}
-            <ExoClickBanner2/>
-            {/* ads------- */}
+
 
             <MoviesWithGenre
                 isGenre={'s-cute'}
             />
 
-            {/* // ads/ */}
-            <ExoClickBanner2/>
-            {/* ads------- */}
+
 
             <MoviesWithGenre
                 isGenre={'censored'}
             />
 
-            {/* // ads/ */}
-            <ExoClickBanner2/>
-            {/* ads------- */}
+            <MoviesWithGenre
+                isGenre={'LinaMigurrt'}
+            />
 
 
             {
-                location.pathname === '/' &&
+                location.pathname === '/home'  &&
                 <div
-                    className=' md:hidden'
+                    className=' md:hidden flex flex-col gap-y-4 justify-center items-center'
                     onClick={handletotop}
                 >
-                    <FaArrowAltCircleUp className=' text-4xl text-[var(--white)] fixed z-50 bottom-10 right-10' />
+                    <span className=' text-xl text-white' >Go Up / အပါ်ဆုံးသို့ပြန်သွားမယ်</span>
+                    <FaArrowAltCircleUp className=' text-4xl cursor-pointer   text-[var(--white)] ' />
                 </div>
             }
 
