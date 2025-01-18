@@ -6,8 +6,13 @@ import PhotoPage from '../components/UI/home/PhotoPage';
 import BuyMeCoffee from '../components/UI/BuyMeCoffee/BuyMeCoffee';
 import TradingNow from '../components/tradingNow/TradingNow';
 import Text from '../components/UI/textAnimation/Text';
-import ExoClickBanner from '../components/ads/ExoClickBanner';
-import { ScrollAlert } from '../components/UI/alert/ScrollAlert';
+import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
+import ExoOutstreamVideo from '../components/ads/EXoClick/ExoOutstreamVideo';
+import ExoMobileInstantMessage from '../components/ads/EXoClick/ExoMobileInstantMessage';
+import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
+import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
+import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
+import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
 
 const Home: React.FC = () => {
   const context = useContext(StateContext);
@@ -28,19 +33,34 @@ const Home: React.FC = () => {
 
   return (
     <div className='mt-11 flex flex-col mx-1 lg:mx-4 gap-y-8'>
-      <ScrollAlert/>
       {/* Buy me  */}
       <div className=' flex flex-col justify-center items-center ' >
         <Text />
         <span className=' text-2xl md:text-4xl text-[#7FADE0] playfair-display' >Support Here</span>
         <BuyMeCoffee />
       </div>
-
+      {/* ads */}
+      {/* Mobile */}
+      <div className=' block md:hidden' >
+        <ExoMobileInstantMessage />
+        <ExoMobileBanner />
+        <ExoMobileFullpage />
+      </div>
+      {/* PC */}
+      <div className="hidden md:block">
+        <ExoPcBanner />
+        <ExoPCStickyBanner />
+        <ExoDesktopFullpage />
+      </div>
+      {/* ads end  */}
       {/* Tabs for selecting type */}
       <div className='' >
         {/* <MobileCategory/> */}
         <HomePageType />
       </div>
+      {/* ads */}
+      <ExoOutstreamVideo />
+      {/* ads end  */}
 
       {/* Content based on selected type */}
       <div className='' >

@@ -11,7 +11,7 @@ function Text() {
                     scrollDependent={true}
                     clasname='font-bold open-sans text-white text-2xl md:text-4xl tracking-[-0.07em] leading-[90%]'
                 >
-                    Donation & Supporting
+                    Donation & Supporting Admin
                     
                     
                 </ScrollBaseAnimation>

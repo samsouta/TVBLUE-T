@@ -6,6 +6,14 @@ import { useGetMoviesWithGrenreQuery } from '../redux/api/getMovies';
 import { autoCorrect } from '../utils/autoCorrect';
 import ExoClickBanner from '../components/ads/ExoClickBanner';
 import { ScrollAlert } from '../components/UI/alert/ScrollAlert';
+import ExoMobileInstantMessage from '../components/ads/EXoClick/ExoMobileInstantMessage';
+import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
+import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
+import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
+import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
+import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
+import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
+import ExoInPagePushNotifications from '../components/ads/EXoClick/ExoInPagePushNotifications';
 
 const MoreDetail: React.FC = () => {
     const { genre } = useParams<{ genre: string }>(); // Fetch the genre from the URL
@@ -37,9 +45,21 @@ const MoreDetail: React.FC = () => {
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">
-            {/* scrollalert */}
-            <ScrollAlert/>
-            
+            {/* ads */}
+            {/* Mobile */}
+            <div className=' block md:hidden' >
+                <ExoMobileInstantMessage />
+                <ExoMobileBanner />
+                <ExoMobileFullpage />
+            </div>
+            {/* PC */}
+            <div className="hidden md:block">
+                <ExoPcBanner />
+                <ExoPCStickyBanner />
+                <ExoDesktopFullpage />
+            </div>
+            {/* ads end  */}
+
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display">
                     {autoCorrect(genre || 'Unknown')}
@@ -59,6 +79,11 @@ const MoreDetail: React.FC = () => {
                             />
                         ))}
                     </div>
+
+                    {/* ads */}
+                    <ExoInPagePushNotifications />
+                    {/* ads end */}
+
                     <Pangination
                         lastPage={lastPage}
                         currentPage={currentPage}

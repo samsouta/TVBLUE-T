@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { StateContext } from '../../../context/StateContext';
 import RecommentForYou from '../TypeOfVideoPage/RecommentForYou';
 import MoviesWithGenre from '../TypeOfVideoPage/MoviesWithGenre';
-import ExoClickBanner2 from '../../ads/ExoClickBanner2';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
+import ExoRecommendationWidget from '../../ads/EXoClick/ExoRecommendationWidget';
+import ExoInPagePushNotifications from '../../ads/EXoClick/ExoInPagePushNotifications';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -35,7 +36,6 @@ const VideoPage: React.FC = () => {
 
             <RecommentForYou />
             {/* // ads/ */}
-            <ExoClickBanner2 />
             {/* ads------- */}
             <MoviesWithGenre
                 isGenre={'uncensored'}
@@ -59,7 +59,10 @@ const VideoPage: React.FC = () => {
                 isGenre={'s-cute'}
             />
 
-
+            {/* ads */}
+            <ExoRecommendationWidget />
+            <ExoInPagePushNotifications />
+            {/* ads end */}
 
             <MoviesWithGenre
                 isGenre={'censored'}
@@ -71,7 +74,7 @@ const VideoPage: React.FC = () => {
 
 
             {
-                location.pathname === '/home'  &&
+                location.pathname === '/home' &&
                 <div
                     className=' md:hidden flex flex-col gap-y-4 justify-center items-center'
                     onClick={handletotop}

@@ -4,9 +4,16 @@ import HomeVideoPageChild from '../../components/UI/home/HomeVideoPageChild';
 import WatchMore from '../../components/UI/watchMoreBtn/WatchMore';
 import TVSkeleton from '../../components/UI/loader/TVSkeleton';
 import Pangination from '../../components/UI/pangination/Pangination';
-import ExoClickBanner2 from '../../components/ads/ExoClickBanner2';
-import { ScrollAlert } from '../../components/UI/alert/ScrollAlert';
-import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner';
+import HomeSlider from '../../components/UI/home/HomeSlider';
+import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
+import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
+import ExoPCStickyBanner from '../../components/ads/EXoClick/ExoPCStickyBanner';
+import ExoMobileInstantMessage from '../../components/ads/EXoClick/ExoMobileInstantMessage';
+import ExoDesktopFullpage from '../../components/ads/EXoClick/ExoDesktopFullpage';
+import ExoMobileFullpage from '../../components/ads/EXoClick/ExoMobileFullpage';
+import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
+import ExoInPagePushNotifications from '../../components/ads/EXoClick/ExoInPagePushNotifications';
+import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
 
 const TradingPage: React.FC = () => {
     // Manage current page state
@@ -33,10 +40,23 @@ const TradingPage: React.FC = () => {
 
     return (
         <>
-        <ScrollAlert/>
             <div className="mt-20 mx-1 lg:mx-4">
                 {/* Ads slider */}
-                {/* <HomeSlider /> */}
+                <HomeSlider />
+                {/* Mobile */}
+                <div className=' block md:hidden' >
+                <ExoMobileInstantMessage/>
+                <ExoMobileBanner />
+                <ExoMobileFullpage/>
+                </div>
+                {/* PC */}
+                <div className="hidden md:block">
+                    <ExoPcBanner />
+                    <ExoPCStickyBanner/>
+                    <ExoDesktopFullpage/>
+                </div>
+                
+
                 {/* Watch More */}
                 <div className="mt-10">
                     <WatchMore />
@@ -47,8 +67,9 @@ const TradingPage: React.FC = () => {
                         Trading Now
                     </h1>
                 </div>
-                <ExoClickBanner2 />
-
+                {/* ads */}
+                <ExoOutstreamVideo/>
+                {/* ads end  */}
                 {/* Video Grid */}
                 <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
                     {isLoading
@@ -62,6 +83,11 @@ const TradingPage: React.FC = () => {
                             />
                         ))}
                 </div>
+
+                {/* ads */}
+                <ExoRecommendationWidget/>
+                <ExoInPagePushNotifications/>
+                {/* ads end */}
 
                 {/* Pagination */}
                 <Pangination

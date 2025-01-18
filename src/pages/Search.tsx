@@ -6,6 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { useSearchVideosQuery } from '../redux/api/searchEngine';
 import { setCurrentSection } from '../redux/slice/ScrollSlice';
+import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
+import ExoInPagePushNotifications from '../components/ads/EXoClick/ExoInPagePushNotifications';
+import ExoMobileInstantMessage from '../components/ads/EXoClick/ExoMobileInstantMessage';
+import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
+import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
+import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
+import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
+import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
 
 const Search: React.FC = () => {
     const searchQuery = useSelector((state: RootState) => state?.src?.searchQuery);
@@ -34,6 +42,20 @@ const Search: React.FC = () => {
 
     return (
         <div ref={contentRef} className="mt-20 mx-1 lg:mx-4">
+            {/* ads  */}
+            {/* Mobile */}
+            <div className=' block md:hidden' >
+                <ExoMobileInstantMessage />
+                <ExoMobileBanner />
+                <ExoMobileFullpage />
+            </div>
+            {/* PC */}
+            <div className="hidden md:block">
+                <ExoPcBanner />
+                <ExoPCStickyBanner />
+                <ExoDesktopFullpage />
+            </div>
+            {/* ads end  */}
             <div className='flex justify-center items-center'>
                 <h1 className='text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display'>
                     {searchQuery}
@@ -62,7 +84,12 @@ const Search: React.FC = () => {
                             currentPage={currentPage}
                             setCurrentPage={setCurrentPage}
                         />
+                        {/* ads */}
+                        <ExoRecommendationWidget />
+                        <ExoInPagePushNotifications />
+                        {/* ads end */}
                     </>
+
                 )
             }
         </div>

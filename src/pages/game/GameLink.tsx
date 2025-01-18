@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ExoClickBanner from '../../components/ads/ExoClickBanner';
-import ExoClickBanner2 from '../../components/ads/ExoClickBanner2';
 import JuicyBannerMobile from '../../components/ads/juicy/JuicyBannerMobile';
 import JuicyBannerMobileImage1 from '../../components/ads/juicy/JuicyBannerMobileImage1';
 import JuicyBannerMobileImg2 from '../../components/ads/juicy/JuicyBannerMobileImg2';
@@ -15,6 +13,15 @@ import JuicyFloatAds from '../../components/ads/juicy/JuicyFloatAds';
 import JuicyLeaderBoard from '../../components/ads/juicy/JuicyLeaderBoard';
 import JuicyLinkTitle from '../../components/ads/juicy/JuicyLinkTitle';
 import { ScrollAlert } from '../../components/UI/alert/game/ScrollAlert';
+import ExoMobileInstantMessage from '../../components/ads/EXoClick/ExoMobileInstantMessage';
+import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
+import ExoMobileFullpage from '../../components/ads/EXoClick/ExoMobileFullpage';
+import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
+import ExoPCStickyBanner from '../../components/ads/EXoClick/ExoPCStickyBanner';
+import ExoDesktopFullpage from '../../components/ads/EXoClick/ExoDesktopFullpage';
+import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
+import ExoInPagePushNotifications from '../../components/ads/EXoClick/ExoInPagePushNotifications';
+import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
 
 const GameLink: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -35,7 +42,7 @@ const GameLink: React.FC = () => {
                     throw new Error('Failed to fetch data');
                 }
                 const result = await response.json();
-                
+
                 // Ensure result is an object
                 if (result && typeof result === 'object') {
                     setData(result);
@@ -91,26 +98,46 @@ const GameLink: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 py-8">
-            <ScrollAlert/>
-            <ExoClickBanner />
-            <JuicyBannerMobile/>
-            <JuicyBannerMobileImage1/>
-            <JuicyBannerMobileImg2/>
-            <JuicyBannerMobileimg3/>
-            <JuicyBannerMobileimg4/>
-            <JuicyBannerMobileimg5/>
-            <JuicyBannerMobileimg6/>
-            <JuicyBannerMobileimg7/>
-            <JuicyBillBoard/>
-            <JuicyFloatAds/>
-            <JuicyLeaderBoard/>
-            <JuicyLinkTitle/>
-            <ExoClickBanner2 />
+            <ScrollAlert />
+            <JuicyBannerMobile />
+            <JuicyBannerMobileImage1 />
+            <JuicyBannerMobileImg2 />
+            <JuicyBannerMobileimg3 />
+            <JuicyBannerMobileimg4 />
+            <JuicyBannerMobileimg5 />
+            <JuicyBannerMobileimg6 />
+            <JuicyBannerMobileimg7 />
+            <JuicyBillBoard />
+            <JuicyFloatAds />
+            <JuicyLeaderBoard />
+            <JuicyLinkTitle />
+            {/* //exoclick */}
+            {/* ads */}
+            {/* Mobile */}
+            <div className=' block md:hidden' >
+                <ExoMobileInstantMessage />
+                <ExoMobileBanner />
+                <ExoMobileFullpage />
+            </div>
+            {/* PC */}
+            <div className="hidden md:block">
+                <ExoPcBanner />
+                <ExoPCStickyBanner />
+                <ExoDesktopFullpage />
+            </div>
+            {/* ads end  */}
+            {/* ads */}
+            <ExoRecommendationWidget />
+            <ExoInPagePushNotifications />
+            {/* ads end */}
+            {/* ads */}
+            <ExoOutstreamVideo />
+            {/* ads end  */}
 
             <div className="text-center">
                 <h1 className="text-3xl font-semibold text-gray-800 mb-4">Game Link for ID: {data?.description}</h1>
                 <p className="text-lg text-gray-600 mb-4">Wait for <span className="font-bold text-indigo-600">{seconds}</span> seconds to get the link!</p>
-                
+
                 {/* Timer styled with Tailwind */}
                 <div className="flex justify-center items-center">
                     <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-full text-xl font-semibold">
@@ -131,8 +158,11 @@ const GameLink: React.FC = () => {
                         </button>
                     </a>
                 )}
-                <ExoClickBanner2/>
+                {/* ads */}
+                <ExoOutstreamVideo />
+                {/* ads end  */}
             </div>
+
         </div>
     );
 };
