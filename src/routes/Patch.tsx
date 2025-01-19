@@ -22,13 +22,13 @@ const Patch: React.FC = () => {
       <Routes>
         {/* Video-related routes under LayoutVideo */}
         <Route path="/" element={<LayoutVideo />}>
-          <Route index element={<Navigate to="/trading-now" replace />} />
+          <Route index element={<Navigate to="/trending-now" replace />} />
           <Route path="home" element={<Home />} />
           <Route path="videos/:id" element={<HomeDetail />} />
           <Route path="contact" element={<Contact />} />
           <Route path="gn/:genre" element={<MoreDetail />} />
           <Route path="search/:query" element={<Search />} />
-          <Route path="trading-now" element={<TradingPage />} />
+          <Route path="trending-now" element={<TradingPage />} />
           <Route path="new-release" element={<NewRelease />} />
           {/* // auth  */}
           <Route path="login" element={<RouteGuard><Login /></RouteGuard>} />

@@ -13,6 +13,8 @@ import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
 import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
 import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
 import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
+import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
+import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 
 const Home: React.FC = () => {
   const context = useContext(StateContext);
@@ -44,11 +46,13 @@ const Home: React.FC = () => {
       <div className=' block md:hidden' >
         <ExoMobileInstantMessage />
         <ExoMobileBanner />
+        <TrafficMobileBanner/>
         <ExoMobileFullpage />
       </div>
       {/* PC */}
       <div className="hidden md:block">
         <ExoPcBanner />
+        <TrafficPCBanner/>
         <ExoPCStickyBanner />
         <ExoDesktopFullpage />
       </div>
@@ -67,7 +71,7 @@ const Home: React.FC = () => {
         {/* tradingBtn */}
         <div className=' mb-9 flex flex-col justify-center items-center' >
           <h1 className="text-[var(--light-blue)] my-2 text-2xl lg:text-4xl playfair-display">
-            Trading Video
+            Trending Video
           </h1>
           <TradingNow />
         </div>

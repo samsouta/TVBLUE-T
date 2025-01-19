@@ -21,6 +21,7 @@ import ExoDesktopFullpage from '../../ads/EXoClick/ExoDesktopFullpage';
 import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
 import ExoRecommendationWidget from '../../ads/EXoClick/ExoRecommendationWidget';
 import ExoInPagePushNotifications from '../../ads/EXoClick/ExoInPagePushNotifications';
+import TrafficNative from '../../ads/trafficstar/trafficNative';
 
 
 const HomeDetail: React.FC = () => {
@@ -137,6 +138,7 @@ const HomeDetail: React.FC = () => {
                 </div>
                 {/* ads */}
                 <ExoRecommendationWidget />
+                <TrafficNative/>
                 <ExoInPagePushNotifications />
                 {/* ads end */}
             </div>

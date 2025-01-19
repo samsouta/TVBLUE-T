@@ -14,6 +14,9 @@ import ExoMobileFullpage from '../../components/ads/EXoClick/ExoMobileFullpage';
 import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
 import ExoInPagePushNotifications from '../../components/ads/EXoClick/ExoInPagePushNotifications';
 import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
+import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner';
+import TrafficPCBanner from '../../components/ads/trafficstar/TrafficPCBanner';
+import TrafficNative from '../../components/ads/trafficstar/trafficNative';
 
 const TradingPage: React.FC = () => {
     // Manage current page state
@@ -47,11 +50,13 @@ const TradingPage: React.FC = () => {
                 <div className=' block md:hidden' >
                 <ExoMobileInstantMessage/>
                 <ExoMobileBanner />
+                <TrafficMobileBanner/>
                 <ExoMobileFullpage/>
                 </div>
                 {/* PC */}
                 <div className="hidden md:block">
                     <ExoPcBanner />
+                    <TrafficPCBanner/>
                     <ExoPCStickyBanner/>
                     <ExoDesktopFullpage/>
                 </div>
@@ -64,7 +69,7 @@ const TradingPage: React.FC = () => {
                 {/* Page Title */}
                 <div className="flex justify-center mt-6 items-center">
                     <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] playfair-display">
-                        Trading Now
+                        Trending Now
                     </h1>
                 </div>
                 {/* ads */}
@@ -86,6 +91,7 @@ const TradingPage: React.FC = () => {
 
                 {/* ads */}
                 <ExoRecommendationWidget/>
+                <TrafficNative/>
                 <ExoInPagePushNotifications/>
                 {/* ads end */}
 

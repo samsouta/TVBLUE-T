@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const TradingNow: React.FC = () => {
     return (
         <>
-            <Link to={`/trading-now`} >
+            <Link to={`/trending-now`} >
             <div className='group relative cursor-pointer p-2 w-32 border bg-white rounded-full overflow-hidden text-black text-center font-semibold'>
                 <span className='translate-x-1 group-hover:translate-x-12 group-hover:opacity-0 transition-all duration-300 inline-block'>
-                    Trading
+                    Trending 
                 </span>
                 <div className='flex gap-2 text-white z-10 items-center absolute top-0 h-full w-full justify-center translate-x-12 opacity-0 group-hover:-translate-x-1 group-hover:opacity-100 transition-all duration-300'>
                     <span>Click</span>

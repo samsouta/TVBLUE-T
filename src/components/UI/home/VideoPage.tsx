@@ -6,6 +6,7 @@ import MoviesWithGenre from '../TypeOfVideoPage/MoviesWithGenre';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
 import ExoRecommendationWidget from '../../ads/EXoClick/ExoRecommendationWidget';
 import ExoInPagePushNotifications from '../../ads/EXoClick/ExoInPagePushNotifications';
+import TrafficNative from '../../ads/trafficstar/trafficNative';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -71,6 +72,10 @@ const VideoPage: React.FC = () => {
             <MoviesWithGenre
                 isGenre={'LinaMigurrt'}
             />
+            
+            {/* ads  */}
+            <TrafficNative/>
+            {/* ads */}
 
 
             {

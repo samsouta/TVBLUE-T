@@ -22,6 +22,9 @@ import ExoDesktopFullpage from '../../components/ads/EXoClick/ExoDesktopFullpage
 import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
 import ExoInPagePushNotifications from '../../components/ads/EXoClick/ExoInPagePushNotifications';
 import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
+import TrafficPCBanner from '../../components/ads/trafficstar/TrafficPCBanner';
+import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner';
+import TrafficNative from '../../components/ads/trafficstar/trafficNative';
 
 const GameLink: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -116,18 +119,21 @@ const GameLink: React.FC = () => {
             {/* Mobile */}
             <div className=' block md:hidden' >
                 <ExoMobileInstantMessage />
+                <TrafficMobileBanner/>
                 <ExoMobileBanner />
                 <ExoMobileFullpage />
             </div>
             {/* PC */}
             <div className="hidden md:block">
                 <ExoPcBanner />
+                <TrafficPCBanner/>
                 <ExoPCStickyBanner />
                 <ExoDesktopFullpage />
             </div>
             {/* ads end  */}
             {/* ads */}
             <ExoRecommendationWidget />
+            <TrafficNative/>
             <ExoInPagePushNotifications />
             {/* ads end */}
             {/* ads */}

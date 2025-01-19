@@ -14,6 +14,9 @@ import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
 import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
 import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
 import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
+import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
+import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
+import TrafficNative from '../components/ads/trafficstar/trafficNative';
 
 const Search: React.FC = () => {
     const searchQuery = useSelector((state: RootState) => state?.src?.searchQuery);
@@ -47,11 +50,13 @@ const Search: React.FC = () => {
             <div className=' block md:hidden' >
                 <ExoMobileInstantMessage />
                 <ExoMobileBanner />
+                <TrafficMobileBanner/>
                 <ExoMobileFullpage />
             </div>
             {/* PC */}
             <div className="hidden md:block">
                 <ExoPcBanner />
+                <TrafficPCBanner/>
                 <ExoPCStickyBanner />
                 <ExoDesktopFullpage />
             </div>
@@ -86,6 +91,7 @@ const Search: React.FC = () => {
                         />
                         {/* ads */}
                         <ExoRecommendationWidget />
+                        <TrafficNative/>
                         <ExoInPagePushNotifications />
                         {/* ads end */}
                     </>
