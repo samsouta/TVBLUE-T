@@ -17,6 +17,7 @@ import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
 import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 import TrafficNative from '../components/ads/trafficstar/trafficNative';
+import { Loader } from 'lucide-react';
 
 const Search: React.FC = () => {
     const searchQuery = useSelector((state: RootState) => state?.src?.searchQuery);
@@ -50,13 +51,13 @@ const Search: React.FC = () => {
             <div className=' block md:hidden' >
                 <ExoMobileInstantMessage />
                 <ExoMobileBanner />
-                <TrafficMobileBanner/>
+                <TrafficMobileBanner />
                 <ExoMobileFullpage />
             </div>
             {/* PC */}
             <div className="hidden md:block">
                 <ExoPcBanner />
-                <TrafficPCBanner/>
+                <TrafficPCBanner />
                 <ExoPCStickyBanner />
                 <ExoDesktopFullpage />
             </div>
@@ -69,7 +70,9 @@ const Search: React.FC = () => {
 
             {
                 isLoading ? (
-                    <div>Loading...</div>  // Show loading state
+                    <div className="flex justify-center items-center mt-4">
+                        <Loader className="animate-spin text-green-400" size={34} />
+                    </div>
                 ) : isError ? (
                     <div className="text-white flex justify-center items-center">No Video Found</div>
                 ) : (!searchResults || searchResults.length === 0) ? (
@@ -91,7 +94,7 @@ const Search: React.FC = () => {
                         />
                         {/* ads */}
                         <ExoRecommendationWidget />
-                        <TrafficNative/>
+                        <TrafficNative />
                         <ExoInPagePushNotifications />
                         {/* ads end */}
                     </>

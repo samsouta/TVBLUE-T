@@ -48,19 +48,19 @@ const TradingPage: React.FC = () => {
                 <HomeSlider />
                 {/* Mobile */}
                 <div className=' block md:hidden' >
-                <ExoMobileInstantMessage/>
-                <ExoMobileBanner />
-                <TrafficMobileBanner/>
-                <ExoMobileFullpage/>
+                    <ExoMobileInstantMessage />
+                    <ExoMobileBanner />
+                    <TrafficMobileBanner />
+                    <ExoMobileFullpage />
                 </div>
                 {/* PC */}
                 <div className="hidden md:block">
                     <ExoPcBanner />
-                    <TrafficPCBanner/>
-                    <ExoPCStickyBanner/>
-                    <ExoDesktopFullpage/>
+                    <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
+                    <ExoPCStickyBanner />
+                    <ExoDesktopFullpage />
                 </div>
-                
+
 
                 {/* Watch More */}
                 <div className="mt-10">
@@ -73,7 +73,7 @@ const TradingPage: React.FC = () => {
                     </h1>
                 </div>
                 {/* ads */}
-                <ExoOutstreamVideo/>
+                <ExoOutstreamVideo />
                 {/* ads end  */}
                 {/* Video Grid */}
                 <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -90,9 +90,9 @@ const TradingPage: React.FC = () => {
                 </div>
 
                 {/* ads */}
-                <ExoRecommendationWidget/>
-                <TrafficNative/>
-                <ExoInPagePushNotifications/>
+                <ExoRecommendationWidget />
+                <TrafficNative />
+                <ExoInPagePushNotifications />
                 {/* ads end */}
 
                 {/* Pagination */}

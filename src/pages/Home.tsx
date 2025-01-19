@@ -52,7 +52,7 @@ const Home: React.FC = () => {
       {/* PC */}
       <div className="hidden md:block">
         <ExoPcBanner />
-        <TrafficPCBanner/>
+        <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
         <ExoPCStickyBanner />
         <ExoDesktopFullpage />
       </div>

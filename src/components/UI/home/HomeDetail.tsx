@@ -22,6 +22,8 @@ import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
 import ExoRecommendationWidget from '../../ads/EXoClick/ExoRecommendationWidget';
 import ExoInPagePushNotifications from '../../ads/EXoClick/ExoInPagePushNotifications';
 import TrafficNative from '../../ads/trafficstar/trafficNative';
+import TrafficMobileBanner from '../../ads/trafficstar/TrafficMobileBanner';
+import TrafficPCBanner from '../../ads/trafficstar/TrafficPCBanner';
 
 
 const HomeDetail: React.FC = () => {
@@ -99,11 +101,13 @@ const HomeDetail: React.FC = () => {
                 <div className=' block md:hidden' >
                     <ExoMobileInstantMessage />
                     <ExoMobileBanner />
+                    <TrafficMobileBanner/>
                     <ExoMobileFullpage />
                 </div>
                 {/* PC */}
                 <div className="hidden md:block">
                     <div className=' w-full flex justify-start' ><ExoPcBanner /></div>
+                    <div className=' w-full flex justify-start' ><TrafficPCBanner /></div>
                     <ExoPCStickyBanner />
                     <ExoDesktopFullpage />
                 </div>

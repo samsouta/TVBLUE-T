@@ -13,6 +13,9 @@ import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
 import ExoInPagePushNotifications from '../components/ads/EXoClick/ExoInPagePushNotifications';
 import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
+import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
+import TrafficNative from '../components/ads/trafficstar/trafficNative';
+import { Loader } from 'lucide-react';
 
 const MoreDetail: React.FC = () => {
     const { genre } = useParams<{ genre: string }>(); // Fetch the genre from the URL
@@ -55,7 +58,7 @@ const MoreDetail: React.FC = () => {
             {/* PC */}
             <div className="hidden md:block">
                 <ExoPcBanner />
-                <TrafficPCBanner/>
+                <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
                 <ExoPCStickyBanner />
                 <ExoDesktopFullpage />
             </div>
@@ -67,7 +70,9 @@ const MoreDetail: React.FC = () => {
                 </h1>
             </div>
             {isLoading ? (
-                <div className="text-center text-[var(--light-blue)]">Loading...</div>
+                <div className="flex justify-center items-center mt-4">
+                <Loader className="animate-spin text-green-400" size={34} />
+            </div>
             ) : isError || !genData?.length ? (
                 <div className="text-center text-[var(--light-blue)]">No video found</div>
             ) : (
@@ -81,15 +86,19 @@ const MoreDetail: React.FC = () => {
                         ))}
                     </div>
 
-                    {/* ads */}
-                    <ExoInPagePushNotifications />
-                    {/* ads end */}
+                    
 
                     <Pangination
                         lastPage={lastPage}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                     />
+
+                    {/* ads */}
+                    <ExoInPagePushNotifications />
+                    <ExoRecommendationWidget />
+                    <TrafficNative />
+                    {/* ads end */}
                 </>
             )}
         </div>
