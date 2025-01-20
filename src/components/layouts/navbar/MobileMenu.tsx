@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { List } from 'lucide-react';
 import MobileMenuList from './MobileMenuList';
+import { HiOutlineMenu } from "react-icons/hi";
+
 import { StateContext } from '../../../context/StateContext';
 
 const MobileMenu: React.FC = () => {
@@ -15,7 +16,7 @@ const MobileMenu: React.FC = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 text-gray-300 cursor-pointer hover:text-white"
             >
-                <List className="h-6 w-6" />
+                <HiOutlineMenu className="h-8 w-8" />
             </button>
 
             {isOpen && (

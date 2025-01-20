@@ -9,10 +9,10 @@ const ExoRecommendationWidget: React.FC = () => {
     adScript.src = 'https://a.magsrv.com/ad-provider.js';
     document.body.appendChild(adScript);
 
-    // Create the <ins> element dynamically
+    // Create the <ins> element dynamically for the recommendation widget ad
     const adElement = document.createElement('ins');
-    adElement.className = 'eas6a97888e20';
-    adElement.setAttribute('data-zoneid', '5513360');
+    adElement.className = 'eas6a97888e20'; // Use the provided class name for the recommendation widget
+    adElement.setAttribute('data-zoneid', '5513360'); // Set the correct zone ID
 
     // Append the ad element to the placeholder in the component
     const placeholder = document.getElementById('exo-recommendation-widget-placeholder');

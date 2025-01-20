@@ -15,6 +15,7 @@ import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
 import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
 import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
+import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
 
 const Home: React.FC = () => {
   const context = useContext(StateContext);
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
       <div className=' block md:hidden' >
         <ExoMobileInstantMessage />
         <ExoMobileBanner />
-        <TrafficMobileBanner/>
+        <TrafficMobileBanner />
         <ExoMobileFullpage />
       </div>
       {/* PC */}
@@ -62,9 +63,7 @@ const Home: React.FC = () => {
         {/* <MobileCategory/> */}
         <HomePageType />
       </div>
-      {/* ads */}
-      <ExoOutstreamVideo />
-      {/* ads end  */}
+
 
       {/* Content based on selected type */}
       <div className='' >
@@ -75,6 +74,10 @@ const Home: React.FC = () => {
           </h1>
           <TradingNow />
         </div>
+        {/* ads */}
+        <ExoRecommendationWidget />
+        {/* <ExoOutstreamVideo /> */}
+        {/* ads end  */}
         {typePage === 'Video' && <VideoPage />}
         {typePage === 'Photo' && <PhotoPage />}
       </div>

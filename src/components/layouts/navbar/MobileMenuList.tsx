@@ -14,7 +14,7 @@ import { Alert } from '../../UI/alert/Alert';
 const MobileMenuList: React.FC = () => {
     const [isAlertOpen, setIsAlertOpen] = useState(false);
     const [alertType, setAlertType] = useState<'success' | 'error' | 'info'>('error');
-    const [isLoggingOut, setIsLoggingOut] = useState(false);  // New state for logout loading
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
 
     const token = Cookies.get('token');
     const nav = useNavigate();
@@ -41,7 +41,7 @@ const MobileMenuList: React.FC = () => {
 
     const sidebarVariants = {
         open: { x: 0 },
-        closed: { x: '100%' },
+        closed: { x: '-100%' }, // Moves off-screen to the left
     };
 
     const handleLogin = () => {
@@ -62,7 +62,7 @@ const MobileMenuList: React.FC = () => {
             return;
         }
 
-        setIsLoggingOut(true);  // Start loading state
+        setIsLoggingOut(true);
         try {
             const response = await logOut(token).unwrap();
             if (response) {
@@ -83,7 +83,7 @@ const MobileMenuList: React.FC = () => {
             }
             showAlert('error');
         } finally {
-            setIsLoggingOut(false);  // End loading state
+            setIsLoggingOut(false);
         }
     };
 
@@ -94,7 +94,7 @@ const MobileMenuList: React.FC = () => {
                 animate={isOpen ? "open" : "closed"}
                 variants={sidebarVariants}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed top-0 right-0 h-full w-64 bg-[var(--medium-blue)] text-[var(--white)] p-5 shadow-xl z-[1000]"
+                className="fixed top-0 left-0 h-full w-64 bg-[var(--medium-blue)] text-[var(--white)] p-5 shadow-xl z-[1000]"
             >
                 <div className="flex flex-col h-full">
                     <div>
@@ -104,11 +104,13 @@ const MobileMenuList: React.FC = () => {
                         ) : (
                             <button
                                 onClick={handleLogin}
-                                className="flex gap-x-2 items-center montserrat text-red-600 cursor-pointer text-lg"
+                                className="flex flex-col items-center w-full gap-y-2 px-4 py-3 rounded-lg text-white text-lg font-semibold montserrat "
                             >
-                                <User className="text-[var(--soft-blue)]" />
-                                Login
+                                <User className="text-white w-8 h-8" />
+                                <span className=' text-sm' >Login</span>
                             </button>
+
+
                         )}
                     </div>
 
@@ -132,7 +134,7 @@ const MobileMenuList: React.FC = () => {
                         <button
                             onClick={handleLogOut}
                             className="flex gap-x-2 items-center montserrat text-red-600 cursor-pointer text-lg"
-                            disabled={isLoggingOut}  // Disable the button when logging out
+                            disabled={isLoggingOut}
                         >
                             <IconLogOut />
                             {isLoggingOut ? 'Logging Out...' : 'Log Out'}
@@ -147,7 +149,7 @@ const MobileMenuList: React.FC = () => {
                 ></div>
             )}
 
-            {/* /// alert box */}
+            {/* Alert Box */}
             <Alert
                 isOpen={isAlertOpen}
                 onClose={() => setIsAlertOpen(false)}

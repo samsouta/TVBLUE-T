@@ -64,6 +64,11 @@ const TradingPage: React.FC = () => {
 
                 {/* Watch More */}
                 <div className="mt-10">
+                <div className="flex justify-center mt-6 items-center">
+                    <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] playfair-display">
+                        Watch More Videos
+                    </h1>
+                </div>
                     <WatchMore />
                 </div>
                 {/* Page Title */}
@@ -73,6 +78,7 @@ const TradingPage: React.FC = () => {
                     </h1>
                 </div>
                 {/* ads */}
+                <ExoRecommendationWidget />
                 <ExoOutstreamVideo />
                 {/* ads end  */}
                 {/* Video Grid */}
@@ -90,7 +96,7 @@ const TradingPage: React.FC = () => {
                 </div>
 
                 {/* ads */}
-                <ExoRecommendationWidget />
+                
                 <TrafficNative />
                 <ExoInPagePushNotifications />
                 {/* ads end */}
