@@ -7,17 +7,13 @@ import { RootState } from '../redux/store';
 import { useSearchVideosQuery } from '../redux/api/searchEngine';
 import { setCurrentSection } from '../redux/slice/ScrollSlice';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
-import ExoInPagePushNotifications from '../components/ads/EXoClick/ExoInPagePushNotifications';
-import ExoMobileInstantMessage from '../components/ads/EXoClick/ExoMobileInstantMessage';
-import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
-import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
-import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
-import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
-import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
-import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
-import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 import TrafficNative from '../components/ads/trafficstar/trafficNative';
 import { Loader } from 'lucide-react';
+import HomeSlider from '../components/UI/home/HomeSlider';
+import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
+import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
+import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
+import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 
 const Search: React.FC = () => {
     const searchQuery = useSelector((state: RootState) => state?.src?.searchQuery);
@@ -46,22 +42,19 @@ const Search: React.FC = () => {
 
     return (
         <div ref={contentRef} className="mt-20 mx-1 lg:mx-4">
-            {/* ads  */}
+           
+            {/* ADS ZONE */}
             {/* Mobile */}
-            <div className=' block md:hidden' >
-                <ExoMobileInstantMessage />
+            <div className=' w-full flex flex-wrap justify-center' >
+                <ExoPcBanner />
                 <ExoMobileBanner />
                 <TrafficMobileBanner />
-                <ExoMobileFullpage />
             </div>
             {/* PC */}
-            <div className="hidden md:block">
-                <ExoPcBanner />
-                <TrafficPCBanner />
-                <ExoPCStickyBanner />
-                <ExoDesktopFullpage />
+            <div className="hidden xl:block">
+                <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
             </div>
-            {/* ads end  */}
+            {/* ADS END  */}
             <div className='flex justify-center items-center'>
                 <h1 className='text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display'>
                     {searchQuery}
@@ -87,16 +80,18 @@ const Search: React.FC = () => {
                                 />
                             ))}
                         </div>
+
+                        {/* ads */}
+                        <ExoRecommendationWidget />
+                        <TrafficNative />
+                        {/* ads end */}
+
                         <Pangination
                             lastPage={validLastPage || 1}
                             currentPage={currentPage}
                             setCurrentPage={setCurrentPage}
                         />
-                        {/* ads */}
-                        <ExoRecommendationWidget />
-                        <TrafficNative />
-                        <ExoInPagePushNotifications />
-                        {/* ads end */}
+
                     </>
 
                 )

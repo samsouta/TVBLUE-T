@@ -13,18 +13,14 @@ import JuicyFloatAds from '../../components/ads/juicy/JuicyFloatAds';
 import JuicyLeaderBoard from '../../components/ads/juicy/JuicyLeaderBoard';
 import JuicyLinkTitle from '../../components/ads/juicy/JuicyLinkTitle';
 import { ScrollAlert } from '../../components/UI/alert/game/ScrollAlert';
-import ExoMobileInstantMessage from '../../components/ads/EXoClick/ExoMobileInstantMessage';
 import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
-import ExoMobileFullpage from '../../components/ads/EXoClick/ExoMobileFullpage';
 import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
-import ExoPCStickyBanner from '../../components/ads/EXoClick/ExoPCStickyBanner';
-import ExoDesktopFullpage from '../../components/ads/EXoClick/ExoDesktopFullpage';
 import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
-import ExoInPagePushNotifications from '../../components/ads/EXoClick/ExoInPagePushNotifications';
 import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
 import TrafficPCBanner from '../../components/ads/trafficstar/TrafficPCBanner';
 import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficNative from '../../components/ads/trafficstar/trafficNative';
+import ExoMixbanner from '../../components/ads/EXoClick/ExoMixbanner';
 
 const GameLink: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -115,30 +111,29 @@ const GameLink: React.FC = () => {
             <JuicyLeaderBoard />
             <JuicyLinkTitle />
             {/* //exoclick */}
-            {/* ads */}
+
+            {/* ADS ZONE */}
             {/* Mobile */}
-            <div className=' block md:hidden' >
-                <ExoMobileInstantMessage />
-                <TrafficMobileBanner/>
+            <div className=' w-full flex flex-wrap justify-center' >
+                <ExoPcBanner />
                 <ExoMobileBanner />
-                <ExoMobileFullpage />
+                <TrafficMobileBanner />
             </div>
             {/* PC */}
-            <div className="hidden md:block">
-                <ExoPcBanner />
-                <TrafficPCBanner/>
-                <ExoPCStickyBanner />
-                <ExoDesktopFullpage />
+            <div className="hidden xl:block">
+                <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
             </div>
-            {/* ads end  */}
+            {/* ADS END  */}
+
             {/* ads */}
             <ExoRecommendationWidget />
-            <TrafficNative/>
-            <ExoInPagePushNotifications />
-            {/* ads end */}
-            {/* ads */}
             <ExoOutstreamVideo />
             {/* ads end  */}
+
+            {/* ads */}
+            <ExoMixbanner />
+            <TrafficNative />
+            {/* ads end */}
 
             <div className="text-center">
                 <h1 className="text-3xl font-semibold text-gray-800 mb-4">Game Link for ID: {data?.description}</h1>

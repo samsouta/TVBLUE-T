@@ -8,14 +8,11 @@ import TradingNow from '../components/tradingNow/TradingNow';
 import Text from '../components/UI/textAnimation/Text';
 import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
 import ExoOutstreamVideo from '../components/ads/EXoClick/ExoOutstreamVideo';
-import ExoMobileInstantMessage from '../components/ads/EXoClick/ExoMobileInstantMessage';
-import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
 import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
-import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
-import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
 import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
+import TrafficNative from '../components/ads/trafficstar/trafficNative';
 
 const Home: React.FC = () => {
   const context = useContext(StateContext);
@@ -42,22 +39,20 @@ const Home: React.FC = () => {
         <span className=' text-2xl md:text-4xl text-[#7FADE0] playfair-display' >Support Here</span>
         <BuyMeCoffee />
       </div>
-      {/* ads */}
+
+      {/* ADS ZONE */}
       {/* Mobile */}
-      <div className=' block md:hidden' >
-        <ExoMobileInstantMessage />
+      <div className=' w-full flex flex-wrap justify-center' >
+        <ExoPcBanner />
         <ExoMobileBanner />
         <TrafficMobileBanner />
-        <ExoMobileFullpage />
       </div>
       {/* PC */}
-      <div className="hidden md:block">
-        <ExoPcBanner />
+      <div className="hidden xl:block">
         <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
-        <ExoPCStickyBanner />
-        <ExoDesktopFullpage />
       </div>
-      {/* ads end  */}
+      {/* ADS END  */}
+
       {/* Tabs for selecting type */}
       <div className='' >
         {/* <MobileCategory/> */}
@@ -76,11 +71,15 @@ const Home: React.FC = () => {
         </div>
         {/* ads */}
         <ExoRecommendationWidget />
-        {/* <ExoOutstreamVideo /> */}
+        
         {/* ads end  */}
         {typePage === 'Video' && <VideoPage />}
         {typePage === 'Photo' && <PhotoPage />}
       </div>
+
+      {/* ads */}
+      <TrafficNative />
+      {/* ads end */}
     </div>
   );
 };

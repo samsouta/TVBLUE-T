@@ -4,8 +4,10 @@ import { StateContext } from '../../../context/StateContext';
 import RecommentForYou from '../TypeOfVideoPage/RecommentForYou';
 import MoviesWithGenre from '../TypeOfVideoPage/MoviesWithGenre';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
-import ExoInPagePushNotifications from '../../ads/EXoClick/ExoInPagePushNotifications';
+
 import TrafficNative from '../../ads/trafficstar/trafficNative';
+import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
+import ExoMixbanner from '../../ads/EXoClick/ExoMixbanner';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -36,6 +38,7 @@ const VideoPage: React.FC = () => {
 
             <RecommentForYou />
             {/* // ads/ */}
+            <ExoOutstreamVideo />
             {/* ads------- */}
             <MoviesWithGenre
                 isGenre={'uncensored'}
@@ -49,6 +52,9 @@ const VideoPage: React.FC = () => {
                 isGenre={'chinese'}
             />
 
+            {/* ads */}
+            <ExoMixbanner />
+            {/* ads end */}
 
             <MoviesWithGenre
                 isGenre={'bigass'}
@@ -59,9 +65,6 @@ const VideoPage: React.FC = () => {
                 isGenre={'s-cute'}
             />
 
-            {/* ads */}
-            <ExoInPagePushNotifications />
-            {/* ads end */}
 
             <MoviesWithGenre
                 isGenre={'censored'}
@@ -70,9 +73,9 @@ const VideoPage: React.FC = () => {
             <MoviesWithGenre
                 isGenre={'LinaMigurrt'}
             />
-            
+
             {/* ads  */}
-            <TrafficNative/>
+            <TrafficNative />
             {/* ads */}
 
 

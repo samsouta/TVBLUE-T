@@ -2,36 +2,39 @@ import React, { useEffect } from 'react';
 
 const ExoRecommendationWidget: React.FC = () => {
   useEffect(() => {
-    // Add the external ad script
-    const adScript = document.createElement('script');
-    adScript.async = true;
-    adScript.type = 'application/javascript';
-    adScript.src = 'https://a.magsrv.com/ad-provider.js';
-    document.body.appendChild(adScript);
+    // Create the first script tag for the ad
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.type = 'application/javascript';
+    script1.src = 'https://a.magsrv.com/ad-provider.js';
+    document.body.appendChild(script1);
 
-    // Create the <ins> element dynamically for the recommendation widget ad
-    const adElement = document.createElement('ins');
-    adElement.className = 'eas6a97888e20'; // Use the provided class name for the recommendation widget
-    adElement.setAttribute('data-zoneid', '5513360'); // Set the correct zone ID
+    // Create the <ins> tag for the ad
+    const ins = document.createElement('ins');
+    ins.className = 'eas6a97888e20';
+    ins.setAttribute('data-zoneid', '5520304');
 
-    // Append the ad element to the placeholder in the component
-    const placeholder = document.getElementById('exo-recommendation-widget-placeholder');
-    if (placeholder) {
-      placeholder.appendChild(adElement);
+    // Append the <ins> tag to the container in the component
+    const container = document.getElementById('ad-container-recommendation');
+    if (container) {
+      container.appendChild(ins);
     }
 
-    // Add the inline script for AdProvider
-    const inlineScript = document.createElement('script');
-    inlineScript.innerHTML = `(AdProvider = window.AdProvider || []).push({"serve": {}});`;
-    document.body.appendChild(inlineScript);
+    // Create the second script tag to trigger the ad
+    const script2 = document.createElement('script');
+    script2.textContent = `(AdProvider = window.AdProvider || []).push({"serve": {}});`;
 
-    // No cleanup to ensure ads remain loaded
+    // Append the second script tag to the container
+    if (container) {
+      container.appendChild(script2);
+    }
+
+    // No cleanup logic, the ad will stay on the page
   }, []);
 
   return (
     <div>
-      {/* Placeholder for the recommendation widget ad */}
-      <div id="exo-recommendation-widget-placeholder" style={{ textAlign: 'center' }}></div>
+      <div id="ad-container-recommendation"></div> {/* Ad script will populate this div */}
     </div>
   );
 };

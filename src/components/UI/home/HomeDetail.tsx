@@ -11,19 +11,12 @@ import CommentUI from '../commentSection/CommentUI';
 import { useGetRelatedMovieQuery } from '../../../redux/api/getMovies';
 import RelatedVideo from './RelatedVideo';
 import TVSkeleton from '../loader/TVSkeleton';
-import { ScrollAlert } from '../alert/ScrollAlert';
-import ExoMobileInstantMessage from '../../ads/EXoClick/ExoMobileInstantMessage';
+import ExoMixbanner from '../../ads/EXoClick/ExoMixbanner';
 import ExoMobileBanner from '../../ads/EXoClick/ExoMobileBanner';
-import ExoMobileFullpage from '../../ads/EXoClick/ExoMobileFullpage';
-import ExoPcBanner from '../../ads/EXoClick/ExoPcBanner';
-import ExoPCStickyBanner from '../../ads/EXoClick/ExoPCStickyBanner';
-import ExoDesktopFullpage from '../../ads/EXoClick/ExoDesktopFullpage';
-import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
-import ExoRecommendationWidget from '../../ads/EXoClick/ExoRecommendationWidget';
-import ExoInPagePushNotifications from '../../ads/EXoClick/ExoInPagePushNotifications';
-import TrafficNative from '../../ads/trafficstar/trafficNative';
 import TrafficMobileBanner from '../../ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../../ads/trafficstar/TrafficPCBanner';
+import ExoRecommendationWidget from '../../ads/EXoClick/ExoRecommendationWidget';
+import TrafficNative from '../../ads/trafficstar/trafficNative';
 
 
 const HomeDetail: React.FC = () => {
@@ -71,7 +64,7 @@ const HomeDetail: React.FC = () => {
     return (
         <div className="text-gray-100 mt-[80px] px-2">
             {/* ads */}
-            <ExoOutstreamVideo />
+            <ExoMixbanner/>
             {/* ads end  */}
             {/* Hero Section */}
             <div>
@@ -95,23 +88,18 @@ const HomeDetail: React.FC = () => {
                         {isProcessing && <TvLoader />}
                     </div>
                 </div>
-
-                {/* ads */}
+                
+                {/* ADS ZONE */}
                 {/* Mobile */}
-                <div className=' block md:hidden' >
-                    <ExoMobileInstantMessage />
+                <div className=' w-full flex flex-wrap justify-center' >
                     <ExoMobileBanner />
-                    <TrafficMobileBanner/>
-                    <ExoMobileFullpage />
+                    <TrafficMobileBanner />
                 </div>
                 {/* PC */}
-                <div className="hidden md:block">
-                    <div className=' w-full flex justify-start' ><ExoPcBanner /></div>
-                    <div className=' w-full flex justify-start' ><TrafficPCBanner /></div>
-                    <ExoPCStickyBanner />
-                    <ExoDesktopFullpage />
+                <div className="hidden xl:block">
+                    <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
                 </div>
-                {/* ads end  */}
+                {/* ADS END  */}
 
                 <CommentUI
                     vidId={video.id}
@@ -119,6 +107,8 @@ const HomeDetail: React.FC = () => {
                     handleShareClick={handleShareClick}
                     data={video}
                 />
+
+                
             </div>
 
 
@@ -140,11 +130,11 @@ const HomeDetail: React.FC = () => {
                             />
                         ))}
                 </div>
-                {/* ads */}
+                        {/* ads */}
                 <ExoRecommendationWidget />
                 <TrafficNative/>
-                <ExoInPagePushNotifications />
-                {/* ads end */}
+                {/* ads end  */}
+                {/* Video Grid */}
             </div>
 
             {/* Share Modal */}

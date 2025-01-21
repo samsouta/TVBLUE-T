@@ -4,13 +4,8 @@ import HomeVideoPageChild from '../components/UI/home/HomeVideoPageChild';
 import Pangination from '../components/UI/pangination/Pangination';
 import { useGetMoviesWithGrenreQuery } from '../redux/api/getMovies';
 import { autoCorrect } from '../utils/autoCorrect';
-import ExoMobileInstantMessage from '../components/ads/EXoClick/ExoMobileInstantMessage';
 import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
-import ExoMobileFullpage from '../components/ads/EXoClick/ExoMobileFullpage';
 import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
-import ExoPCStickyBanner from '../components/ads/EXoClick/ExoPCStickyBanner';
-import ExoDesktopFullpage from '../components/ads/EXoClick/ExoDesktopFullpage';
-import ExoInPagePushNotifications from '../components/ads/EXoClick/ExoInPagePushNotifications';
 import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
@@ -47,22 +42,18 @@ const MoreDetail: React.FC = () => {
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">
-            {/* ads */}
+            {/* ADS ZONE */}
             {/* Mobile */}
-            <div className=' block md:hidden' >
-                <ExoMobileInstantMessage />
+            <div className=' w-full flex flex-wrap justify-center' >
+                <ExoPcBanner />
                 <ExoMobileBanner />
-                <TrafficMobileBanner/>
-                <ExoMobileFullpage />
+                <TrafficMobileBanner />
             </div>
             {/* PC */}
-            <div className="hidden md:block">
-                <ExoPcBanner />
+            <div className="hidden xl:block">
                 <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
-                <ExoPCStickyBanner />
-                <ExoDesktopFullpage />
             </div>
-            {/* ads end  */}
+            {/* ADS END  */}
 
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display">
@@ -71,8 +62,8 @@ const MoreDetail: React.FC = () => {
             </div>
             {isLoading ? (
                 <div className="flex justify-center items-center mt-4">
-                <Loader className="animate-spin text-green-400" size={34} />
-            </div>
+                    <Loader className="animate-spin text-green-400" size={34} />
+                </div>
             ) : isError || !genData?.length ? (
                 <div className="text-center text-[var(--light-blue)]">No video found</div>
             ) : (
@@ -86,7 +77,11 @@ const MoreDetail: React.FC = () => {
                         ))}
                     </div>
 
-                    
+                    {/* ads */}
+                    <ExoRecommendationWidget />
+                    <TrafficNative />
+                    {/* ads end  */}
+
 
                     <Pangination
                         lastPage={lastPage}
@@ -94,11 +89,6 @@ const MoreDetail: React.FC = () => {
                         setCurrentPage={setCurrentPage}
                     />
 
-                    {/* ads */}
-                    <ExoInPagePushNotifications />
-                    <ExoRecommendationWidget />
-                    <TrafficNative />
-                    {/* ads end */}
                 </>
             )}
         </div>

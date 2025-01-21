@@ -7,16 +7,12 @@ import Pangination from '../../components/UI/pangination/Pangination';
 import HomeSlider from '../../components/UI/home/HomeSlider';
 import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
 import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
-import ExoPCStickyBanner from '../../components/ads/EXoClick/ExoPCStickyBanner';
-import ExoMobileInstantMessage from '../../components/ads/EXoClick/ExoMobileInstantMessage';
-import ExoDesktopFullpage from '../../components/ads/EXoClick/ExoDesktopFullpage';
-import ExoMobileFullpage from '../../components/ads/EXoClick/ExoMobileFullpage';
 import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
-import ExoInPagePushNotifications from '../../components/ads/EXoClick/ExoInPagePushNotifications';
 import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
 import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../../components/ads/trafficstar/TrafficPCBanner';
 import TrafficNative from '../../components/ads/trafficstar/trafficNative';
+import ExoMixbanner from '../../components/ads/EXoClick/ExoMixbanner';
 
 const TradingPage: React.FC = () => {
     // Manage current page state
@@ -46,29 +42,28 @@ const TradingPage: React.FC = () => {
             <div className="mt-20 mx-1 lg:mx-4">
                 {/* Ads slider */}
                 <HomeSlider />
+
+                {/* ADS ZONE */}
                 {/* Mobile */}
-                <div className=' block md:hidden' >
-                    <ExoMobileInstantMessage />
+                <div className=' w-full flex flex-wrap justify-center' >
+                    <ExoPcBanner />
                     <ExoMobileBanner />
                     <TrafficMobileBanner />
-                    <ExoMobileFullpage />
                 </div>
                 {/* PC */}
-                <div className="hidden md:block">
-                    <ExoPcBanner />
+                <div className="hidden xl:block">
                     <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
-                    <ExoPCStickyBanner />
-                    <ExoDesktopFullpage />
                 </div>
+                {/* ADS END  */}
 
 
                 {/* Watch More */}
                 <div className="mt-10">
-                <div className="flex justify-center mt-6 items-center">
-                    <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] playfair-display">
-                        Watch More Videos
-                    </h1>
-                </div>
+                    <div className="flex justify-center mt-6 items-center">
+                        <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] playfair-display">
+                            Watch More Videos
+                        </h1>
+                    </div>
                     <WatchMore />
                 </div>
                 {/* Page Title */}
@@ -96,9 +91,8 @@ const TradingPage: React.FC = () => {
                 </div>
 
                 {/* ads */}
-                
+                <ExoMixbanner/>
                 <TrafficNative />
-                <ExoInPagePushNotifications />
                 {/* ads end */}
 
                 {/* Pagination */}
@@ -108,6 +102,8 @@ const TradingPage: React.FC = () => {
                     setCurrentPage={setCurrentPage}
                 />
             </div>
+
+            
         </>
     );
 };
