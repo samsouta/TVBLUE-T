@@ -17,6 +17,9 @@ import TrafficMobileBanner from '../../ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../../ads/trafficstar/TrafficPCBanner';
 import ExoRecommendationWidget from '../../ads/EXoClick/ExoRecommendationWidget';
 import TrafficNative from '../../ads/trafficstar/trafficNative';
+import ExoMBannerCPM from '../../ads/EXoClick/ExoMBannerCPM';
+import ExoRecomCPM from '../../ads/EXoClick/ExoRecomCPM';
+import ExoPcBanner from '../../ads/EXoClick/ExoPcBanner';
 
 
 const HomeDetail: React.FC = () => {
@@ -64,7 +67,8 @@ const HomeDetail: React.FC = () => {
     return (
         <div className="text-gray-100 mt-[80px] px-2">
             {/* ads */}
-            <ExoMixbanner/>
+            <ExoRecomCPM/>
+            <div className=' w-full flex justify-center' ><ExoPcBanner/></div>
             {/* ads end  */}
             {/* Hero Section */}
             <div>
@@ -88,12 +92,12 @@ const HomeDetail: React.FC = () => {
                         {isProcessing && <TvLoader />}
                     </div>
                 </div>
-                
+
                 {/* ADS ZONE */}
                 {/* Mobile */}
                 <div className=' w-full flex flex-wrap justify-center' >
+                    <ExoMBannerCPM />
                     <ExoMobileBanner />
-                    <TrafficMobileBanner />
                 </div>
                 {/* PC */}
                 <div className="hidden xl:block">
@@ -108,7 +112,7 @@ const HomeDetail: React.FC = () => {
                     data={video}
                 />
 
-                
+            
             </div>
 
 
@@ -130,9 +134,8 @@ const HomeDetail: React.FC = () => {
                             />
                         ))}
                 </div>
-                        {/* ads */}
+                {/* ads */}
                 <ExoRecommendationWidget />
-                <TrafficNative/>
                 {/* ads end  */}
                 {/* Video Grid */}
             </div>

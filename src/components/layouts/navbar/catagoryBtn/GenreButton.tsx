@@ -64,7 +64,7 @@ const GenreButton: React.FC<DataType> = ({ name, tag }) => {
         <div>
             <Dropdown className="bg-[var(--medium-blue)]">
                 <DropdownTrigger>
-                    <h1 className="flex gap-x-2 items-center open-sans text-[--soft-blue] cursor-pointer text-md bg-transparent hover:bg-transparent hover:text-[--soft-blue]">
+                    <h1 className="flex gap-x-2 items-center open-sans text-[--white] cursor-pointer text-md bg-transparent hover:bg-transparent hover:text-[--soft-blue]">
                         {name}
                         <ChevronDown className="text-sm" />
                     </h1>

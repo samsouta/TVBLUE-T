@@ -8,6 +8,7 @@ import { FaArrowAltCircleUp } from 'react-icons/fa';
 import TrafficNative from '../../ads/trafficstar/trafficNative';
 import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
 import ExoMixbanner from '../../ads/EXoClick/ExoMixbanner';
+import ExoPcBanner from '../../ads/EXoClick/ExoPcBanner';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -34,7 +35,7 @@ const VideoPage: React.FC = () => {
         });
     }
     return (
-        <div className='flex flex-col gap-y-28'>
+        <div className='flex flex-col gap-y-12'>
 
             <RecommentForYou />
             {/* // ads/ */}
@@ -47,6 +48,12 @@ const VideoPage: React.FC = () => {
             <MoviesWithGenre
                 isGenre={'uncensoredleaked'}
             />
+
+            {/* ads  */}
+            <div className=' flex justify-center' >
+            <ExoPcBanner />
+            </div>
+            {/* ads */}
 
             <MoviesWithGenre
                 isGenre={'chinese'}
@@ -73,10 +80,6 @@ const VideoPage: React.FC = () => {
             <MoviesWithGenre
                 isGenre={'LinaMigurrt'}
             />
-
-            {/* ads  */}
-            <TrafficNative />
-            {/* ads */}
 
 
             {

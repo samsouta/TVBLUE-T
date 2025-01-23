@@ -6,11 +6,10 @@ import { useGetMoviesWithGrenreQuery } from '../redux/api/getMovies';
 import { autoCorrect } from '../utils/autoCorrect';
 import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
 import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
-import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
-import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
-import TrafficNative from '../components/ads/trafficstar/trafficNative';
 import { Loader } from 'lucide-react';
+import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
+import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
 
 const MoreDetail: React.FC = () => {
     const { genre } = useParams<{ genre: string }>(); // Fetch the genre from the URL
@@ -47,12 +46,9 @@ const MoreDetail: React.FC = () => {
             <div className=' w-full flex flex-wrap justify-center' >
                 <ExoPcBanner />
                 <ExoMobileBanner />
-                <TrafficMobileBanner />
+                <ExoMBannerCPM/>
             </div>
-            {/* PC */}
-            <div className="hidden xl:block">
-                <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
-            </div>
+            
             {/* ADS END  */}
 
             <div className="flex justify-center items-center">
@@ -79,7 +75,7 @@ const MoreDetail: React.FC = () => {
 
                     {/* ads */}
                     <ExoRecommendationWidget />
-                    <TrafficNative />
+                    <ExoRecomCPM/>
                     {/* ads end  */}
 
 

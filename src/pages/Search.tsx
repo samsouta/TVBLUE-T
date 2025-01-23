@@ -14,6 +14,8 @@ import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
 import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
 import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
 import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
+import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
+import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
 
 const Search: React.FC = () => {
     const searchQuery = useSelector((state: RootState) => state?.src?.searchQuery);
@@ -48,11 +50,7 @@ const Search: React.FC = () => {
             <div className=' w-full flex flex-wrap justify-center' >
                 <ExoPcBanner />
                 <ExoMobileBanner />
-                <TrafficMobileBanner />
-            </div>
-            {/* PC */}
-            <div className="hidden xl:block">
-                <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
+                <ExoMBannerCPM/>
             </div>
             {/* ADS END  */}
             <div className='flex justify-center items-center'>
@@ -83,7 +81,7 @@ const Search: React.FC = () => {
 
                         {/* ads */}
                         <ExoRecommendationWidget />
-                        <TrafficNative />
+                        <ExoRecomCPM/>
                         {/* ads end */}
 
                         <Pangination

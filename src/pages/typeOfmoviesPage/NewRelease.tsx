@@ -3,13 +3,10 @@ import HomeVideoPageChild from '../../components/UI/home/HomeVideoPageChild'
 import Pangination from '../../components/UI/pangination/Pangination'
 import { useGetNewReleaseMovieQuery } from '../../redux/api/getMovies'
 import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner'
-import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner'
 import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner'
-import TrafficPCBanner from '../../components/ads/trafficstar/TrafficPCBanner'
 import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget'
-import TrafficNative from '../../components/ads/trafficstar/trafficNative'
 import { Loader } from 'lucide-react'
-import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo'
+import ExoMBannerCPM from '../../components/ads/EXoClick/ExoMBannerCPM'
 
 
 const NewRelease: React.FC = () => {
@@ -38,12 +35,9 @@ const NewRelease: React.FC = () => {
             <div className=' w-full flex flex-wrap justify-center' >
                 <ExoPcBanner />
                 <ExoMobileBanner />
-                <TrafficMobileBanner />
+                <ExoMBannerCPM/>
             </div>
-            {/* PC */}
-            <div className="hidden xl:block">
-                <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
-            </div>
+            
             {/* ADS END  */}
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display">
@@ -68,7 +62,6 @@ const NewRelease: React.FC = () => {
                     </div>
                     {/* ads */}
                     <ExoRecommendationWidget />
-                    <TrafficNative />
                     {/* ads end  */}
                     <Pangination
                         lastPage={lastPage}

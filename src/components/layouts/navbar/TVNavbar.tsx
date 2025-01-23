@@ -3,7 +3,6 @@ import Logo from './Logo';
 import NavLinks from './NavLinks';
 import SearchBar from './SearchBar';
 import MobileMenu from './MobileMenu';
-import { useLocation } from 'react-router-dom';
 
 const TVNavbar: React.FC = () => {
     // const [hideSearchIcon, setHideSearchIcon] = useState<boolean>(false);

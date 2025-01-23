@@ -13,6 +13,8 @@ import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBann
 import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
 import TrafficNative from '../components/ads/trafficstar/trafficNative';
+import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
+import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
 
 const Home: React.FC = () => {
   const context = useContext(StateContext);
@@ -43,13 +45,8 @@ const Home: React.FC = () => {
       {/* ADS ZONE */}
       {/* Mobile */}
       <div className=' w-full flex flex-wrap justify-center' >
-        <ExoPcBanner />
+        <ExoMBannerCPM />
         <ExoMobileBanner />
-        <TrafficMobileBanner />
-      </div>
-      {/* PC */}
-      <div className="hidden xl:block">
-        <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
       </div>
       {/* ADS END  */}
 
@@ -62,6 +59,11 @@ const Home: React.FC = () => {
 
       {/* Content based on selected type */}
       <div className='' >
+        {/* ads */}
+        <ExoRecomCPM />
+        <ExoRecommendationWidget />
+        {/* ads end */}
+
         {/* tradingBtn */}
         <div className=' mb-9 flex flex-col justify-center items-center' >
           <h1 className="text-[var(--light-blue)] my-2 text-2xl lg:text-4xl playfair-display">
@@ -70,16 +72,12 @@ const Home: React.FC = () => {
           <TradingNow />
         </div>
         {/* ads */}
-        <ExoRecommendationWidget />
-        
+       
         {/* ads end  */}
         {typePage === 'Video' && <VideoPage />}
         {typePage === 'Photo' && <PhotoPage />}
       </div>
 
-      {/* ads */}
-      <TrafficNative />
-      {/* ads end */}
     </div>
   );
 };

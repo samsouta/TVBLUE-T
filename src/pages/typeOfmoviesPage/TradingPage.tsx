@@ -9,10 +9,8 @@ import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
 import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
 import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
 import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
-import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner';
-import TrafficPCBanner from '../../components/ads/trafficstar/TrafficPCBanner';
-import TrafficNative from '../../components/ads/trafficstar/trafficNative';
 import ExoMixbanner from '../../components/ads/EXoClick/ExoMixbanner';
+import ExoMBannerCPM from '../../components/ads/EXoClick/ExoMBannerCPM';
 
 const TradingPage: React.FC = () => {
     // Manage current page state
@@ -44,15 +42,10 @@ const TradingPage: React.FC = () => {
                 <HomeSlider />
 
                 {/* ADS ZONE */}
-                {/* Mobile */}
                 <div className=' w-full flex flex-wrap justify-center' >
-                    <ExoPcBanner />
+                    {/* <ExoPcBanner /> */}
+                    <ExoMBannerCPM />
                     <ExoMobileBanner />
-                    <TrafficMobileBanner />
-                </div>
-                {/* PC */}
-                <div className="hidden xl:block">
-                    <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
                 </div>
                 {/* ADS END  */}
 
@@ -75,6 +68,7 @@ const TradingPage: React.FC = () => {
                 {/* ads */}
                 <ExoRecommendationWidget />
                 <ExoOutstreamVideo />
+
                 {/* ads end  */}
                 {/* Video Grid */}
                 <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -91,8 +85,7 @@ const TradingPage: React.FC = () => {
                 </div>
 
                 {/* ads */}
-                <ExoMixbanner/>
-                <TrafficNative />
+                <ExoMixbanner />
                 {/* ads end */}
 
                 {/* Pagination */}
@@ -103,7 +96,14 @@ const TradingPage: React.FC = () => {
                 />
             </div>
 
-            
+            {/* ads */}
+            <div className=' w-full flex flex-wrap justify-center' >
+                <ExoPcBanner />
+            </div>
+            <a href="https://www.exoclick.com/signup/?login=samsouta">
+                <img src="https://www.exoclick.com/banners/468x60.gif" border="0" alt="exo-banner" />
+            </a>
+            {/* ads end ---- */}
         </>
     );
 };

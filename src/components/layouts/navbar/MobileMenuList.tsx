@@ -98,7 +98,7 @@ const MobileMenuList: React.FC = () => {
             >
                 <div className="flex flex-col h-full">
                     <div>
-                        <h2 className="text-2xl font-bold kablammo mb-3">BlueTV</h2>
+                        <h2 className="text-2xl font-bold kablammo mb-3">TVBlue</h2>
                         {isUserLoggedIn() ? (
                             <UserProfile />
                         ) : (
@@ -117,7 +117,7 @@ const MobileMenuList: React.FC = () => {
                     <div className="space-y-5 mt-6 flex-grow">
                         <button
                             onClick={handleHome}
-                            className="flex gap-x-2 items-center open-sans text-[--soft-blue] cursor-pointer text-lg"
+                            className="flex gap-x-2 items-center open-sans text-[--white] cursor-pointer text-lg"
                         >
                             Home
                         </button>
