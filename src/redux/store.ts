@@ -2,18 +2,19 @@ import { configureStore } from '@reduxjs/toolkit';
 import { GetAllGenre } from './api/getAllGern';
 import { HomeSlice } from './slice/HomeDetailSlice';
 import { getVideoDetail } from './api/getVideoDetail';
-import { comment } from './api/Comment';
 import { Voting } from './api/Voting';
 import { getPhotoPage } from './api/getPhotoPage';
 import { postViewCount } from './api/postViewCount';
 import { getMovies } from './api/getMovies';
-import { MoviesSlice } from './slice/moviesSlice';
 import { getLikeCount } from './api/getLikeCount';
 import { auth } from './api/auth';
 import { SearchEngine } from './api/searchEngine';
 import SearchEngineSlice from './slice/SearchEngineSlice';
 import { ScrollSlice } from './slice/ScrollSlice';
 import { getGame } from './api/game/getGame';
+import { getTagVideo } from './api/home/getTagVideo';
+import { comment } from './api/comment';
+import { MoviesSlice } from './slice/moviesSlice';
 
 
 export const store = configureStore({
@@ -29,6 +30,9 @@ export const store = configureStore({
     [Voting.reducerPath]: Voting.reducer,
     [GetAllGenre.reducerPath]: GetAllGenre.reducer,
     [SearchEngine.reducerPath]: SearchEngine.reducer,
+    // show home page tag video
+    [getTagVideo.reducerPath]: getTagVideo.reducer,
+    // show home page tag video
 
     /// game 
     [getGame.reducerPath]: getGame.reducer,
@@ -51,6 +55,10 @@ export const store = configureStore({
       GetAllGenre.middleware,
       SearchEngine.middleware,
 
+      // show home page tag video
+      getTagVideo.middleware,
+      // show home page tag video end
+      
       // game
       getGame.middleware,
 

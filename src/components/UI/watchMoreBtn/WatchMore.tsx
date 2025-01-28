@@ -7,7 +7,7 @@ const WatchMore: React.FC = () => {
   return (
     <>
       <Link
-        className='flex  gap-2 cursor-pointer px-4 py-3 dark:hover:bg-black bg-black hover:bg-white hover:text-black text-white border-black dark:hover:text-white transition-all border-2 dark:border-white dark:bg-white dark:text-black rounded-full font-semibold'
+        className='flex  gap-2 cursor-pointer px-4 py-3 bg-[var(--soft-blue)] hover:bg-[var(--light-blue)] hover:text-black text-white border-[var(--light-blue)]  transition-all border-2  rounded-full merriweather-regular'
         to={'/home'}
       >
         Watch More - Click Here

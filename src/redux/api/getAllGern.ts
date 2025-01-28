@@ -11,7 +11,7 @@ interface GenresResponse {
 export const GetAllGenre = createApi({
     reducerPath : "getallgenre",
     baseQuery : fetchBaseQuery({
-        baseUrl: "https://bluetv.x10.mx/api/v1/"
+        baseUrl: "http://127.0.0.1:8000/api/v1/"
     }),
     endpoints: (builder) => ({
         getAllgenre: builder.query<GenresResponse, void>({

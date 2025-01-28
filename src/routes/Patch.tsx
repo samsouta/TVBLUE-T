@@ -15,6 +15,7 @@ import Game from '../pages/game/Game';
 import Layout from '../components/layouts/Game/Layout';
 import LayoutVideo from '../components/layouts/navbar/LayoutVideo';
 import GameLink from '../pages/game/GameLink';
+import TagsDetail from '../pages/TagsDetail';
 
 const Patch: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const Patch: React.FC = () => {
           <Route path="videos/:id" element={<HomeDetail />} />
           <Route path="contact" element={<Contact />} />
           <Route path="gn/:genre" element={<MoreDetail />} />
+          <Route path="tags/:tag" element={<TagsDetail />} />
           <Route path="search/:query" element={<Search />} />
           <Route path="trending-now" element={<TradingPage />} />
           <Route path="new-release" element={<NewRelease />} />

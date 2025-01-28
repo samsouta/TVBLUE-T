@@ -6,7 +6,7 @@ const TradingNow: React.FC = () => {
     return (
         <>
             <Link to={`/trending-now`} >
-            <div className='group relative cursor-pointer p-2 w-32 border bg-white rounded-full overflow-hidden text-black text-center font-semibold'>
+            <div className='group relative cursor-pointer p-2 w-32 border bg-[var(--soft-blue)] rounded-full overflow-hidden text-[var(--light-blue)] text-center font-semibold'>
                 <span className='translate-x-1 group-hover:translate-x-12 group-hover:opacity-0 transition-all duration-300 inline-block'>
                     Click Here 
                 </span>

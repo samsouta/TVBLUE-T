@@ -1,36 +1,34 @@
-import React from 'react';
-import { useGetMoviesWithGrenreQuery } from '../../../redux/api/getMovies';
-import HomeVideoPageChild from '../home/HomeVideoPageChild';
-import { FaArrowRight } from 'react-icons/fa';
+import React from 'react'
+import { useFindTagsVideoQuery } from '../../redux/api/home/getTagVideo';
 import { useNavigate } from 'react-router-dom';
-import { autoCorrect } from '../../../utils/autoCorrect';
-import TVSkeleton from '../loader/TVSkeleton';
+import { FaArrowRight } from 'react-icons/fa';
+import TVSkeleton from '../UI/loader/TVSkeleton';
+import HomeVideoPageChild from '../UI/home/HomeVideoPageChild';
 
-type DataType = {
-    isGenre: string;
+type TagProps = {
+    isTag: string;
 };
 
-const MoviesWithGenre: React.FC<DataType> = ({ isGenre }) => {
-    const { data, isLoading } = useGetMoviesWithGrenreQuery({ genre: isGenre, page: 1 });
-    const videos = data?.data || [];
+const FindVideoWithTags: React.FC<TagProps> = ({isTag}) => {
+    const { data, isLoading } = useFindTagsVideoQuery({ tag: isTag || '', page: 1 });
+    const videos = data?.data?.data || [];
     const nav = useNavigate();
 
     const handleMoreVid = () => {
-        nav(`/gn/${isGenre}`);
+        nav(`/tags/${isTag}`);
         // Save genre to localStorage
-        localStorage.setItem('selectedGenre', isGenre);
+        localStorage.setItem('selectedTag', isTag);
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
         });
     };
-
     return (
         <div>
             {/* Header Section */}
             <div className="flex justify-between items-center">
                 <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
-                    {autoCorrect(isGenre)}
+                    {isTag}
                 </h1>
                 <span
                     onClick={handleMoreVid}
@@ -58,7 +56,7 @@ const MoviesWithGenre: React.FC<DataType> = ({ isGenre }) => {
                 )}
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default React.memo(MoviesWithGenre);
+export default FindVideoWithTags

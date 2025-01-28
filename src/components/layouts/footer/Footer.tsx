@@ -104,27 +104,11 @@ const Footer: React.FC = () => {
                             <div className="flex items-center space-x-2">
                                 <Heart className="w-4 h-4 text-[var(--light-blue)]" />
                                 <p className="text-sm">
-                                    © {currentYear} BlueTV. All rights reserved.
+                                    © {currentYear} TVBLUE. All rights reserved.
                                 </p>
                             </div>
 
-                            {/* Social Links */}
-                            <div className="flex space-x-4">
-                                {[
-                                    { icon: SiViber, href: 'viber://contact?number=+601117901410' },
-                                    { icon: Github, href: 'https://github.com/samsouta' },
-                                    { icon: Linkedin, href: 'https://www.linkedin.com/in/sam-souta-a28384321/' },
-                                ].map(({ icon: Icon, href }, index) => (
-                                    <a
-                                        key={index}
-                                        href={href}
-                                        className="transform hover:scale-110 hover:text-[#007c8e] transition-all duration-300"
-                                        aria-label={`Social link ${index + 1}`}
-                                    >
-                                        <Icon className="w-5 h-5" />
-                                    </a>
-                                ))}
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

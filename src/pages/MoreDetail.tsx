@@ -43,11 +43,11 @@ const MoreDetail: React.FC = () => {
         <div className="mt-24 mx-1 lg:mx-4">
             {/* ADS ZONE */}
             {/* Mobile */}
-            <div className=' w-full flex flex-wrap justify-center' >
+            {/* <div className=' w-full flex flex-wrap justify-center' >
                 <ExoPcBanner />
                 <ExoMobileBanner />
                 <ExoMBannerCPM/>
-            </div>
+            </div> */}
             
             {/* ADS END  */}
 

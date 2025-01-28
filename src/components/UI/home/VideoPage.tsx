@@ -5,10 +5,7 @@ import RecommentForYou from '../TypeOfVideoPage/RecommentForYou';
 import MoviesWithGenre from '../TypeOfVideoPage/MoviesWithGenre';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
 
-import TrafficNative from '../../ads/trafficstar/trafficNative';
-import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
-import ExoMixbanner from '../../ads/EXoClick/ExoMixbanner';
-import ExoPcBanner from '../../ads/EXoClick/ExoPcBanner';
+import FindVideoWithTags from '../../tags/FindVideoWithTags';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -38,48 +35,43 @@ const VideoPage: React.FC = () => {
         <div className='flex flex-col gap-y-12'>
 
             <RecommentForYou />
+
+            <FindVideoWithTags isTag='creampie' />
             {/* // ads/ */}
-            <ExoOutstreamVideo />
+            {/* <ExoOutstreamVideo /> */}
             {/* ads------- */}
+
+
+
+
+            {/* ads  */}
+            {/* <div className=' flex justify-center' >
+                <ExoPcBanner />
+            </div> */}
+            {/* ads */}
+
+            <MoviesWithGenre
+                isGenre={'Chinese AV'}
+            />
+
             <MoviesWithGenre
                 isGenre={'uncensored'}
             />
 
-            <MoviesWithGenre
-                isGenre={'uncensoredleaked'}
-            />
+            <FindVideoWithTags isTag='tight pussy' />
 
-            {/* ads  */}
-            <div className=' flex justify-center' >
-            <ExoPcBanner />
-            </div>
-            {/* ads */}
-
-            <MoviesWithGenre
-                isGenre={'chinese'}
-            />
 
             {/* ads */}
-            <ExoMixbanner />
+            {/* <ExoMixbanner /> */}
             {/* ads end */}
 
-            <MoviesWithGenre
-                isGenre={'bigass'}
-            />
 
 
-            <MoviesWithGenre
-                isGenre={'s-cute'}
-            />
 
 
-            <MoviesWithGenre
-                isGenre={'censored'}
-            />
 
-            <MoviesWithGenre
-                isGenre={'LinaMigurrt'}
-            />
+
+
 
 
             {
@@ -88,7 +80,7 @@ const VideoPage: React.FC = () => {
                     className=' md:hidden flex flex-col gap-y-4 justify-center items-center'
                     onClick={handletotop}
                 >
-                    <span className=' text-xl text-white' >Go Up / အပါ်ဆုံးသို့ပြန်သွားမယ်</span>
+                    <span className=' text-md text-[var(--soft-blue)]' >Go Up / အပါ်ဆုံးသို့ပြန်သွားမယ်</span>
                     <FaArrowAltCircleUp className=' text-4xl cursor-pointer   text-[var(--white)] ' />
                 </div>
             }

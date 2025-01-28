@@ -25,7 +25,7 @@ type RelatedDataType = {
 export const getMovies = createApi({
     reducerPath: "getMovies",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://bluetv.x10.mx/api/v1/"
+        baseUrl: "http://127.0.0.1:8000/api/v1/"
     }),
     endpoints: (builder) => ({
         // get feature video
@@ -41,7 +41,7 @@ export const getMovies = createApi({
         }),
         // get movies with genre
         getMoviesWithGrenre: builder.query<DataType, {genre: string, page: number  }>({
-            query: ({ genre,page }) => `movie?sub_genre=${genre}&page=${page}`,
+            query: ({ genre,page }) => `mov/by-subgenre?sub_genre=${genre}&page=${page}`,
         }),
         // get related movie
         getRelatedMovie: builder.query<RelatedDataType, number>({

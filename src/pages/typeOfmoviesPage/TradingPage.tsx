@@ -52,16 +52,16 @@ const TradingPage: React.FC = () => {
 
                 {/* Watch More */}
                 <div className="mt-10">
-                    <div className="flex justify-center mt-6 items-center">
-                        <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] playfair-display">
+                    <div className="flex justify-start px-2 mt-6 items-center">
+                        <h1 className="text-[var(--light-blue)] mb-6 text-2xl font-bold montserrat">
                             Watch More Videos
                         </h1>
                     </div>
                     <WatchMore />
                 </div>
                 {/* Page Title */}
-                <div className="flex justify-center mt-6 items-center">
-                    <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] playfair-display">
+                <div className="flex justify-start px-2 mt-6 items-center">
+                    <h1 className="text-[var(--light-blue)] mb-6 text-2xl font-bold montserrat">
                         Trending Now
                     </h1>
                 </div>
@@ -101,7 +101,7 @@ const TradingPage: React.FC = () => {
                 <ExoPcBanner />
             </div>
             <a href="https://www.exoclick.com/signup/?login=samsouta">
-                <img src="https://www.exoclick.com/banners/468x60.gif" border="0" alt="exo-banner" />
+                <img src="https://www.exoclick.com/banners/468x60.gif" alt="exo-banner" />
             </a>
             {/* ads end ---- */}
         </>

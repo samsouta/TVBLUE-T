@@ -48,15 +48,15 @@ const RecommentForYou: React.FC = () => {
         <>
 
             <div>
-                <div className="flex justify-center items-center">
-                    <h1 className="text-[var(--light-blue)] my-2 text-2xl lg:text-4xl playfair-display">
+                <div className="flex justify-start items-center">
+                    <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat ">
                         Recomment For You
                     </h1>
                 </div>
                 <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 gap-2">
                     {movies.length > 0
                         ? movies.map((item) => (
-                            <HomeVideoPageChild key={item.id} data={item} isLoading={false} />
+                            <HomeVideoPageChild key={item.id} data={item} />
                         ))
                         : [...Array(4)].map((_, index) => (
                             <TVSkeleton key={index} />
