@@ -21,7 +21,7 @@ type DataType = {
 export const SearchEngine = createApi({
     reducerPath: 'searchEngine',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://bluetv.x10.mx/api/v1/',
+        baseUrl: 'http://127.0.0.1:8000/api/v1/',
     }),
     tagTypes: ['search'],
     endpoints: (builder) => ({

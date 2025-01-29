@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {  MovieResponseType } from '../../../types/MovieDataType';
+import { PaginatedMovieResponse } from '../../../types/MovieDataType';
+
 
 
 interface GenresResponse {
     status: string;
-    data: MovieResponseType;
+    data: PaginatedMovieResponse;
 }
 type TagsPorp = {
     tag: string;

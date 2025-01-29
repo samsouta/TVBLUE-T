@@ -27,7 +27,13 @@ const TagsDetail: React.FC = () => {
     // Reset currentPage when genre changes
     useEffect(() => {
         setCurrentPage(1);
-    }, [location.pathname]); 
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [location.pathname]);
+
+    // Add new effect for page changes
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [currentPage]);
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">

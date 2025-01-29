@@ -1,17 +1,18 @@
-import React, { ReactNode, useState } from 'react'
-import { MessageCircle, Eye } from 'lucide-react';
+import React from 'react'
+import { Eye } from 'lucide-react';
 import { FaHeart } from 'react-icons/fa';
-import { useGetCommentsQuery, usePostCommentMutation } from '../../../redux/api/comment';
 import VotingUI from './VotingUI';
 import { formatViews } from '../../../utils/formatViews';
 import { useGetLikeCountQuery } from '../../../redux/api/getLikeCount';
 import { MovieDataType } from '../../../types/MovieDataType';
+import { useNavigate } from 'react-router-dom';
+import { formatDuration } from '../../../utils/formatDuration';
 
 
 interface CommentUIProps {
-    vidId:number;
-    relativeDate:string;
-    data:MovieDataType;
+    vidId: number;
+    relativeDate: string;
+    data: MovieDataType;
     handleShareClick: () => void;
 }
 
@@ -19,29 +20,23 @@ const CommentUI: React.FC<CommentUIProps> = ({
     vidId,
     relativeDate,
     handleShareClick,
-    data}) => {
-    const [newComment, setNewComment] = useState('');
-    
-    const [postComment, { isLoading }] = usePostCommentMutation();
-    const { data: comments, isLoading: isFetchingComments, isError: fetchCommentsError } = useGetCommentsQuery(vidId);
-    const {data:likeCount} = useGetLikeCountQuery(vidId)
-    const totalLike = likeCount?.like_count
-    
-    const handleCommentSubmit = async (e:any) => {
-        e.preventDefault();
-        if (!newComment.trim()) return;
+    data }) => {
 
-        try {
-            await postComment({
-                id: vidId,
-                comment: newComment
-            });
-            setNewComment('');
-        } catch (error) {
-            console.error("Failed to post comment:", error);
-        }
+    const navigate = useNavigate();
+    const { data: likeCount } = useGetLikeCountQuery(vidId)
+    const totalLike = likeCount?.like_count
+    const actresses = data?.actresses;
+    console.log(data)
+
+    const handleTagClick = (tagName: string) => {
+        navigate(`/tags/${tagName}`);
     };
-    const commentList = Array.isArray(comments) ? comments : [];
+
+    const handleActressClick = (actress: { id: number; name: string }) => {
+        const formattedName = actress.name.toLowerCase().replace(/\s+/g, '');
+        navigate(`/actress/${actress.id}/${formattedName}`);
+    };
+
     return (
         <div className="text-neutral-light">
             <div className="max-w-6xl mx-auto xl:mx-0 py-2">
@@ -55,7 +50,7 @@ const CommentUI: React.FC<CommentUIProps> = ({
                             <div className="flex items-center gap-2">
                                 <Eye className="w-5 h-5 text-[var(--soft-blue)]" />
                                 <span className="text-[var(--soft-blue)]">
-                                    {formatViews({views:data?.view_count })}
+                                    {formatViews({ views: data?.view_count })}
                                 </span>
                             </div>
                             <span className="text-[var(--dark-blue)]">•</span>
@@ -70,74 +65,60 @@ const CommentUI: React.FC<CommentUIProps> = ({
                     </div>
                 </div>
 
-                {/* Comments Section */}
+                {/* Detail Section */}
                 <div className="bg-[var(--medium-blue)] max-h-[300px] overflow-y-scroll backdrop-blur-sm rounded-xl p-6 shadow-lg ring-1 ring-white/10">
-                    {/* <div className="flex items-center gap-2 mb-6">
-                        <MessageCircle className="w-5 h-5 text-[var(--light-blue)]" />
-                        <h2 className="text-xl font-semibold text-[var(--light-blue)]">
-                            {commentList.length} Comments
-                        </h2>
-                    </div> */}
+                    <h2 className="text-lg montserrat font-bold text-[var(--soft-blue)] mb-4">
+                        Code : <span className=' font-normal text-[var(--light-blue)] open-sans font-serif text-md' >{data?.title}</span>
+                    </h2>
 
-                    {/* <form onSubmit={handleCommentSubmit} className="flex gap-4 mb-8">
-                        <img
-                            src="https://i.pinimg.com/736x/54/db/c5/54dbc58a3014e8b438c3c8f149a410c9.jpg"
-                            alt="TopFan"
-                            className="w-10 h-10 rounded-full object-cover ring-2 ring-[var(--dark-blue)]"
-                        />
-                        <div className="flex-1">
-                            <input
-                                type="text"
-                                value={newComment}
-                                onChange={(e) => setNewComment(e.target.value)}
-                                placeholder="Add a comment..."
-                                className="w-full px-4 py-2 rounded-lg bg-[var(--dark-blue)] border border-neutral-darker/20 focus:outline-none focus:border-[var(--soft-blue)] focus:ring-1 focus:ring-[var(--soft-blue)] transition-colors text-[var(--white)] placeholder-[var(--medium-blue)]"
-                            />
-                            <div className="flex justify-end gap-2 mt-2">
-                                <button
-                                    type="button"
-                                    onClick={() => setNewComment('')}
-                                    className="px-4 py-2 text-neutral-medium hover:bg-white/10 rounded-full transition-colors"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="px-4 py-2 bg-[var(--dark-blue)] cursor-pointer text-neutral-light rounded-full transition-colors disabled:opacity-50"
-                                    disabled={!newComment.trim() || isLoading}
-                                >
-                                    {isLoading ? "posting" : "comment"}
-                                </button>
-                            </div>
+                    <div className="grid gap-4 text-[var(--soft-blue)]">
+                        <div className="flex items-center gap-2">
+                            <span className="text-lg montserrat font-bold text-[var(--soft-blue)]">Released : </span>
+                            <span className='font-normal text-[var(--light-blue)] open-sans font-serif text-md' >{data?.released_year}</span>
                         </div>
-                    </form> */}
-                    {/* Conditional Rendering */}
-                    {/* <div className="space-y-6 ">
-                        {isFetchingComments ? (
-                            <p className="text-neutral-medium">Loading comments...</p>
-                        ) : fetchCommentsError ? (
-                            <p className="text-red-500">Error loading comments. Please try again.</p>
-                        ) : commentList.length === 0 ? (
-                            <p className="text-neutral-medium">No comments yet.</p>
-                        ) : (
 
-                            commentList.map((comment) => (
-                                <div key={comment.id} className="flex gap-4">
-                                    <img
-                                        src='https://i.pinimg.com/736x/54/db/c5/54dbc58a3014e8b438c3c8f149a410c9.jpg'
-                                        alt={`topfan`}
-                                        className="w-10 h-10 rounded-full object-cover ring-2 ring-primary-hover"
-                                    />
-                                    <div>
-                                        <div className="flex items-center gap-2">
-                                            <h4 className="font-semibold text-neutral-light">TopFan</h4>
-                                        </div>
-                                        <p className="mt-1 text-neutral-muted">{comment.comment}</p>
-                                    </div>
+                        <div className="flex items-center gap-2">
+                            <span className="text-lg montserrat font-bold text-[var(--soft-blue)]">Duration : </span>
+                            <span className='font-normal text-[var(--light-blue)] open-sans font-serif text-md' >{formatDuration(data?.duration)}</span>
+                        </div>
+
+                        {actresses && actresses.length > 0 && (
+                            <div className="flex items-center gap-2 flex-wrap">
+                                <span className="text-lg montserrat font-bold text-[var(--soft-blue)] ">Model : </span>
+                                <div className="flex gap-2 flex-wrap">
+                                    {actresses.map((actress, index) => (
+                                        <React.Fragment key={actress.id}>
+                                            <button
+                                                onClick={() => handleActressClick(actress)}
+                                                className="hover:text-[var(--light-blue)] transition-colors"
+                                            >
+                                                
+                                             <span className=' font-normal text-[var(--light-blue)] open-sans font-serif text-md' >{actress?.name}</span>
+                                                
+                                            </button>
+                                            {index < actresses.length - 1 && (
+                                                <span className="text-[var(--dark-blue)]">•</span>
+                                            )}
+                                        </React.Fragment>
+                                    ))}
                                 </div>
-                            ))
+                            </div>
                         )}
-                    </div> */}
+
+                        <div className="flex flex-wrap gap-2">
+                            <span className="text-lg montserrat font-bold text-[var(--soft-blue)]">Tags : </span>
+                            {data?.tags?.map((tag) => (
+                                <button
+                                    key={tag.id}
+                                    onClick={() => handleTagClick(tag.name)}
+                                    className="px-2 py-1 rounded-full bg-[var(--dark-blue)] 
+                                             hover:bg-[var(--light-blue)] transition-colors text-sm"
+                                >
+                                    {tag.name}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -7,12 +7,14 @@ import { formatDuration } from '../../../utils/formatDuration';
 import LazyLoad from 'react-lazyload';
 import { homeDetail } from '../../../redux/slice/HomeDetailSlice';
 import { MovieDataType } from '../../../types/MovieDataType';
+import { GoDotFill } from 'react-icons/go';
 
 type HomeVideoPageChildProps = {
   data: MovieDataType;
 }
 
 const HomeVideoPageChild: React.FC<HomeVideoPageChildProps> = ({ data }) => {
+  const actresses = data?.actresses || [];
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -43,9 +45,19 @@ const HomeVideoPageChild: React.FC<HomeVideoPageChildProps> = ({ data }) => {
           {/* Footer Section */}
           <CardFooter className="before:bg-white/10 border-white/10 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-xs ml-1 z-10">
             <div className="w-full h-full">
-              <h5 className="lg:text-[1rem] text-[12px] custom-header text-[#ffffff]">
-                {formatDuration(data?.duration)}
-              </h5>
+              <div className=' flex justify-between' >
+                <h5 className="lg:text-[1rem] text-[12px] custom-header text-[#ffffff]">
+                  {formatDuration(data?.duration)}
+                </h5>
+                {actresses.length > 0 && (
+                  <span className=" ">
+                    <i className='flex items-center gap-x-1'>
+                      <GoDotFill className='text-md text-green-400' />
+                      <span className='montserrat text-xs lg:text-sm  font-normal text-[var(--dark-blue)]' >{actresses[0].name}</span>
+                    </i>
+                  </span>
+                )}
+              </div>
               <div>
                 <p className="w-full text-[10px] lg:text-sm p-text text-white line-clamp-1">
                   {data?.description}

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useGetMoviesWithGrenreQuery } from '../../../redux/api/getMovies';
-import HomeVideoPageChild from '../home/HomeVideoPageChild';
+import { useGetMoviesWithGrenreQuery } from '../../redux/api/getMovies';
+import HomeVideoPageChild from '../UI/home/HomeVideoPageChild';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { autoCorrect } from '../../../utils/autoCorrect';
-import TVSkeleton from '../loader/TVSkeleton';
+import { autoCorrect } from '../../utils/autoCorrect';
+import TVSkeleton from '../UI/loader/TVSkeleton';
 
 type DataType = {
     isGenre: string;
@@ -36,7 +36,7 @@ const MoviesWithGenre: React.FC<DataType> = ({ isGenre }) => {
                     onClick={handleMoreVid}
                     className="text-[var(--light-blue)] cursor-pointer hover:underline flex justify-around items-center"
                 >
-                    <span className="montserrat font-bold lg:text-xl text-md">More</span>
+                    <span className="montserrat font-bold lg:text-xl text-md"> ပိုမိုကြည့်ရန်/More</span>
                     <FaArrowRight className="text-sm md:text-lg" />
                 </span>
             </div>

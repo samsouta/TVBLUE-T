@@ -34,7 +34,7 @@ const FindVideoWithTags: React.FC<TagProps> = ({isTag}) => {
                     onClick={handleMoreVid}
                     className="text-[var(--light-blue)] cursor-pointer hover:underline flex justify-around items-center"
                 >
-                    <span className="montserrat font-bold lg:text-xl text-md">More</span>
+                    <span className="montserrat font-bold lg:text-xl text-md">ပိုမိုကြည့်ရန်/More</span>
                     <FaArrowRight className="text-sm md:text-lg" />
                 </span>
             </div>

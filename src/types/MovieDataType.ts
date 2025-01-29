@@ -1,3 +1,5 @@
+import { ActressType } from "./Actress";
+
 export type MovieDataType = {
   id: number;
   title: string;
@@ -28,6 +30,7 @@ export type MovieDataType = {
     genre_id: number;
     name: string;
   };
+  actresses: ActressType[];
 };
 
 export type DataResponseType<T> = {
@@ -50,4 +53,8 @@ export type DataResponseType<T> = {
   total: number;
 };
 
-export type MovieResponseType = DataResponseType<MovieDataType>;
+// Changed this type to match the API response structure
+export type MovieResponseType = MovieDataType;
+
+// Added this type for paginated movie responses
+export type PaginatedMovieResponse = DataResponseType<MovieDataType>;

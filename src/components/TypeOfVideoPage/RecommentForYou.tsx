@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useGetMoviesRecommendationsQuery } from "../../../redux/api/getMovies";
+import { useGetMoviesRecommendationsQuery } from "../../redux/api/getMovies";
 import { FaCaretDown } from "react-icons/fa";
-import HomeVideoPageChild from "../home/HomeVideoPageChild";
-import { RootState } from "../../../redux/store"; // Adjust path as needed
-import { addMovies, setCurrentPage } from "../../../redux/slice/moviesSlice";
+import HomeVideoPageChild from "../UI/home/HomeVideoPageChild";
+import { RootState } from "../../redux/store"; // Adjust path as needed
+import { addMovies, setCurrentPage } from "../../redux/slice/moviesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "lucide-react";
-import TVSkeleton from "../loader/TVSkeleton";
+import TVSkeleton from "../UI/loader/TVSkeleton";
 
 const RecommentForYou: React.FC = () => {
     const dispatch = useDispatch();

@@ -15,6 +15,7 @@ import { getGame } from './api/game/getGame';
 import { getTagVideo } from './api/home/getTagVideo';
 import { comment } from './api/comment';
 import { MoviesSlice } from './slice/moviesSlice';
+import { getActress } from './api/actress/getActress';
 
 
 export const store = configureStore({
@@ -30,6 +31,7 @@ export const store = configureStore({
     [Voting.reducerPath]: Voting.reducer,
     [GetAllGenre.reducerPath]: GetAllGenre.reducer,
     [SearchEngine.reducerPath]: SearchEngine.reducer,
+    [getActress.reducerPath]: getActress.reducer,
     // show home page tag video
     [getTagVideo.reducerPath]: getTagVideo.reducer,
     // show home page tag video
@@ -54,6 +56,7 @@ export const store = configureStore({
       Voting.middleware,
       GetAllGenre.middleware,
       SearchEngine.middleware,
+      getActress.middleware,
 
       // show home page tag video
       getTagVideo.middleware,

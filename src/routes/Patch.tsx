@@ -16,6 +16,8 @@ import Layout from '../components/layouts/Game/Layout';
 import LayoutVideo from '../components/layouts/navbar/LayoutVideo';
 import GameLink from '../pages/game/GameLink';
 import TagsDetail from '../pages/TagsDetail';
+import ActressMovies from '../pages/actress/ActressMovies';
+import AllActress from '../pages/actress/AllActress';
 
 const Patch: React.FC = () => {
   return (
@@ -32,9 +34,11 @@ const Patch: React.FC = () => {
           <Route path="search/:query" element={<Search />} />
           <Route path="trending-now" element={<TradingPage />} />
           <Route path="new-release" element={<NewRelease />} />
+          <Route path='actress/:id/:name' element={<ActressMovies />} />
+          <Route path='actresses' element={<AllActress />} />
           {/* // auth  */}
           <Route path="login" element={<RouteGuard><Login /></RouteGuard>} />
-          <Route path="register" element={<RouteGuard><Register /></RouteGuard>} />
+          <Route path="register" element={<RouteGuard><Register /></RouteGuard>} /> 
           <Route path="maintenance" element={<Maintenance />} />
         </Route>
 

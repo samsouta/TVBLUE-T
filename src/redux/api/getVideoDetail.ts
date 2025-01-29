@@ -7,7 +7,7 @@ type VideoProp = {
 
 export const getVideoDetail = createApi({
   reducerPath: 'getVideoDetail',
-  baseQuery: fetchBaseQuery({ baseUrl:'https://bluetv.x10.mx/api/v1/' }),
+  baseQuery: fetchBaseQuery({ baseUrl:'http://127.0.0.1:8000/api/v1/' }),
   endpoints: (builder) => ({
     getVideoById: builder.query<VideoProp, number>({
       query: (id) => {

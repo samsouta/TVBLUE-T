@@ -4,7 +4,6 @@ import { ChevronDown } from 'lucide-react';
 import { StateContext } from '../../../../context/StateContext';
 import { useNavigate } from 'react-router-dom';
 import { SubGenreDataType } from '../../../../types/GenreDataType';
-import { useDispatch } from 'react-redux';
 
 type DataType = {
     name: string;
@@ -14,9 +13,8 @@ type DataType = {
 const GenreButton: React.FC<DataType> = ({ name, tag }) => {
     const navigate = useNavigate();
     const context = useContext(StateContext);
-    const dispatch = useDispatch();
 
-    const List = ['genres', 'makers', 'actresses', 'series', 'short'];
+    const List = ['genres', 'makers', 'series', 'short' , 'actresses'];
     if (!context) {
         throw new Error('StateContext not found');
     }
@@ -35,7 +33,7 @@ const GenreButton: React.FC<DataType> = ({ name, tag }) => {
                     behavior: 'smooth',
                 });
             } else if (List.includes(selectedGenre)) {
-                navigate(`/maintenance`, { replace: true });
+                navigate(`/actresses`, { replace: true });
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth',

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { StateContext } from '../../../context/StateContext';
-import RecommentForYou from '../TypeOfVideoPage/RecommentForYou';
-import MoviesWithGenre from '../TypeOfVideoPage/MoviesWithGenre';
+import RecommentForYou from '../../TypeOfVideoPage/RecommentForYou';
+import MoviesWithGenre from '../../TypeOfVideoPage/MoviesWithGenre';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
 
 import FindVideoWithTags from '../../tags/FindVideoWithTags';
@@ -33,7 +33,7 @@ const VideoPage: React.FC = () => {
     }
     return (
         <div className='flex flex-col gap-y-12'>
-
+            
             <RecommentForYou />
 
             <FindVideoWithTags isTag='creampie' />
@@ -41,7 +41,8 @@ const VideoPage: React.FC = () => {
             {/* <ExoOutstreamVideo /> */}
             {/* ads------- */}
 
-
+            <FindVideoWithTags isTag='Bondage' />
+        
 
 
             {/* ads  */}

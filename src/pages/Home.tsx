@@ -2,10 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import VideoPage from '../components/UI/home/VideoPage';
 import { StateContext } from '../context/StateContext';
 import TradingNow from '../components/tradingNow/TradingNow';
-import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
-import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
-import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
-import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
+import SwiperBox from '../components/model/SwiperBox';
+
 
 const Home: React.FC = () => {
   const context = useContext(StateContext);
@@ -32,6 +30,14 @@ const Home: React.FC = () => {
         {/* <ExoRecommendationWidget />
         <ExoRecomCPM /> */}
         {/* ads end */}
+
+         {/* Popular Actress */}
+         <div className=' mb-9 ' >
+          <h1 className="text-[var(--light-blue)] ps-1 my-2 text-2xl font-bold montserrat">
+            Popular Actress
+          </h1>
+          <SwiperBox />
+        </div>
 
         {/* tradingBtn */}
         <div className=' mb-9 flex flex-col justify-start items-center' >
