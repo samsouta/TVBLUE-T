@@ -46,7 +46,7 @@ const NewRelease: React.FC = () => {
 
             {/* ADS END  */}
             <div className="flex justify-center items-center">
-                <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display">
+                <h1 className="text-[var(--light-blue)] mb-6 text-2xl montserrat font-bold">
                     New-Release
                 </h1>
             </div>

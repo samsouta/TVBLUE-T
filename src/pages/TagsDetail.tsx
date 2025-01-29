@@ -5,6 +5,11 @@ import { Loader } from 'lucide-react';
 import HomeVideoPageChild from '../components/UI/home/HomeVideoPageChild';
 import Pangination from '../components/UI/pangination/Pangination';
 import { autoCorrect } from '../utils/autoCorrect';
+import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
+import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
+import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
+import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
+import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
 
 
 
@@ -47,11 +52,11 @@ const TagsDetail: React.FC = () => {
         <div className="mt-24 mx-1 lg:mx-4">
             {/* ADS ZONE */}
             {/* Mobile */}
-            {/* <div className=' w-full flex flex-wrap justify-center' >
+            <div className=' w-full flex flex-wrap justify-center' >
         <ExoPcBanner />
         <ExoMobileBanner />
         <ExoMBannerCPM/>
-    </div> */}
+    </div>
 
             {/* ADS END  */}
 
@@ -78,8 +83,8 @@ const TagsDetail: React.FC = () => {
                     </div>
 
                     {/* ads */}
-                    {/* <ExoRecommendationWidget />
-                    <ExoRecomCPM /> */}
+                    <ExoRecommendationWidget />
+                    <ExoRecomCPM />
                     {/* ads end  */}
 
 

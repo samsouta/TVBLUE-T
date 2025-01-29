@@ -3,6 +3,12 @@ import VideoPage from '../components/UI/home/VideoPage';
 import { StateContext } from '../context/StateContext';
 import TradingNow from '../components/tradingNow/TradingNow';
 import SwiperBox from '../components/model/SwiperBox';
+import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
+import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
+import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
+import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
 
 
 const Home: React.FC = () => {
@@ -27,15 +33,19 @@ const Home: React.FC = () => {
 
       <div className='' >
         {/* ads */}
-        {/* <ExoRecommendationWidget />
-        <ExoRecomCPM /> */}
+        <ExoRecommendationWidget />
+        <ExoRecomCPM />
         {/* ads end */}
 
-         {/* Popular Actress */}
-         <div className=' mb-9 ' >
-          <h1 className="text-[var(--light-blue)] ps-1 my-2 text-2xl font-bold montserrat">
-            Popular Actress
-          </h1>
+        {/* Popular Actress */}
+        <div className=' mb-9 ' >
+          <div className=" flex justify-between items-center">
+            <span className='text-[var(--light-blue)] ps-1 my-2 text-2xl font-bold montserrat' > Popular Actress</span>
+            <Link to={`/actresses`} ><div className=' flex px-2 items-center cursor-pointer' >
+              <span className="montserrat text-[var(--light-blue)] font-bold lg:text-xl text-md">See All</span>
+              <FaArrowRight className="text-sm text-[var(--light-blue)] md:text-lg" />
+            </div></Link>
+          </div>
           <SwiperBox />
         </div>
 
@@ -48,10 +58,10 @@ const Home: React.FC = () => {
         </div>
         {/* ADS ZONE */}
         {/* Mobile */}
-        {/* <div className=' w-full flex flex-wrap justify-center' >
+        <div className=' w-full flex flex-wrap justify-center' >
           <ExoMBannerCPM />
           <ExoMobileBanner />
-        </div> */}
+        </div>
         {/* ADS END  */}
         {typePage === 'Video' && <VideoPage />}
         {/* {typePage === 'Photo' && <PhotoPage />} */}

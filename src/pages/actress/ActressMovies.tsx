@@ -13,7 +13,6 @@ const ActressMovies: React.FC = () => {
     
     const movies = data?.movies?.data || [];
     const lastPage = data?.movies?.last_page;
-    // const lastPage = data?.last_page;
     const actressName = data?.actress?.name || 'Actress';
     const navigate = useNavigate();
 

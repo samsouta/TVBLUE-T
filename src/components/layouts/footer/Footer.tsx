@@ -1,7 +1,7 @@
-import React, {  useState } from 'react';
-import { Github, Linkedin, Mail, Sparkles, Heart } from 'lucide-react';
-import { SiViber } from 'react-icons/si';
+import React, { useState } from 'react';
+import {  Mail, Sparkles, Heart } from 'lucide-react';
 import Swal from 'sweetalert2';
+import { FaTelegram } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
 
     const currentYear = new Date().getFullYear();
 
-   
+
     // Function to validate email
     const validateEmail = (email: string): boolean => {
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -46,11 +46,12 @@ const Footer: React.FC = () => {
                             <div className="flex items-center space-x-2">
                                 <Sparkles className="w-6 h-6 text-[var(--light-blue)]" />
                                 <h3 className="text-xl font-bold bg-gradient-to-r from-[var(--medium-blue)] to-[var(--soft-blue)] inline-block text-transparent bg-clip-text">
-                                    BlueTV
+                                    TVBlue
                                 </h3>
                             </div>
                             <p className="text-sm leading-relaxed">
-                                Discover premium adult content with a focus on privacy and quality. For terms, privacy policies, and support, check the links below. Thank you for choosing us.
+                            ပင်ပန်းနေပြီလား??ဒီမှာလာအနားယူပါ 🙂‍↔️ <br/>
+                            Are u tired ? Come and relax here dude
                             </p>
                         </div>
 
@@ -60,20 +61,27 @@ const Footer: React.FC = () => {
                             <ul className="space-y-2">
                                 <li>
                                     <a
-                                        href="mailto:contact@future.com"
-                                        className="text-sm hover:text-[#007c8e] transition-colors duration-300 flex items-center space-x-2 group"
+                                        href="mailto:darkken415@gmail.com"
+                                        className="text-sm hover:text-[#007c8e] transition-colors duration-300 flex items-center font-bold space-x-2 group"
                                     >
                                         <Mail className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
-                                        <span>darkken415@gmail.com</span>
+                                        <span>Contact Now</span>
                                     </a>
                                 </li>
-                                <li className="text-sm">73, Jalan Raja Chulan, Bukit Bintang</li>
-                                <li className="text-sm">KL , Malaysia</li>
+                                <a
+                                    href="https://t.me/bluetv67"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm hover:text-[#007c8e] transition-colors duration-300 flex items-center font-bold space-x-2 group"
+                                >
+                                    <FaTelegram className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
+                                    <span>Join Our Telegram</span>
+                                </a>
                             </ul>
                         </div>
 
                         {/* Newsletter */}
-                        <div>
+                        {/* <div>
                             <h4 className="font-semibold text-[#ffffff] mb-4">Stay Connected</h4>
                             <div className="relative">
                                 <input
@@ -91,7 +99,7 @@ const Footer: React.FC = () => {
                                     <Sparkles className="w-4 h-4" />
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Divider */}
@@ -108,7 +116,7 @@ const Footer: React.FC = () => {
                                 </p>
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>

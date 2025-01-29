@@ -7,6 +7,9 @@ import { autoCorrect } from '../utils/autoCorrect';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
 import { Loader } from 'lucide-react';
 import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
+import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
+import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
+import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
 
 const MoreDetail: React.FC = () => {
     const { genre } = useParams<{ genre: string }>(); // Fetch the genre from the URL
@@ -50,16 +53,16 @@ const MoreDetail: React.FC = () => {
         <div className="mt-24 mx-1 lg:mx-4">
             {/* ADS ZONE */}
             {/* Mobile */}
-            {/* <div className=' w-full flex flex-wrap justify-center' >
+            <div className=' w-full flex flex-wrap justify-center' >
                 <ExoPcBanner />
                 <ExoMobileBanner />
                 <ExoMBannerCPM/>
-            </div> */}
+            </div>
             
             {/* ADS END  */}
 
             <div className="flex justify-center items-center">
-                <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display">
+                <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
                     {autoCorrect(genre || 'Unknown')}
                 </h1>
             </div>

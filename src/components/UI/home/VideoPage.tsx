@@ -6,6 +6,9 @@ import MoviesWithGenre from '../../TypeOfVideoPage/MoviesWithGenre';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
 
 import FindVideoWithTags from '../../tags/FindVideoWithTags';
+import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
+import ExoPcBanner from '../../ads/EXoClick/ExoPcBanner';
+import ExoMixbanner from '../../ads/EXoClick/ExoMixbanner';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -33,22 +36,23 @@ const VideoPage: React.FC = () => {
     }
     return (
         <div className='flex flex-col gap-y-12'>
-            
+
             <RecommentForYou />
 
             <FindVideoWithTags isTag='creampie' />
+
             {/* // ads/ */}
-            {/* <ExoOutstreamVideo /> */}
+            <ExoOutstreamVideo />
             {/* ads------- */}
 
             <FindVideoWithTags isTag='Bondage' />
-        
+
 
 
             {/* ads  */}
-            {/* <div className=' flex justify-center' >
+            <div className=' flex justify-center' >
                 <ExoPcBanner />
-            </div> */}
+            </div>
             {/* ads */}
 
             <MoviesWithGenre
@@ -59,18 +63,13 @@ const VideoPage: React.FC = () => {
                 isGenre={'uncensored'}
             />
 
-            <FindVideoWithTags isTag='tight pussy' />
-
-
             {/* ads */}
-            {/* <ExoMixbanner /> */}
+            <ExoMixbanner />
             {/* ads end */}
 
+            <FindVideoWithTags isTag='tight pussy' />
 
-
-
-
-
+            <FindVideoWithTags isTag='Cosplay' />
 
 
 
