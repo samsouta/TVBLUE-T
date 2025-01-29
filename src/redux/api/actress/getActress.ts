@@ -52,8 +52,11 @@ export const getActress = createApi({
         baseUrl: "http://127.0.0.1:8000/api/v1/"
     }),
     endpoints: (builder) => ({
-        getActress: builder.query<ActressResponse, void>({
-            query: () => 'actresses',
+        getActress: builder.query<ActressResponse, number>({
+            query: (page) => `actresses?page=${page}`,
+        }),
+        getAllActress: builder.query<ActressResponse, void>({
+            query: () => `act/names/all`,
         }),
         getActressWithId: builder.query<ActressMoviesWithIdResponse, number>({
             query: (id) => `actresses/${id}`,
@@ -62,4 +65,4 @@ export const getActress = createApi({
 
 })
 
-export const {useGetActressQuery,useGetActressWithIdQuery} = getActress;
+export const {useGetActressQuery,useGetActressWithIdQuery,useGetAllActressQuery} = getActress;

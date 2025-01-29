@@ -1,16 +1,16 @@
 import { Avatar } from '@nextui-org/react'
-import React from 'react'
+import React, { act } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
-import { useGetActressQuery } from '../../redux/api/actress/getActress';
+import {  useGetAllActressQuery } from '../../redux/api/actress/getActress';
 import { GoDotFill } from "react-icons/go";
 import { useNavigate } from 'react-router-dom';
 
 const SwiperBox: React.FC = () => {
     const navigate = useNavigate();
-    const { data, isLoading } = useGetActressQuery();
+    const { data, isLoading } = useGetAllActressQuery();
     const actresses = data?.data || [];
     const popularActresses = actresses.filter(actress => actress.is_popular === true);
 

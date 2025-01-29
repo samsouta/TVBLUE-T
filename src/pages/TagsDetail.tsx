@@ -12,7 +12,10 @@ const TagsDetail: React.FC = () => {
 
     const { tag } = useParams<{ tag: string }>(); // Fetch the genre from the URL
     const location = useLocation(); // React to route changes
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(() => {
+        const savedPage = localStorage.getItem('currentPage');
+        return savedPage ? parseInt(savedPage) : 1;
+    });
 
 
 
@@ -24,16 +27,21 @@ const TagsDetail: React.FC = () => {
     const TagsVideo = data?.data?.data || [];
     const lastPage = data?.data?.last_page || 1;
 
-    // Reset currentPage when genre changes
+    // Save page number when it changes
     useEffect(() => {
-        setCurrentPage(1);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, [location.pathname]);
-
-    // Add new effect for page changes
-    useEffect(() => {
+        localStorage.setItem('currentPage', currentPage.toString());
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [currentPage]);
+
+    // Clear localStorage when leaving the actresses page
+    useEffect(() => {
+        if (!location.pathname.includes('/tags/')) {
+            localStorage.removeItem('currentPage');
+        }
+    }, [location.pathname]);
+
+
+
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">

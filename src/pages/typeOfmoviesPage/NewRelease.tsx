@@ -7,25 +7,31 @@ import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner'
 import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget'
 import { Loader } from 'lucide-react'
 import ExoMBannerCPM from '../../components/ads/EXoClick/ExoMBannerCPM'
+import { useLocation } from 'react-router-dom'
 
 
 const NewRelease: React.FC = () => {
-    const storedPage = localStorage.getItem('NewReleaseCurrentPage')
-    const [currentPage, setCurrentPage] = useState(storedPage ? parseInt(storedPage) : 1)
+    const location = useLocation();
+    const [currentPage, setCurrentPage] = useState(() => {
+        const savedPage = localStorage.getItem('currentPage');
+        return savedPage ? parseInt(savedPage) : 1;
+    });
     const { data, isLoading, isError } = useGetNewReleaseMovieQuery(currentPage)
     const newRelease = data?.data
     const lastPage = data?.last_page
 
+    // Save page number when it changes
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    }, []);
-    // Update localStorage whenever currentPage changes
-    useEffect(() => {
-        localStorage.setItem('NewReleaseCurrentPage', currentPage.toString())
+        localStorage.setItem('currentPage', currentPage.toString());
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [currentPage]);
+
+    // Clear localStorage when leaving the actresses page
+    useEffect(() => {
+        if (!location.pathname.includes('/new-release')) {
+            localStorage.removeItem('currentPage');
+        }
+    }, [location.pathname]);
 
 
     return (
@@ -35,9 +41,9 @@ const NewRelease: React.FC = () => {
             <div className=' w-full flex flex-wrap justify-center' >
                 <ExoPcBanner />
                 <ExoMobileBanner />
-                <ExoMBannerCPM/>
+                <ExoMBannerCPM />
             </div>
-            
+
             {/* ADS END  */}
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display">

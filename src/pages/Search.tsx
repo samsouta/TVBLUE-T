@@ -7,19 +7,20 @@ import { RootState } from '../redux/store';
 import { useSearchVideosQuery } from '../redux/api/searchEngine';
 import { setCurrentSection } from '../redux/slice/ScrollSlice';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
-import TrafficNative from '../components/ads/trafficstar/trafficNative';
 import { Loader } from 'lucide-react';
-import HomeSlider from '../components/UI/home/HomeSlider';
 import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
 import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
-import TrafficMobileBanner from '../components/ads/trafficstar/TrafficMobileBanner';
-import TrafficPCBanner from '../components/ads/trafficstar/TrafficPCBanner';
 import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
 import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
+import { useLocation } from 'react-router-dom';
 
 const Search: React.FC = () => {
+    const location = useLocation();
     const searchQuery = useSelector((state: RootState) => state?.src?.searchQuery);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(() => {
+        const savedPage = localStorage.getItem('currentPage');
+        return savedPage ? parseInt(savedPage) : 1;
+    });
 
     const contentRef = useRef<HTMLDivElement>(null);
     const currentSection = useSelector((state: RootState) => state.scroll.currentSection);
@@ -34,6 +35,17 @@ const Search: React.FC = () => {
     const lastPage = data?.last_page;
     const validLastPage = lastPage ? Number(lastPage) : undefined;
 
+     // Save page number when it changes
+     useEffect(() => {
+        localStorage.setItem('currentPage', currentPage.toString());
+    }, [currentPage]);
+
+    // Clear localStorage when leaving the actresses page
+    useEffect(() => {
+        if (!location.pathname.includes('/search/')) {
+            localStorage.removeItem('currentPage');
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         if (currentSection && contentRef.current) {

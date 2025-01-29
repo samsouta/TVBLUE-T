@@ -1,13 +1,33 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useGetActressQuery } from '../../redux/api/actress/getActress';
 import { Avatar } from '@nextui-org/react';
 import TVSkeleton from '../../components/UI/loader/TVSkeleton';
+import Pangination from '../../components/UI/pangination/Pangination';
 
 const AllActress: React.FC = () => {
+  const location = useLocation();
+  const [currentPage, setCurrentPage] = useState(() => {
+    const savedPage = localStorage.getItem('currentPage');
+    return savedPage ? parseInt(savedPage) : 1;
+  });
+
   const navigate = useNavigate();
-  const { data, isLoading } = useGetActressQuery();
+  const { data, isLoading } = useGetActressQuery(currentPage);
   const actresses = data?.data || [];
+  const lastPage = data?.last_page;
+
+  // Save page number when it changes
+  useEffect(() => {
+    localStorage.setItem('currentPage', currentPage.toString());
+  }, [currentPage]);
+
+  // Clear localStorage when leaving the actresses page
+  useEffect(() => {
+    if (!location.pathname.includes('/actress')) {
+      localStorage.removeItem('currentPage');
+    }
+  }, [location.pathname]);
 
   const handleActressClick = (actress: { id: number; name: string }) => {
     const formattedName = actress.name.toLowerCase().replace(/\s+/g, '');
@@ -52,6 +72,13 @@ const AllActress: React.FC = () => {
           </div>
         ))}
       </div>
+
+      <Pangination
+        lastPage={lastPage ? Number(lastPage) : undefined}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+
     </div>
   )
 }

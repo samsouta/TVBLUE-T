@@ -10,7 +10,7 @@ const ActressMovies: React.FC = () => {
     const actressId = id ? parseInt(id) : 1;
     const [currentPage, setCurrentPage] = useState(1);
     const { data, isLoading } = useGetActressWithIdQuery(actressId);
-    console.log(data)
+    
     const movies = data?.movies?.data || [];
     const lastPage = data?.movies?.last_page;
     // const lastPage = data?.last_page;

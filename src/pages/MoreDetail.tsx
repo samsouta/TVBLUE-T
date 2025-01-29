@@ -4,17 +4,17 @@ import HomeVideoPageChild from '../components/UI/home/HomeVideoPageChild';
 import Pangination from '../components/UI/pangination/Pangination';
 import { useGetMoviesWithGrenreQuery } from '../redux/api/getMovies';
 import { autoCorrect } from '../utils/autoCorrect';
-import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
-import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
 import { Loader } from 'lucide-react';
-import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
 import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
 
 const MoreDetail: React.FC = () => {
     const { genre } = useParams<{ genre: string }>(); // Fetch the genre from the URL
     const location = useLocation(); // React to route changes
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(() => {
+        const savedPage = localStorage.getItem('currentPage');
+        return savedPage ? parseInt(savedPage) : 1;
+      });
 
 
 
@@ -26,10 +26,17 @@ const MoreDetail: React.FC = () => {
     const genData = data?.data;
     const lastPage = data?.last_page;
 
-    // Reset currentPage when genre changes
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [location.pathname]); // Watch for path changes
+      // Save page number when it changes
+  useEffect(() => {
+    localStorage.setItem('currentPage', currentPage.toString());
+  }, [currentPage]);
+
+  // Clear localStorage when leaving the actresses page
+  useEffect(() => {
+    if (!location.pathname.includes('/gn/')) {
+      localStorage.removeItem('currentPage');
+    }
+  }, [location.pathname]);
 
     // don't need now 
     // useEffect(() => {

@@ -11,29 +11,33 @@ import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommenda
 import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
 import ExoMixbanner from '../../components/ads/EXoClick/ExoMixbanner';
 import ExoMBannerCPM from '../../components/ads/EXoClick/ExoMBannerCPM';
+import { useLocation } from 'react-router-dom';
 
 const TradingPage: React.FC = () => {
-    // Manage current page state
-    const storedPage = localStorage.getItem('TradingCurrentPage');
-    const [currentPage, setCurrentPage] = useState<number>(parseInt(storedPage || '1', 10));
+    const location = useLocation();
+
+    const [currentPage, setCurrentPage] = useState(() => {
+        const savedPage = localStorage.getItem('currentPage');
+        return savedPage ? parseInt(savedPage) : 1;
+    });
 
     // Fetch data with pagination
     const { data, isLoading } = useGetMoviesFeatureQuery({ page: currentPage });
     const videos = data?.data || [];
     const lastPage = data?.last_page || 1;
 
-    // Save current page to localStorage
+    // Save page number when it changes
     useEffect(() => {
-        localStorage.setItem('TradingCurrentPage', currentPage.toString());
+        localStorage.setItem('currentPage', currentPage.toString());
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [currentPage]);
 
-    // Scroll to top on component mount
+    // Clear localStorage when leaving the actresses page
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    }, []);
+        if (!location.pathname.includes('/trending-now')) {
+            localStorage.removeItem('currentPage');
+        }
+    }, [location.pathname]);
 
     return (
         <>
