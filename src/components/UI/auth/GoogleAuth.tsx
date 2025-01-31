@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import Cookies from 'js-cookie';
-import { useGoogleLoginMutation } from '../../../redux/api/auth';
+import { useGoogleLoginMutation } from '../../../services/api/auth/auth';
 import TvLoader from '../loader/TvLoader';
 import { Alert } from '../alert/Alert';
 

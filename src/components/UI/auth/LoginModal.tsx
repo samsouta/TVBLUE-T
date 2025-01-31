@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Lock, Film, Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useLoginMutation } from '../../../redux/api/auth';
+import { useLoginMutation } from '../../../services/api/auth/auth';
 import { Alert } from '../alert/Alert';
 import Cookies from 'js-cookie'; 
 

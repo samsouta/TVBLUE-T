@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { store } from './redux/store.ts'
+import { store } from './store/store.ts'
 import StateContextProvider from './context/StateContext.tsx'
 import { MantineProvider } from '@mantine/core';
 import { NextUIProvider } from '@nextui-org/react'

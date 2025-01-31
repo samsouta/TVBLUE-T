@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useGetActressQuery } from '../../redux/api/actress/getActress';
+import { useGetActressQuery } from '../../services/api/actress/getActress';
 import { Avatar } from '@nextui-org/react';
 import TVSkeleton from '../../components/UI/loader/TVSkeleton';
 import Pangination from '../../components/UI/pangination/Pangination';

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Share2, ThumbsDown, ThumbsUp } from 'lucide-react';
-import { useLikeMutation, useUnlikeMutation } from '../../../redux/api/Voting';
+import { useLikeMutation, useUnlikeMutation } from '../../../services/api/vote/Voting';
 import { LoginModalBox } from '../auth/LoginModalBox';
 import Cookies from 'js-cookie';
 

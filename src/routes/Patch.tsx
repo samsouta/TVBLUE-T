@@ -1,23 +1,24 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
-import HomeDetail from '../components/UI/home/HomeDetail';
+import HomeDetail from '../components/features/video/VideoDetail';
 import Contact from '../pages/Contact';
 import Search from '../pages/Search';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import RouteGuard from './RouteGuard';
-import NewRelease from '../pages/typeOfmoviesPage/NewRelease';
+import NewRelease from '../pages/MoviesPageTypes/NewRelease';
 import Maintenance from '../pages/Maintenance';
-import TradingPage from '../pages/typeOfmoviesPage/TradingPage';
-import MoreDetail from '../pages/MoreDetail';
+import TradingPage from '../pages/MoviesPageTypes/TradingPage';
+import MoreDetail from '../pages/MoviesPageTypes/MoreDetail';
 import Game from '../pages/game/Game';
 import Layout from '../components/layouts/Game/Layout';
-import LayoutVideo from '../components/layouts/navbar/LayoutVideo';
+import LayoutVideo from '../components/layouts/navbar/Layout';
 import GameLink from '../pages/game/GameLink';
-import TagsDetail from '../pages/TagsDetail';
+import TagsDetail from '../pages/MoviesPageTypes/TagsDetail';
 import ActressMovies from '../pages/actress/ActressMovies';
 import AllActress from '../pages/actress/AllActress';
+import AllVideoPage from '../pages/MoviesPageTypes/AllVideoPage';
 
 const Patch: React.FC = () => {
   return (
@@ -36,6 +37,7 @@ const Patch: React.FC = () => {
           <Route path="new-release" element={<NewRelease />} />
           <Route path='actress/:id/:name' element={<ActressMovies />} />
           <Route path='actresses' element={<AllActress />} />
+          <Route path='all-movies' element={<AllVideoPage />} />
           {/* // auth  */}
           <Route path="login" element={<RouteGuard><Login /></RouteGuard>} />
           <Route path="register" element={<RouteGuard><Register /></RouteGuard>} /> 

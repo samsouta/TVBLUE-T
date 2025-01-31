@@ -3,7 +3,7 @@ import { Eye } from 'lucide-react';
 import { FaHeart } from 'react-icons/fa';
 import VotingUI from './VotingUI';
 import { formatViews } from '../../../utils/formatViews';
-import { useGetLikeCountQuery } from '../../../redux/api/getLikeCount';
+import { useGetLikeCountQuery } from '../../../services/api/vote/getLikeCount';
 import { MovieDataType } from '../../../types/MovieDataType';
 import { useNavigate } from 'react-router-dom';
 import { formatDuration } from '../../../utils/formatDuration';

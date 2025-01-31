@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import HomeVideoPageChild from '../../components/UI/home/HomeVideoPageChild';
+import HomeVideoPageChild from '../../components/features/video/VideoCard';
 import TVSkeleton from '../../components/UI/loader/TVSkeleton';
-import { useGetActressWithIdQuery } from '../../redux/api/actress/getActress';
+import { useGetActressWithIdQuery } from '../../services/api/actress/getActress';
 import Pangination from '../../components/UI/pangination/Pangination';
 
 const ActressMovies: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const actressId = id ? parseInt(id) : 1;
-    const [currentPage, setCurrentPage] = useState(1);
-    const { data, isLoading } = useGetActressWithIdQuery(actressId);
-    
+    const [currentPage, setCurrentPage] = useState(() => {
+        const savedPage = localStorage.getItem('currentPage');
+        return savedPage ? parseInt(savedPage) : 1;
+    });
+
+    const { data, isLoading } = useGetActressWithIdQuery({id: actressId, page: currentPage});
+
     const movies = data?.movies?.data || [];
     const lastPage = data?.movies?.last_page;
+    console.log(data)
     const actressName = data?.actress?.name || 'Actress';
     const navigate = useNavigate();
 
@@ -21,8 +26,20 @@ const ActressMovies: React.FC = () => {
             const formattedName = data?.actress?.name.toLowerCase().replace(/\s+/g, '');
             navigate(`/actress/${actressId}/${formattedName}`, { replace: true });
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [data, actressId]);
+
+    // Save page number when it changes
+    useEffect(() => {
+        localStorage.setItem('currentPage', currentPage.toString());
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [currentPage]);
+
+    // Clear localStorage when leaving the actresses page
+    useEffect(() => {
+        if (!location.pathname.includes('/actress/')) {
+            localStorage.removeItem('currentPage');
+        }
+    }, [location.pathname]);
 
     if (isLoading) {
         return (

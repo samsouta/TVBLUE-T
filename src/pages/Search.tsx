@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import NoVideoFound from '../components/UI/NoFound/NoVideoFound';
-import HomeVideoPageChild from '../components/UI/home/HomeVideoPageChild';
+import HomeVideoPageChild from '../components/features/video/VideoCard';
 import Pangination from '../components/UI/pangination/Pangination';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
-import { useSearchVideosQuery } from '../redux/api/searchEngine';
-import { setCurrentSection } from '../redux/slice/ScrollSlice';
+import { RootState } from '../store/store';
+import { useSearchVideosQuery } from '../services/api/search/searchEngine';
+import { setCurrentSection } from '../services/slice/ScrollSlice';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
 import { Loader } from 'lucide-react';
 import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';

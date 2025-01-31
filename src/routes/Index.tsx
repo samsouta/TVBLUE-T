@@ -1,16 +1,16 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
-import HomeDetail from '../components/UI/home/HomeDetail'
+import HomeDetail from '../components/features/video/VideoDetail'
 import Contact from '../pages/Contact'
 import Search from '../pages/Search'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import RouteGuard from './RouteGuard'
-import NewRelease from '../pages/typeOfmoviesPage/NewRelease'
+import NewRelease from '../pages/MoviesPageTypes/NewRelease'
 import Maintenance from '../pages/Maintenance'
-import TradingPage from '../pages/typeOfmoviesPage/TradingPage'
-import MoreDetail from '../pages/MoreDetail'
+import TradingPage from '../pages/MoviesPageTypes/TradingPage'
+import MoreDetail from '../pages/MoviesPageTypes/MoreDetail'
 
 
 const Index: React.FC = () => {

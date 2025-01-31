@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import Pangination from '../components/UI/pangination/Pangination'
-import { useGetVidPageQuery } from '../redux/api/getVideoPage'
+import { useGetVidPageQuery } from '../services/api/getVideoPage'
 import { StateContext } from '../context/StateContext';
-import HomeVideoPageChild from '../components/UI/home/HomeVideoPageChild';
+import HomeVideoPageChild from '../components/features/video/VideoCard';
 import TvLoader from '../components/UI/loader/TvLoader';
 
 

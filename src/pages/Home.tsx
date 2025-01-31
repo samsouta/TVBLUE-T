@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import VideoPage from '../components/UI/home/VideoPage';
+import VideoPage from '../components/features/video/VideoPage';
 import { StateContext } from '../context/StateContext';
-import TradingNow from '../components/tradingNow/TradingNow';
-import SwiperBox from '../components/model/SwiperBox';
+import TradingNow from '../components/UI/tradingNowButton/TradingNow';
+import SwiperBox from '../components/features/PopularModelSwiper/SwiperBox';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
