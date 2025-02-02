@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { StateContext } from '../../../../context/StateContext';
 import UserProfile from '../../../UI/userProfile/UserProfile';
 import Cookies from 'js-cookie';
-import { LogOut as IconLogOut, User } from 'lucide-react';
+import { CircleX, LogOut as IconLogOut, User } from 'lucide-react';
 import GenreButton from '../../../UI/catagoryBtn/GenreButton';
 import { useGetAllgenreQuery } from '../../../../services/api/Genre/getAllGern';
 import { GenreDataType } from '../../../../types/GenreDataType';
@@ -72,7 +72,7 @@ const MobileMenuList: React.FC = () => {
                 nav('/home');
                 setTimeout(() => {
                     toggleSidebar();
-                }, 2000);
+                }, 1000);
             }
         } catch (error: any) {
             console.error('Error logging out:', error);
@@ -94,19 +94,24 @@ const MobileMenuList: React.FC = () => {
                 animate={isOpen ? "open" : "closed"}
                 variants={sidebarVariants}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed top-0 left-0 h-full w-64 bg-[var(--medium-blue)] text-[var(--white)] p-5 shadow-xl z-[1000]"
+                className="fixed top-0 left-0 h-screen w-64 text-[var(--dark-blue)] opacity-100 bg-white/60 backdrop-blur-xl p-5 z-[150] shadow-lg"
             >
                 <div className="flex flex-col h-full">
                     <div>
+                        <div className=' flex items-center' >
                         <h2 className="text-2xl font-bold kablammo mb-3">TVBlue</h2>
+                        <div>
+                            <CircleX className="w-8 h-8  absolute right-3 top-3 cursor-pointer" onClick={toggleSidebar} />
+                        </div>
+                        </div>
                         {isUserLoggedIn() ? (
                             <UserProfile />
                         ) : (
                             <button
                                 onClick={handleLogin}
-                                className="flex flex-col items-center w-full gap-y-2 px-4 py-3 rounded-lg text-white text-lg font-semibold montserrat "
+                                className="flex flex-col items-center w-full gap-y-2 px-4 py-3 rounded-lg text-[var(--dark-blue)]  text-lg font-semibold montserrat "
                             >
-                                <User className="text-white w-8 h-8" />
+                                <User className="text-[var(--dark-blue)] w-8 h-8" />
                                 <span className=' text-sm' >Login</span>
                             </button>
 
@@ -117,7 +122,7 @@ const MobileMenuList: React.FC = () => {
                     <div className="space-y-5 mt-6 flex-grow">
                         <button
                             onClick={handleHome}
-                            className="flex gap-x-2 items-center open-sans text-[--white] cursor-pointer text-lg"
+                            className="flex gap-x-2 items-center open-sans text-[var(--dark-blue) cursor-pointer text-lg"
                         >
                             Home
                         </button>
@@ -142,12 +147,8 @@ const MobileMenuList: React.FC = () => {
                     )}
                 </div>
             </motion.nav>
-            {isOpen && (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-50 z-30"
-                    onClick={toggleSidebar}
-                ></div>
-            )}
+            
+            
 
             {/* Alert Box */}
             <Alert

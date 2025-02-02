@@ -11,7 +11,7 @@ const MobileMenu: React.FC = () => {
     }
     const { isOpen, setIsOpen } = context;
     return (
-        <div>
+        <div  >
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 text-gray-300 cursor-pointer hover:text-white"

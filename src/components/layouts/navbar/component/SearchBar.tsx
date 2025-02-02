@@ -41,7 +41,7 @@ const SearchBar: React.FC = () => {
                 type="text"
                 value={searchQuery} // Bind state to input value
                 placeholder="Search videos..."
-                className="w-full px-3 py-1.5 pl-8 text-[16px] sm:text-sm placeholder:text-[12px] text-[var(--light-blue)] placeholder-gray-300 bg-white/10 border border-white/10 rounded-lg 
+                className="w-full px-3 py-1.5 pl-8 text-[16px] sm:text-sm placeholder:text-[12px] text-[var(--light-blue)] placeholder-gray-300 bg-white/10 border border-[var(--medium-blue)] rounded-lg 
                             focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40
                             transition-all duration-300"
                 onFocus={() => setIsFocused(true)}

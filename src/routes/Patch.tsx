@@ -35,7 +35,7 @@ const Patch: React.FC = () => {
           <Route path="search/:query" element={<Search />} />
           <Route path="trending-now" element={<TradingPage />} />
           <Route path="new-release" element={<NewRelease />} />
-          <Route path='actress/:id/:name' element={<ActressMovies />} />
+          <Route path='act/:id/:name' element={<ActressMovies />} />
           <Route path='actresses' element={<AllActress />} />
           <Route path='all-movies' element={<AllVideoPage />} />
           {/* // auth  */}

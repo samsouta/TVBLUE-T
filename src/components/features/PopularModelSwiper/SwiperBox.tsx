@@ -16,7 +16,7 @@ const SwiperBox: React.FC = () => {
 
     const handleActressClick = (actress: { id: number; name: string }) => {
         const formattedName = actress.name.toLowerCase().replace(/\s+/g, '');
-        navigate(`/actress/${actress.id}/${formattedName}`);
+        navigate(`/act/${actress.id}/${formattedName}`);
     };
 
     if (isLoading) {
@@ -40,7 +40,7 @@ const SwiperBox: React.FC = () => {
                     },
                     // Desktop devices
                     1024: {
-                        slidesPerView: 4,
+                        slidesPerView: 6,
                         spaceBetween: 30,
                     },
                 }}

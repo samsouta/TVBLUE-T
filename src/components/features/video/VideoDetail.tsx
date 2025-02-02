@@ -63,10 +63,7 @@ const VideoDetail: React.FC = () => {
 
     return (
         <div className="text-gray-100 mt-[80px] px-2">
-            {/* ads */}
-            <ExoRecomCPM/>
-            <div className=' w-full flex justify-center' ><ExoPcBanner/></div>
-            {/* ads end  */}
+
             {/* Hero Section */}
             <div>
                 <div className="flex xl:justify-between">
@@ -88,17 +85,31 @@ const VideoDetail: React.FC = () => {
                         </LazyLoad>
                         {isProcessing && <TvLoader />}
                     </div>
+
+                    {/* Ads */}
+                    <div className=' hidden xl:block' >
+                        <div className=' flex justify-center flex-col items-center' >
+                            <ExoRecomCPM />
+                            <ExoPcBanner />
+                        </div>
+                    </div>
+
                 </div>
 
                 {/* ADS ZONE */}
                 {/* Mobile */}
+                <div className=' block xl:hidden' >
                 <div className=' w-full flex flex-wrap justify-center' >
                     <ExoMBannerCPM />
                     <ExoMobileBanner />
                 </div>
+                </div>
                 {/* PC */}
                 <div className="hidden xl:block">
-                    <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
+                    <div className=' w-full flex justify-start' >
+                        <TrafficPCBanner />
+
+                    </div>
                 </div>
                 {/* ADS END  */}
 
@@ -109,7 +120,7 @@ const VideoDetail: React.FC = () => {
                     data={video}
                 />
 
-            
+
             </div>
 
 

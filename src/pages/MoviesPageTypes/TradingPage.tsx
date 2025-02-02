@@ -43,15 +43,24 @@ const TradingPage: React.FC = () => {
         <>
             <div className="mt-20 mx-1 lg:mx-4">
                 {/* Ads slider */}
-                <HomeSlider />
-
-                {/* ADS ZONE */}
-                <div className=' w-full flex flex-wrap justify-center' >
-                    {/* <ExoPcBanner /> */}
-                    <ExoMBannerCPM />
-                    <ExoMobileBanner />
+                {/* Ads slider and PC banner section */}
+                <div className='flex flex-col xl:flex-row xl:justify-between xl:items-center gap-4'>
+                    <div className='flex-1'>
+                        <HomeSlider />
+                    </div>
+                    {/* PC banner */}
+                    <div className='hidden xl:block w-[300px]'>
+                        <ExoPcBanner />
+                    </div>
                 </div>
-                {/* ADS END  */}
+
+                {/* ADS Mobile ZONE */}
+                <div className=' block xl:hidden' >
+                    <div className=' w-full mt-5 flex flex-wrap justify-center' >
+                        <ExoMBannerCPM />
+                    </div>
+                </div>
+                {/* ADS Mobile END  */}
 
 
                 {/* Watch More */}
@@ -62,6 +71,15 @@ const TradingPage: React.FC = () => {
                         </h1>
                     </div>
                     <WatchMore />
+
+                    {/* ADS Mobile ZONE */}
+                    <div className=' block xl:hidden' >
+                        <div className=' w-full mt-6 flex flex-wrap justify-center' >
+                            <ExoMobileBanner />
+                        </div>
+                    </div>
+                    {/* ADS Mobile END  */}
+
                 </div>
                 {/* Page Title */}
                 <div className="flex justify-start px-2 mt-6 items-center">
@@ -71,7 +89,10 @@ const TradingPage: React.FC = () => {
                 </div>
                 {/* ads */}
                 <ExoRecommendationWidget />
-                <ExoOutstreamVideo />
+
+                <div className=' block xl:hidden' >
+                    <ExoOutstreamVideo />
+                </div>
 
                 {/* ads end  */}
                 {/* Video Grid */}
@@ -100,14 +121,6 @@ const TradingPage: React.FC = () => {
                 />
             </div>
 
-            {/* ads */}
-            <div className=' w-full flex flex-wrap justify-center' >
-                <ExoPcBanner />
-            </div>
-            <a href="https://www.exoclick.com/signup/?login=samsouta">
-                <img src="https://www.exoclick.com/banners/468x60.gif" alt="exo-banner" />
-            </a>
-            {/* ads end ---- */}
         </>
     );
 };

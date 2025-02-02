@@ -10,7 +10,6 @@ type DataType = {
 const Pangination: React.FC<DataType> = ({ lastPage, currentPage, setCurrentPage }) => {
 
     const handlePageChange = useCallback((newPage: number) => {
-        localStorage.setItem('currentPage', newPage.toString());
         setCurrentPage(newPage);
         window.scrollTo({
             top: 0,
@@ -28,14 +27,15 @@ const Pangination: React.FC<DataType> = ({ lastPage, currentPage, setCurrentPage
             }>
                 <Pagination
                     showControls
-                    variant="bordered"
                     total={lastPage || 0}
                     initialPage={currentPage}
                     page={currentPage}
                     onChange={(page) => handlePageChange(page)}
                     classNames={{
                         cursor: 'text-[#ffffff]  bg-[var(--dark-blue)]',
-                        item: " text-[var(--soft-blue)] border-[var(--light-blue)]",
+                        item: " text-[var(--white)] bg-[var(-medium-blue)]  border-[var(--light-blue)]",
+                        next: " bg-[var(--dark-blue)] text-[var(--white)]",
+                        prev: " bg-[var(--dark-blue)] text-[var(--white)]",
                     }}
                 />
             </div>

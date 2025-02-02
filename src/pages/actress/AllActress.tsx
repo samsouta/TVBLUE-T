@@ -24,14 +24,17 @@ const AllActress: React.FC = () => {
 
   // Clear localStorage when leaving the actresses page
   useEffect(() => {
-    if (!location.pathname.includes('/actress')) {
+    if (!location.pathname.includes('/actresses')) {
       localStorage.removeItem('currentPage');
+    } else {
+      localStorage.removeItem('currentPage2');
     }
   }, [location.pathname]);
+  
 
   const handleActressClick = (actress: { id: number; name: string }) => {
     const formattedName = actress.name.toLowerCase().replace(/\s+/g, '');
-    navigate(`/actress/${actress.id}/${formattedName}`);
+    navigate(`/act/${actress.id}/${formattedName}`);
   };
 
   if (isLoading) {

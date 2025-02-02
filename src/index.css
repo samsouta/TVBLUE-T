@@ -4,10 +4,14 @@
 
 
 #base {
-  background-color: var(--medium-blue);
+  background-color: transparent;
+  /* background-color: var(--medium-blue); */
+  /* background-image: url(./assets/background/background.gif); */
 }
 #root {
-  background-color: var(--medium-blue);
+  background-color: transparent;
+  /* background-color: var(--medium-blue); */
+  /* background-image: url(./assets/background/background.gif); */
   margin: 0;
   padding: 0;
   width: 100%;
@@ -15,7 +19,9 @@
 }
 
 body {
-  background-color: var(--medium-blue);
+  background-color: transparent;
+  /* background-color: var(--medium-blue); */
+  /* background-image: url(./assets/background/background.gif); */
 }
 
 .ad-container {

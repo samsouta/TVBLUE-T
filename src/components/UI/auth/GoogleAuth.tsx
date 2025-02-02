@@ -4,12 +4,14 @@ import Cookies from 'js-cookie';
 import { useGoogleLoginMutation } from '../../../services/api/auth/auth';
 import TvLoader from '../loader/TvLoader';
 import { Alert } from '../alert/Alert';
+import { useNavigate } from 'react-router-dom';
 
 const GoogleAuth: React.FC = () => {
     const [googleLogin, { isLoading, data, error }] = useGoogleLoginMutation();
     const [isAlertOpen, setIsAlertOpen] = useState(false);
     const [alertType, setAlertType] = useState<'success' | 'error' | 'info'>('error');
 
+    const nav = useNavigate()
     // Show alert with the appropriate message based on the type
     const showAlert = (type: 'success' | 'error' | 'info') => {
         setAlertType(type);
@@ -37,6 +39,8 @@ const GoogleAuth: React.FC = () => {
             Cookies.set('token', data.token); // Store token in cookie
             Cookies.set('user', JSON.stringify(data.user)); // Store user data in cookie
             showAlert('success');
+            nav(`/`)
+            
         }
     }, [data]);
 

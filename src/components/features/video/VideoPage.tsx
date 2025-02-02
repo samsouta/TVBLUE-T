@@ -10,6 +10,9 @@ import ExoOutstreamVideo from '../../ads/EXoClick/ExoOutstreamVideo';
 import ExoPcBanner from '../../ads/EXoClick/ExoPcBanner';
 import ExoMixbanner from '../../ads/EXoClick/ExoMixbanner';
 import RandomVideo from '../home/RandomVideo';
+import ExoRecomCPM from '../../ads/EXoClick/ExoRecomCPM';
+import ExoMBannerCPM from '../../ads/EXoClick/ExoMBannerCPM';
+import ExoMobileBanner from '../../ads/EXoClick/ExoMobileBanner';
 
 const VideoPage: React.FC = () => {
     const location = useLocation();
@@ -38,27 +41,53 @@ const VideoPage: React.FC = () => {
     return (
         <div className='flex flex-col gap-y-12'>
 
+
             <RecommentForYou />
+
+            {/* ADS ZONE */}
+            {/* Mobile */}
+            <div>
+            <div className=' w-full flex flex-wrap justify-center' >
+                <ExoMBannerCPM />
+            </div>
+            </div>
+            {/* ADS END  */}
 
             <FindVideoWithTags isTag='creampie' />
 
             {/* // ads/ */}
-            <ExoOutstreamVideo />
+            <div className='block md:hidden' >
+                <ExoOutstreamVideo />
+            </div>
             {/* ads------- */}
 
             <FindVideoWithTags isTag='Bondage' />
 
+            {/* ads */}
+            <div className=' block xl:hidden' >
+            <ExoRecomCPM />
+            </div>
+            {/* ads end */}
 
 
             {/* ads  */}
-            <div className=' flex justify-center' >
-                <ExoPcBanner />
-            </div>
+                <div className=' hidden xl:hidden' >
+                <div className=' flex justify-center' >
+                    <ExoPcBanner />
+                </div>
+                </div>
+            
             {/* ads */}
 
             <MoviesWithGenre
                 isGenre={'Chinese AV'}
             />
+            {/* ADS ZONE */}
+            {/* Mobile */}
+            <div className=' w-full flex flex-wrap justify-center' >
+                <ExoMobileBanner />
+            </div>
+            {/* ADS END  */}
 
             <MoviesWithGenre
                 isGenre={'uncensored'}
@@ -70,6 +99,7 @@ const VideoPage: React.FC = () => {
 
             <FindVideoWithTags isTag='tight pussy' />
 
+
             <FindVideoWithTags isTag='Cosplay' />
 
             <FindVideoWithTags isTag='Big ass' />
@@ -80,7 +110,7 @@ const VideoPage: React.FC = () => {
                 isGenre={'censored'}
             />
 
-            <RandomVideo/>
+            <RandomVideo />
 
 
             {

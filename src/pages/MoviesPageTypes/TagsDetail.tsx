@@ -53,10 +53,14 @@ const TagsDetail: React.FC = () => {
             {/* ADS ZONE */}
             {/* Mobile */}
             <div className=' w-full flex flex-wrap justify-center' >
-        <ExoPcBanner />
-        <ExoMobileBanner />
-        <ExoMBannerCPM/>
-    </div>
+                    <div className=' hidden xl:block' >
+                    <ExoPcBanner />
+                    </div>
+                    <div className=' block xl:hidden' >
+                    <ExoMobileBanner />
+                    <ExoMBannerCPM />
+                    </div>
+                </div>
 
             {/* ADS END  */}
 

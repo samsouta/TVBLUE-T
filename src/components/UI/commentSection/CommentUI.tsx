@@ -26,7 +26,6 @@ const CommentUI: React.FC<CommentUIProps> = ({
     const { data: likeCount } = useGetLikeCountQuery(vidId)
     const totalLike = likeCount?.like_count
     const actresses = data?.actresses;
-    console.log(data)
 
     const handleTagClick = (tagName: string) => {
         navigate(`/tags/${tagName}`);
@@ -41,7 +40,7 @@ const CommentUI: React.FC<CommentUIProps> = ({
         <div className="text-neutral-light">
             <div className="max-w-6xl mx-auto xl:mx-0 py-2">
                 {/* Video Info Section */}
-                <div className="bg-[var(--medium-blue)] backdrop-blur-sm rounded-xl p-6 mb-6 shadow-lg ring-1 ring-white/10">
+                <div className="bg-white/20 backdrop-blur-xl rounded-xl p-6 mb-6 shadow-lg ring-1 ring-white/10">
                     <h1 className="text-md xl:text-2xl text-[var(--light-blue)]  mb-2 open-sans">
                         {data?.description}
                     </h1>
@@ -66,7 +65,7 @@ const CommentUI: React.FC<CommentUIProps> = ({
                 </div>
 
                 {/* Detail Section */}
-                <div className="bg-[var(--medium-blue)] max-h-[300px] overflow-y-scroll backdrop-blur-sm rounded-xl p-6 shadow-lg ring-1 ring-white/10">
+                <div className="bg-white/20 max-h-[300px] overflow-y-scroll backdrop-blur-xl rounded-xl p-6 shadow-lg ring-1 ring-white/10">
                     <h2 className="text-lg montserrat font-bold text-[var(--soft-blue)] mb-4">
                         Code : <span className=' font-normal text-[var(--light-blue)] open-sans font-serif text-md' >{data?.title}</span>
                     </h2>

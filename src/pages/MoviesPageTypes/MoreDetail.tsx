@@ -17,7 +17,7 @@ const MoreDetail: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(() => {
         const savedPage = localStorage.getItem('currentPage');
         return savedPage ? parseInt(savedPage) : 1;
-      });
+    });
 
 
 
@@ -29,17 +29,17 @@ const MoreDetail: React.FC = () => {
     const genData = data?.data;
     const lastPage = data?.last_page;
 
-      // Save page number when it changes
-  useEffect(() => {
-    localStorage.setItem('currentPage', currentPage.toString());
-  }, [currentPage]);
+    // Save page number when it changes
+    useEffect(() => {
+        localStorage.setItem('currentPage', currentPage.toString());
+    }, [currentPage]);
 
-  // Clear localStorage when leaving the actresses page
-  useEffect(() => {
-    if (!location.pathname.includes('/gn/')) {
-      localStorage.removeItem('currentPage');
-    }
-  }, [location.pathname]);
+    // Clear localStorage when leaving the actresses page
+    useEffect(() => {
+        if (!location.pathname.includes('/gn/')) {
+            localStorage.removeItem('currentPage');
+        }
+    }, [location.pathname]);
 
     // don't need now 
     // useEffect(() => {
@@ -54,11 +54,15 @@ const MoreDetail: React.FC = () => {
             {/* ADS ZONE */}
             {/* Mobile */}
             <div className=' w-full flex flex-wrap justify-center' >
-                <ExoPcBanner />
-                <ExoMobileBanner />
-                <ExoMBannerCPM/>
+                <div className=' hidden xl:block' >
+                    <ExoPcBanner />
+                </div>
+                <div className=' block xl:hidden' >
+                    <ExoMobileBanner />
+                    <ExoMBannerCPM />
+                </div>
             </div>
-            
+
             {/* ADS END  */}
 
             <div className="flex justify-center items-center">
@@ -85,7 +89,7 @@ const MoreDetail: React.FC = () => {
 
                     {/* ads */}
                     <ExoRecommendationWidget />
-                    <ExoRecomCPM/>
+                    <ExoRecomCPM />
                     {/* ads end  */}
 
 

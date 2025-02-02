@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Patch from './routes/Patch';
 import ConnectVpn from './components/UI/alert/ConnectVpn';
+import Background from './components/UI/eldoraui/Novatrixbg';
 
 const App: React.FC = () => {
   const [accessAllowed, setAccessAllowed] = useState<boolean>(true);
@@ -43,7 +44,9 @@ const App: React.FC = () => {
 
   return (
     <div>
+      <Background/>
       <Patch />
+
     </div>
   );
 };

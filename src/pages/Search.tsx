@@ -57,16 +57,21 @@ const Search: React.FC = () => {
     return (
         <div ref={contentRef} className="mt-20 mx-1 lg:mx-4">
            
-            {/* ADS ZONE */}
+             {/* ADS ZONE */}
             {/* Mobile */}
             <div className=' w-full flex flex-wrap justify-center' >
-                <ExoPcBanner />
-                <ExoMobileBanner />
-                <ExoMBannerCPM/>
+                <div className=' hidden xl:block' >
+                    <ExoPcBanner />
+                </div>
+                <div className=' block xl:hidden' >
+                    <ExoMobileBanner />
+                    <ExoMBannerCPM />
+                </div>
             </div>
             {/* ADS END  */}
+
             <div className='flex justify-center items-center'>
-                <h1 className='text-[var(--light-blue)] mb-6 text-4xl lg:text-[60px] lg:text-4xl playfair-display'>
+                <h1 className=' mb-6 text-[var(--light-blue)] my-2 text-2xl font-bold montserrat'>
                     {searchQuery}
                 </h1>
             </div>
