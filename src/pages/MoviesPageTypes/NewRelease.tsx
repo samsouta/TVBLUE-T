@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import HomeVideoPageChild from '../../components/features/video/VideoCard'
 import Pangination from '../../components/UI/pangination/Pangination'
 import { useGetNewReleaseMovieQuery } from '../../services/api/Movies/getMovies'
-import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner'
-import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner'
-import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget'
 import { Loader } from 'lucide-react'
-import ExoMBannerCPM from '../../components/ads/EXoClick/ExoMBannerCPM'
 import { useLocation } from 'react-router-dom'
+import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90'
+import AdstrBanner468x60 from '../../components/ads/adstraa/AdstrBanner468x60'
+import AdstrBanner320x50 from '../../components/ads/adstraa/AdstrBanner320x50'
+import HillMobileBanner from '../../components/ads/Hillads/HillMobileBanner'
+import HillAllDevBanner from '../../components/ads/Hillads/HillAllDevBanner'
+import JuNativeAds from '../../components/ads/juicy/JuNativeAds'
+import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard'
 
 
 const NewRelease: React.FC = () => {
@@ -36,15 +39,19 @@ const NewRelease: React.FC = () => {
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">
-            {/* ADS ZONE */}
-            {/* Mobile */}
-            <div className=' w-full flex flex-wrap justify-center' >
-                <ExoPcBanner />
-                <ExoMobileBanner />
-                <ExoMBannerCPM />
+
+            
+            {/* ads  */}
+            <div className='' >
+                <HillMobileBanner />
+            </div>
+            <div className="flex justify-center mt-2 w-full overflow-hidden">
+                <AdstrBanner320x50 />
+            </div>
+            <div className='' >
+                <HillAllDevBanner />
             </div>
 
-            {/* ADS END  */}
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-2xl montserrat font-bold">
                     New-Release
@@ -66,18 +73,21 @@ const NewRelease: React.FC = () => {
                             />
                         ))}
                     </div>
+
+
                     {/* ads */}
-                    <ExoRecommendationWidget />
-                    {/* ads end  */}
+                    <div className=' flex justify-center mt-2 z-0' >
+                        <JuNativeAds />
+                    </div>
+                    <div className=' w-full z-0' >
+                        <JuLeaderboard />
+                    </div>
+
                     <Pangination
                         lastPage={lastPage}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                     />
-
-
-
-
 
                 </>
             )}

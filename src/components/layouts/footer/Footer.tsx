@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
                             <div className="flex items-center space-x-2">
                                 <Sparkles className="w-6 h-6 text-[var(--light-blue)]" />
                                 <h3 className="text-xl font-bold bg-gradient-to-r from-[var(--white)] to-[var(--soft-blue)] inline-block text-transparent bg-clip-text">
-                                    TVBlue
+                                BLUETV
                                 </h3>
                             </div>
                             <p className="text-sm text-[var(--soft-blue)] leading-relaxed">

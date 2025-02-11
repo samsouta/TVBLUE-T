@@ -9,8 +9,7 @@ const Logo: React.FC = () => {
   }
   return (
     <div onClick={GoHome} className="flex cursor-pointer items-center gap-2">
-      <img src={GitImg.gitLogo} alt="" className=' w-14 h-14 text-red-700' />
-      <span className="text-2xl kablammo text-[var(--soft-blue)]">TVblue</span>
+      <img src={GitImg.TVLogo} alt="" className=' w-14 h-14 ' />
     </div>
   )
 }

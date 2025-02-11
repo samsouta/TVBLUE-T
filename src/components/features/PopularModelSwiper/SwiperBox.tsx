@@ -22,7 +22,7 @@ const SwiperBox: React.FC = () => {
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-40">
-                <Loader className="animate-spin text-green-400" size={25} />
+                <Loader className="animate-spin text-white" size={25} />
             </div>
         );
     }
@@ -73,7 +73,7 @@ const SwiperBox: React.FC = () => {
                             <p className="mt-2 text-[var(--light-blue)] merriweather-regular text-md">
                                 <i className='flex items-center gap-x-1'>
                                     <GoDotFill className='text-md text-green-400' />
-                                    <span>{actress.name}</span>
+                                    <span className=' text-md font-medium raleway' >{actress.name}</span>
                                 </i>
                             </p>
                         </div>

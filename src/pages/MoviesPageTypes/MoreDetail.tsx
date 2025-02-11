@@ -4,12 +4,12 @@ import HomeVideoPageChild from '../../components/features/video/VideoCard';
 import Pangination from '../../components/UI/pangination/Pangination';
 import { useGetMoviesWithGrenreQuery } from '../../services/api/Movies/getMovies';
 import { autoCorrect } from '../../utils/autoCorrect';
-import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
 import { Loader } from 'lucide-react';
-import ExoRecomCPM from '../../components/ads/EXoClick/ExoRecomCPM';
-import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
-import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
-import ExoMBannerCPM from '../../components/ads/EXoClick/ExoMBannerCPM';
+import AdstrBanner320x50 from '../../components/ads/adstraa/AdstrBanner320x50';
+import HillMobileBanner from '../../components/ads/Hillads/HillMobileBanner';
+import HillAllDevBanner from '../../components/ads/Hillads/HillAllDevBanner';
+import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
+import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
 
 const MoreDetail: React.FC = () => {
     const { genre } = useParams<{ genre: string }>(); // Fetch the genre from the URL
@@ -51,19 +51,17 @@ const MoreDetail: React.FC = () => {
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">
-            {/* ADS ZONE */}
-            {/* Mobile */}
-            <div className=' w-full flex flex-wrap justify-center' >
-                <div className=' hidden xl:block' >
-                    <ExoPcBanner />
-                </div>
-                <div className=' block xl:hidden' >
-                    <ExoMobileBanner />
-                    <ExoMBannerCPM />
-                </div>
-            </div>
 
-            {/* ADS END  */}
+            {/* ads  */}
+            <div className='' >
+                <HillMobileBanner />
+            </div>
+            <div className="flex justify-center mt-2 w-full overflow-hidden">
+                <AdstrBanner320x50 />
+            </div>
+            <div className='' >
+                <HillAllDevBanner />
+            </div>
 
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
@@ -86,18 +84,21 @@ const MoreDetail: React.FC = () => {
                             />
                         ))}
                     </div>
-
+                    
                     {/* ads */}
-                    <ExoRecommendationWidget />
-                    <ExoRecomCPM />
-                    {/* ads end  */}
-
+                    <div className=' flex justify-center z-0' >
+                        <JuNativeAds />
+                    </div>
+                    <div className=' w-full z-0' >
+                        <JuLeaderboard />
+                    </div>
 
                     <Pangination
                         lastPage={lastPage}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                     />
+
 
                 </>
             )}

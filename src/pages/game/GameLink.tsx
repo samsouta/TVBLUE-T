@@ -1,26 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import JuicyBannerMobile from '../../components/ads/juicy/JuicyBannerMobile';
-import JuicyBannerMobileImage1 from '../../components/ads/juicy/JuicyBannerMobileImage1';
-import JuicyBannerMobileImg2 from '../../components/ads/juicy/JuicyBannerMobileImg2';
-import JuicyBannerMobileimg3 from '../../components/ads/juicy/JuicyBannerMobileimg3';
-import JuicyBannerMobileimg4 from '../../components/ads/juicy/JuicyBannerMobileimg4';
-import JuicyBannerMobileimg5 from '../../components/ads/juicy/JuicyBannerMobileimg5';
-import JuicyBannerMobileimg6 from '../../components/ads/juicy/JuicyBannerMobileimg6';
-import JuicyBannerMobileimg7 from '../../components/ads/juicy/JuicyBannerMobileimg7';
-import JuicyBillBoard from '../../components/ads/juicy/JuicyBillBoard';
-import JuicyFloatAds from '../../components/ads/juicy/JuicyFloatAds';
-import JuicyLeaderBoard from '../../components/ads/juicy/JuicyLeaderBoard';
-import JuicyLinkTitle from '../../components/ads/juicy/JuicyLinkTitle';
-import { ScrollAlert } from '../../components/UI/alert/game/ScrollAlert';
-import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
-import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
-import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
-import ExoOutstreamVideo from '../../components/ads/EXoClick/ExoOutstreamVideo';
-import TrafficPCBanner from '../../components/ads/trafficstar/TrafficPCBanner';
-import TrafficMobileBanner from '../../components/ads/trafficstar/TrafficMobileBanner';
-import TrafficNative from '../../components/ads/trafficstar/trafficNative';
-import ExoMixbanner from '../../components/ads/EXoClick/ExoMixbanner';
+
 
 const GameLink: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -97,43 +77,7 @@ const GameLink: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 py-8">
-            <ScrollAlert />
-            <JuicyBannerMobile />
-            <JuicyBannerMobileImage1 />
-            <JuicyBannerMobileImg2 />
-            <JuicyBannerMobileimg3 />
-            <JuicyBannerMobileimg4 />
-            <JuicyBannerMobileimg5 />
-            <JuicyBannerMobileimg6 />
-            <JuicyBannerMobileimg7 />
-            <JuicyBillBoard />
-            <JuicyFloatAds />
-            <JuicyLeaderBoard />
-            <JuicyLinkTitle />
-            {/* //exoclick */}
-
-            {/* ADS ZONE */}
-            {/* Mobile */}
-            <div className=' w-full flex flex-wrap justify-center' >
-                <ExoPcBanner />
-                <ExoMobileBanner />
-                <TrafficMobileBanner />
-            </div>
-            {/* PC */}
-            <div className="hidden xl:block">
-                <div className=' w-full flex justify-center' ><TrafficPCBanner /></div>
-            </div>
-            {/* ADS END  */}
-
-            {/* ads */}
-            <ExoRecommendationWidget />
-            <ExoOutstreamVideo />
-            {/* ads end  */}
-
-            {/* ads */}
-            <ExoMixbanner />
-            <TrafficNative />
-            {/* ads end */}
+           
 
             <div className="text-center">
                 <h1 className="text-3xl font-semibold text-gray-800 mb-4">Game Link for ID: {data?.description}</h1>
@@ -159,9 +103,7 @@ const GameLink: React.FC = () => {
                         </button>
                     </a>
                 )}
-                {/* ads */}
-                <ExoOutstreamVideo />
-                {/* ads end  */}
+             
             </div>
 
         </div>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { StateContext } from '../../../../context/StateContext';
 import UserProfile from '../../../UI/userProfile/UserProfile';
 import Cookies from 'js-cookie';
-import { CircleX, LogOut as IconLogOut, User } from 'lucide-react';
+import { CircleX, LogOut as IconLogOut, Loader, User } from 'lucide-react';
 import GenreButton from '../../../UI/catagoryBtn/GenreButton';
 import { useGetAllgenreQuery } from '../../../../services/api/Genre/getAllGern';
 import { GenreDataType } from '../../../../types/GenreDataType';
@@ -34,7 +34,7 @@ const MobileMenuList: React.FC = () => {
 
     const toggleSidebar = () => setIsOpen(!isOpen);
 
-    const { data } = useGetAllgenreQuery();
+    const { data, isLoading } = useGetAllgenreQuery();
     const genreList = data?.data as GenreDataType[];
 
     const isUserLoggedIn = () => !!token;
@@ -94,15 +94,15 @@ const MobileMenuList: React.FC = () => {
                 animate={isOpen ? "open" : "closed"}
                 variants={sidebarVariants}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed top-0 left-0 h-screen w-64 text-[var(--dark-blue)] opacity-100 bg-white/60 backdrop-blur-xl p-5 z-[150] shadow-lg"
+                className="fixed top-0 left-0 h-screen w-64 text-[var(--dark-blue)] opacity-100 bg-white/50 backdrop-blur-xl p-5 z-[150] shadow-lg"
             >
                 <div className="flex flex-col h-full">
                     <div>
                         <div className=' flex items-center' >
-                        <h2 className="text-2xl font-bold kablammo mb-3">TVBlue</h2>
-                        <div>
-                            <CircleX className="w-8 h-8  absolute right-3 top-3 cursor-pointer" onClick={toggleSidebar} />
-                        </div>
+                            <h2 className="text-2xl font-bold text-[var(--dark-blue)] kablammo mb-3">BLUETV</h2>
+                            <div>
+                                <CircleX className="w-8 h-8  absolute right-3 top-3 cursor-pointer" onClick={toggleSidebar} />
+                            </div>
                         </div>
                         {isUserLoggedIn() ? (
                             <UserProfile />
@@ -112,7 +112,7 @@ const MobileMenuList: React.FC = () => {
                                 className="flex flex-col items-center w-full gap-y-2 px-4 py-3 rounded-lg text-[var(--dark-blue)]  text-lg font-semibold montserrat "
                             >
                                 <User className="text-[var(--dark-blue)] w-8 h-8" />
-                                <span className=' text-sm' >Login</span>
+                                <span className=' text-sm poppins-semibold' >Login</span>
                             </button>
 
 
@@ -122,17 +122,30 @@ const MobileMenuList: React.FC = () => {
                     <div className="space-y-5 mt-6 flex-grow">
                         <button
                             onClick={handleHome}
-                            className="flex gap-x-2 items-center open-sans text-[var(--dark-blue) cursor-pointer text-lg"
+                            className="flex gap-x-2 items-center poppins-semibold text-[var(--dark-blue) cursor-pointer text-lg"
                         >
                             Home
                         </button>
-                        {genreList?.map((gen) => (
-                            <GenreButton
-                                key={gen?.id}
-                                name={gen?.name}
-                                tag={gen?.sub_genres}
-                            />
-                        ))}
+                        {isLoading ? (
+                            <div className="space-y-4">
+                                {[...Array(6)].map((_, index) => (
+                                    <div key={index} className="flex items-center gap-2 animate-pulse">
+                                        <Loader className="w-5 h-5 text-[var(--dark-blue)] animate-spin" />
+                                        <div className="h-4 bg-[var(--medium-blue)] rounded w-24"></div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : genreList?.length === 0 ? (
+                            <p className="text-[var(--dark-blue)] text-center py-4">No genres available</p>
+                        ) : (
+                            genreList?.map((gen) => (
+                                <GenreButton
+                                    key={gen?.id}
+                                    name={gen?.name}
+                                    tag={gen?.sub_genres}
+                                />
+                            ))
+                        )}
                     </div>
 
                     {isUserLoggedIn() && (
@@ -147,8 +160,8 @@ const MobileMenuList: React.FC = () => {
                     )}
                 </div>
             </motion.nav>
-            
-            
+
+
 
             {/* Alert Box */}
             <Alert

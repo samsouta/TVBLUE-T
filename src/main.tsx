@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
         <MantineProvider>
           <NextUIProvider>
             <GoogleOAuthProvider clientId="349564838429-dpf9br3le6tja9s5p09f1gdbee69qp9r.apps.googleusercontent.com" >
-              <App />
+                <App />
             </GoogleOAuthProvider>
           </NextUIProvider>
         </MantineProvider>

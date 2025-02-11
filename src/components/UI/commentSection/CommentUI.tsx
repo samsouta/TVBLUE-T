@@ -7,6 +7,9 @@ import { useGetLikeCountQuery } from '../../../services/api/vote/getLikeCount';
 import { MovieDataType } from '../../../types/MovieDataType';
 import { useNavigate } from 'react-router-dom';
 import { formatDuration } from '../../../utils/formatDuration';
+import Ju160x600Skyscraper from '../../ads/juicy/Ju160x600Skyscraper';
+import AdstrBanner160x300 from '../../ads/adstraa/AdstrBanner160x300';
+import AdstrBanner160x600 from '../../ads/adstraa/AdstrBanner160x600';
 
 
 interface CommentUIProps {
@@ -37,8 +40,8 @@ const CommentUI: React.FC<CommentUIProps> = ({
     };
 
     return (
-        <div className="text-neutral-light">
-            <div className="max-w-6xl mx-auto xl:mx-0 py-2">
+        <div className="text-neutral-light lg:grid lg:grid-cols-12">
+            <div className="max-w-4xl mx-auto lg:col-span-8 lg:mx-0 py-2">
                 {/* Video Info Section */}
                 <div className="bg-white/20 backdrop-blur-xl rounded-xl p-6 mb-6 shadow-lg ring-1 ring-white/10">
                     <h1 className="text-md xl:text-2xl text-[var(--light-blue)]  mb-2 open-sans">
@@ -119,6 +122,15 @@ const CommentUI: React.FC<CommentUIProps> = ({
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* ADS Zone */}
+            <div className=' hidden lg:block lg:col-span-4 overflow-hidden' >
+               <div className=' flex bg-red-500 justify-start z-0' >
+               <Ju160x600Skyscraper/>
+               <AdstrBanner160x600/>
+               <AdstrBanner160x300/>
+               </div>
             </div>
 
         </div>

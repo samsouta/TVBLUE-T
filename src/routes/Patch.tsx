@@ -1,7 +1,7 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { matchPath, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Home from '../pages/Home';
-import HomeDetail from '../components/features/video/VideoDetail';
+import HomeDetail from '../pages/VideoDetail';
 import Contact from '../pages/Contact';
 import Search from '../pages/Search';
 import Login from '../pages/Login';
@@ -21,6 +21,19 @@ import AllActress from '../pages/actress/AllActress';
 import AllVideoPage from '../pages/MoviesPageTypes/AllVideoPage';
 
 const Patch: React.FC = () => {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if the current URL matches the pattern /act/:id/:name
+    const match = matchPath({ path: '/act/:id/:name', end: true }, location.pathname);
+
+    if (!match) {
+      // If the URL does not match, remove the 'currentPage2' item from local storage
+      localStorage.removeItem('currentPage2');
+    }
+  }, [location]);
+
   return (
     <div>
       <Routes>

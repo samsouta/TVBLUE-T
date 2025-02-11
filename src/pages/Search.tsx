@@ -6,13 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { useSearchVideosQuery } from '../services/api/search/searchEngine';
 import { setCurrentSection } from '../services/slice/ScrollSlice';
-import ExoRecommendationWidget from '../components/ads/EXoClick/ExoRecommendationWidget';
 import { Loader } from 'lucide-react';
-import ExoPcBanner from '../components/ads/EXoClick/ExoPcBanner';
-import ExoMobileBanner from '../components/ads/EXoClick/ExoMobileBanner';
-import ExoMBannerCPM from '../components/ads/EXoClick/ExoMBannerCPM';
-import ExoRecomCPM from '../components/ads/EXoClick/ExoRecomCPM';
+
 import { useLocation } from 'react-router-dom';
+import AdstrBanner728x90 from '../components/ads/adstraa/AdstrBanner728x90';
+import AdstrBanner468x60 from '../components/ads/adstraa/AdstrBanner468x60';
+import AdstrBanner320x50 from '../components/ads/adstraa/AdstrBanner320x50';
+import HillMobileBanner from '../components/ads/Hillads/HillMobileBanner';
+import HillAllDevBanner from '../components/ads/Hillads/HillAllDevBanner';
+import JuNativeAds from '../components/ads/juicy/JuNativeAds';
+import JuLeaderboard from '../components/ads/juicy/JuLeaderboard';
 
 const Search: React.FC = () => {
     const location = useLocation();
@@ -35,8 +38,8 @@ const Search: React.FC = () => {
     const lastPage = data?.last_page;
     const validLastPage = lastPage ? Number(lastPage) : undefined;
 
-     // Save page number when it changes
-     useEffect(() => {
+    // Save page number when it changes
+    useEffect(() => {
         localStorage.setItem('currentPage', currentPage.toString());
     }, [currentPage]);
 
@@ -56,19 +59,16 @@ const Search: React.FC = () => {
 
     return (
         <div ref={contentRef} className="mt-20 mx-1 lg:mx-4">
-           
-             {/* ADS ZONE */}
-            {/* Mobile */}
-            <div className=' w-full flex flex-wrap justify-center' >
-                <div className=' hidden xl:block' >
-                    <ExoPcBanner />
-                </div>
-                <div className=' block xl:hidden' >
-                    <ExoMobileBanner />
-                    <ExoMBannerCPM />
-                </div>
+            {/* ads  */}
+            <div className='' >
+                <HillMobileBanner />
             </div>
-            {/* ADS END  */}
+            <div className="flex justify-center mt-2 w-full overflow-hidden">
+                <AdstrBanner320x50 />
+            </div>
+            <div className='' >
+                <HillAllDevBanner />
+            </div>
 
             <div className='flex justify-center items-center'>
                 <h1 className=' mb-6 text-[var(--light-blue)] my-2 text-2xl font-bold montserrat'>
@@ -96,16 +96,22 @@ const Search: React.FC = () => {
                             ))}
                         </div>
 
+
                         {/* ads */}
-                        <ExoRecommendationWidget />
-                        <ExoRecomCPM/>
-                        {/* ads end */}
+                        <div className=' flex justify-center mt-2 z-0' >
+                            <JuNativeAds />
+                        </div>
+                        <div className=' w-full' >
+                            <JuLeaderboard />
+                        </div>
 
                         <Pangination
                             lastPage={validLastPage || 1}
                             currentPage={currentPage}
                             setCurrentPage={setCurrentPage}
                         />
+
+
 
                     </>
 

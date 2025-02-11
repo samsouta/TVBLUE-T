@@ -5,11 +5,13 @@ import { Loader } from 'lucide-react';
 import HomeVideoPageChild from '../../components/features/video/VideoCard';
 import Pangination from '../../components/UI/pangination/Pangination';
 import { autoCorrect } from '../../utils/autoCorrect';
-import ExoPcBanner from '../../components/ads/EXoClick/ExoPcBanner';
-import ExoMobileBanner from '../../components/ads/EXoClick/ExoMobileBanner';
-import ExoMBannerCPM from '../../components/ads/EXoClick/ExoMBannerCPM';
-import ExoRecommendationWidget from '../../components/ads/EXoClick/ExoRecommendationWidget';
-import ExoRecomCPM from '../../components/ads/EXoClick/ExoRecomCPM';
+import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90';
+import AdstrBanner468x60 from '../../components/ads/adstraa/AdstrBanner468x60';
+import AdstrBanner320x50 from '../../components/ads/adstraa/AdstrBanner320x50';
+import HillMobileBanner from '../../components/ads/Hillads/HillMobileBanner';
+import HillAllDevBanner from '../../components/ads/Hillads/HillAllDevBanner';
+import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
+import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
 
 
 
@@ -50,19 +52,17 @@ const TagsDetail: React.FC = () => {
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">
-            {/* ADS ZONE */}
-            {/* Mobile */}
-            <div className=' w-full flex flex-wrap justify-center' >
-                    <div className=' hidden xl:block' >
-                    <ExoPcBanner />
-                    </div>
-                    <div className=' block xl:hidden' >
-                    <ExoMobileBanner />
-                    <ExoMBannerCPM />
-                    </div>
-                </div>
 
-            {/* ADS END  */}
+            {/* ads  */}
+            <div className='' >
+                <HillMobileBanner />
+            </div>
+            <div className="flex justify-center mt-2 w-full overflow-hidden">
+                <AdstrBanner320x50 />
+            </div>
+            <div className='' >
+                <HillAllDevBanner />
+            </div>
 
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-2xl montserrat font-bold">
@@ -87,9 +87,12 @@ const TagsDetail: React.FC = () => {
                     </div>
 
                     {/* ads */}
-                    <ExoRecommendationWidget />
-                    <ExoRecomCPM />
-                    {/* ads end  */}
+                    <div className=' flex justify-center mt-2 z-0' >
+                        <JuNativeAds />
+                    </div>
+                    <div className=' w-full' >
+                        <JuLeaderboard />
+                    </div>
 
 
                     <Pangination
@@ -97,6 +100,7 @@ const TagsDetail: React.FC = () => {
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                     />
+
 
                 </>
             )}

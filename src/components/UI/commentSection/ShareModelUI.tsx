@@ -12,7 +12,7 @@ const ShareModelUI: React.FC<ShareModelUIProps> = ({id,setIsModalOpen }) => {
         setIsModalOpen(false);
     };
     const handleCopy = () => {
-        const textToCopy = `Visit our website: https://tvblue.netlify.app/videos/${id}`;
+        const textToCopy = `Watch Premiun Porn: https://bluetv.xyz/videos/${id}`;
         if (navigator.clipboard) {
             navigator.clipboard.writeText(textToCopy)
                 .then(() => alert("Website link copied to clipboard!"))
@@ -33,7 +33,7 @@ const ShareModelUI: React.FC<ShareModelUIProps> = ({id,setIsModalOpen }) => {
             document.body.removeChild(textArea);
         }
     };
-    const websiteUrl = `https://tvblue.netlify.app/videos/${id}`;
+    const websiteUrl = `https://bluetv.xyz/videos/${id}`;
     const whatsappShare = `whatsapp://send?text=${encodeURIComponent(websiteUrl)}`;
     const twitterShare = `twitter://post?message=${encodeURIComponent(websiteUrl)}`;
     const facebookShare = `fb://share?u=${encodeURIComponent(websiteUrl)}`;

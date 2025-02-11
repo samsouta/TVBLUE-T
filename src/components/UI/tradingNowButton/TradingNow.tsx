@@ -1,21 +1,16 @@
 import React from 'react'
-import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const TradingNow: React.FC = () => {
     return (
         <>
             <Link to={`/trending-now`} >
-            <div className='group relative cursor-pointer p-2 w-32 border bg-[var(--soft-blue)] rounded-full overflow-hidden text-[var(--light-blue)] text-center font-semibold'>
-                <span className='translate-x-1 group-hover:translate-x-12 group-hover:opacity-0 transition-all duration-300 inline-block'>
-                    Click Here 
-                </span>
-                <div className='flex gap-2 text-white z-10 items-center absolute top-0 h-full w-full justify-center translate-x-12 opacity-0 group-hover:-translate-x-1 group-hover:opacity-100 transition-all duration-300'>
-                    <span>Trending</span>
-                    <ArrowRight />
-                </div>
-                <div className='absolute top-[40%] left-[20%] h-2 w-2 group-hover:h-full group-hover:w-full rounded-lg bg-black scale-[1] dark:group-hover:bg-[#e7cb6e] group-hover:bg-[#263381] group-hover:scale-[1.8] transition-all duration-300 group-hover:top-[0%] group-hover:left-[0%] '></div>
-            </div>
+                <button
+                    className="group relative bg-transparent h-16 w-64 border-2 border-[var(--soft-blue)] text-white text-base font-bold rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:border-pink-500 hover:text-pink-200 p-3 text-left before:absolute before:w-10 before:h-10 before:content[''] before:right-2 before:top-2 before:z-10 before:bg-indigo-500 before:rounded-full before:blur-lg before:transition-all before:duration-500 after:absolute after:z-10 after:w-16 after:h-16 after:content[''] after:bg-pink-400 after:right-6 after:top-4 after:rounded-full after:blur-lg after:transition-all after:duration-500 hover:before:right-10 hover:before:-bottom-4 hover:before:blur hover:after:-right-6 hover:after:scale-110"
+                >
+                    Popular Now
+                </button>
+
             </Link>
         </>
     )
