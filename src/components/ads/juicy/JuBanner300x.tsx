@@ -36,7 +36,7 @@ const JuBanner300x: React.FC = () => {
     };
   }, []);
 
-  return <div ref={adRef} className="w-full flex justify-center"></div>;
+  return <div ref={adRef} className=""></div>;
 };
 
 export default JuBanner300x;

@@ -12,13 +12,11 @@ import RelatedVideo from '../components/features/video/RelatedVideo';
 import TVSkeleton from '../components/UI/loader/TVSkeleton';
 import { formatRelativeDate } from '../utils/formatRelativeDate';
 import AdstrBanner728x90 from '../components/ads/adstraa/AdstrBanner728x90';
-import AdstrBanner468x60 from '../components/ads/adstraa/AdstrBanner468x60';
-import AdstrBanner320x50 from '../components/ads/adstraa/AdstrBanner320x50';
-import Adstrbanner300x250 from '../components/ads/adstraa/Adstrbanner300x250';
-import AdstrBanner160x600 from '../components/ads/adstraa/AdstrBanner160x600';
 import JuLeaderboard from '../components/ads/juicy/JuLeaderboard';
 import JuNativeAds from '../components/ads/juicy/JuNativeAds';
-import HillAllDevBanner from '../components/ads/Hillads/HillAllDevBanner';
+import JuBanner300x from '../components/ads/juicy/JuBanner300x';
+import Ju160x600Skyscraper from '../components/ads/juicy/Ju160x600Skyscraper';
+import AdstrBanner160x600 from '../components/ads/adstraa/AdstrBanner160x600';
 
 
 const VideoDetail: React.FC = () => {
@@ -59,18 +57,12 @@ const VideoDetail: React.FC = () => {
     }
 
     return (
-        <div className="text-gray-100 mt-[80px] px-2">
+        <div className="text-gray-100 mt-[80px] px-2 ">
 
             {/* ads  zone*/}
            <div className=' block lg:hidden' >
            <div className="flex justify-center xl:justify-start mt-2 w-full overflow-hidden">
                 <AdstrBanner728x90 />
-            </div>
-            <div className="flex justify-center mt-2 w-full overflow-hidden">
-                <AdstrBanner468x60 />
-            </div>
-            <div className="flex justify-center mt-2 w-full overflow-hidden">
-                <AdstrBanner320x50 />
             </div>
            </div>
 
@@ -99,11 +91,8 @@ const VideoDetail: React.FC = () => {
 
                         {/* ads zone right side  */}
                         <div className=' hidden lg:block col-span-4' >
-                            <div className=' flex' >
-                                <div>
-                                <Adstrbanner300x250 />
-                                <HillAllDevBanner/>
-                                </div>
+                            <div className=' flex z-0' >
+                                <Ju160x600Skyscraper/>
                                 <AdstrBanner160x600 />
                             </div>
                         </div>
@@ -125,9 +114,9 @@ const VideoDetail: React.FC = () => {
             </div>
 
 
-            <div className="mt-10 mx-auto mb-20">
+            <div className="mt-10 mx-auto mb-20 ">
                 <h2 className="text-xl md:text-2xl head-font ms-2 text-white mb-4">Related Videos</h2>
-                <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
+                <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                     {isRelatedLoading
                         ? Array.from({ length: 8 }).map((_, index) => (
                             <div key={index} className="w-full">
@@ -146,8 +135,9 @@ const VideoDetail: React.FC = () => {
             </div>
 
             {/* ads zone */}
-            <div>
+            <div className=' flex flex-col items-center z-0 w-full overflow-hidden' >
                 <JuNativeAds />
+                <JuBanner300x/>
             </div>
 
             {/* Share Modal */}

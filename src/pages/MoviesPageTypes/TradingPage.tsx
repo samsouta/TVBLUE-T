@@ -7,15 +7,12 @@ import Pangination from '../../components/UI/pangination/Pangination';
 import HomeSlider from '../../components/features/video/VideoSlider';
 
 import { useLocation } from 'react-router-dom';
-import AdstrBanner468x60 from '../../components/ads/adstraa/AdstrBanner468x60';
-import HillMobileBanner from '../../components/ads/Hillads/HillMobileBanner';
-import HillAllDevBanner from '../../components/ads/Hillads/HillAllDevBanner';
 import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
 import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
 import Ju160x600Skyscraper from '../../components/ads/juicy/Ju160x600Skyscraper';
-import Ju125x125ImgTitle from '../../components/ads/juicy/Ju125x125ImgTitle';
-import Ju50x150ImgTitle from '../../components/ads/juicy/Ju50x150ImgTitle';
 import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
+import AdstrBanner160x600 from '../../components/ads/adstraa/AdstrBanner160x600';
+import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90';
 
 const TradingPage: React.FC = () => {
     const location = useLocation();
@@ -48,33 +45,22 @@ const TradingPage: React.FC = () => {
     return (
         <>
             <div className="mt-16 mx-1 lg:mx-4">
-                <div className="grid grid-cols-12 mx-auto gap-4">
+                <div className="grid grid-cols-12 gap-4">
                     {/* Main Slider - Takes 9 columns on xl screens */}
-                    <div className="col-span-12 md:col-span-9">
+                    <div className="col-span-12 md:col-span-8">
                         <HomeSlider />
-
-                        {/* Commented ads section preserved */}
-                        {/* <div className=" flex flex-col md:flex-row z-0 w-full overflow-hidden">
-                            <HillAllDevBanner />
-                            <div className=' flex z-0' >
-                            <Ju125x125ImgTitle />
-                            <Ju50x150ImgTitle />
-                            </div>
-                        </div> */}
                     </div>
 
-                    {/* Ads Section - Takes 3 columns on xl screens */}
-                    {/* <div className="hidden md:block md:col-span-3 z-0">
-                        <Ju160x600Skyscraper />
-                    </div> */}
+                    {/* Ads Section - long board */}
+                    <div className="hidden md:block md:col-span-4 z-0">
+                        <div className=' flex justify-center' >
+                            <Ju160x600Skyscraper />
+                            <AdstrBanner160x600 />
+                        </div>
+                    </div>
 
 
                 </div>
-
-                {/* ads  */}
-                {/* <div className=' mt-2' >
-                    <HillMobileBanner />
-                </div> */}
 
                 {/* Watch More */}
                 <div className="mt-10">
@@ -83,16 +69,15 @@ const TradingPage: React.FC = () => {
                             Watch More Videos
                         </h1>
                         <WatchMore />
-                    </div>
-                    
 
-                    {/* ads */}
-                    {/* <div className="flex justify-center mt-2 w-full overflow-hidden">
-                        <AdstrBanner468x60 />
+                        {/* Commented ads section preserved */}
+                        <div className=' flex z-0 flex-col  items-center mt-2 md:flex-row overflow-hidden' >
+                            <JuBanner300x />
+                        </div>
                     </div>
-                    <div className=' w-full' >
-                        <JuLeaderboard />
-                    </div> */}
+
+
+                   
 
                 </div>
 
@@ -119,15 +104,18 @@ const TradingPage: React.FC = () => {
                         ))}
                 </div>
 
-
-                {/* ads */}
-                {/* <div className=' flex justify-center mt-2 z-0' >
-                    <JuNativeAds />
-                </div>
-                <div className=' flex justify-center mt-2 z-0' >
-                    <JuBanner300x />
-                </div> */}
-
+                 {/* ads */}
+                   <div className=' flex flex-col gap-y-3' >
+                   <div className="flex justify-center z-0  w-full overflow-hidden">
+                        <AdstrBanner728x90 />
+                    </div>
+                    <div className=' flex justify-center z-0 overflow-hidden' >
+                        <JuLeaderboard />
+                    </div>
+                    <div className=' flex justify-center z-0' >
+                        <JuNativeAds />
+                    </div>
+                   </div>
 
                 {/* Pagination */}
                 <Pangination

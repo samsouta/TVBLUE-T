@@ -4,13 +4,10 @@ import Pangination from '../../components/UI/pangination/Pangination'
 import { useGetNewReleaseMovieQuery } from '../../services/api/Movies/getMovies'
 import { Loader } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
-import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90'
-import AdstrBanner468x60 from '../../components/ads/adstraa/AdstrBanner468x60'
-import AdstrBanner320x50 from '../../components/ads/adstraa/AdstrBanner320x50'
-import HillMobileBanner from '../../components/ads/Hillads/HillMobileBanner'
-import HillAllDevBanner from '../../components/ads/Hillads/HillAllDevBanner'
 import JuNativeAds from '../../components/ads/juicy/JuNativeAds'
 import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard'
+import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90'
+import JuBanner300x from '../../components/ads/juicy/JuBanner300x'
 
 
 const NewRelease: React.FC = () => {
@@ -39,17 +36,12 @@ const NewRelease: React.FC = () => {
 
     return (
         <div className="mt-24 mx-1 lg:mx-4">
-
-            
             {/* ads  */}
-            <div className='' >
-                <HillMobileBanner />
+            <div className=' w-full flex justify-center overflow-hidden z-0' >
+                <JuLeaderboard />
             </div>
-            <div className="flex justify-center mt-2 w-full overflow-hidden">
-                <AdstrBanner320x50 />
-            </div>
-            <div className='' >
-                <HillAllDevBanner />
+            <div className=' w-full flex justify-center overflow-hidden' >
+                <AdstrBanner728x90 />
             </div>
 
             <div className="flex justify-center items-center">
@@ -79,8 +71,8 @@ const NewRelease: React.FC = () => {
                     <div className=' flex justify-center mt-2 z-0' >
                         <JuNativeAds />
                     </div>
-                    <div className=' w-full z-0' >
-                        <JuLeaderboard />
+                    <div className=' flex justify-center mt-2 z-0' >
+                        <JuBanner300x />
                     </div>
 
                     <Pangination

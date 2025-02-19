@@ -36,7 +36,7 @@ const JuLeaderboard: React.FC = () => {
     };
   }, []);
 
-  return <div ref={adRef} className=" w-full"></div>;
+  return <div ref={adRef} ></div>;
 };
 
 export default JuLeaderboard;

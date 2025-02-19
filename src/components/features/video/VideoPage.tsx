@@ -7,11 +7,10 @@ import MoviesWithGenre from '../MoviesWithGenre/MoviesWithGenre';
 import FindVideoWithTags from '../MoviesWithTags/FindVideoWithTags';
 import RandomVideo from '../home/RandomVideo';
 import JuNativeAds from '../../ads/juicy/JuNativeAds';
-import Ju125x125ImgTitle from '../../ads/juicy/Ju125x125ImgTitle';
-import Ju50x150ImgTitle from '../../ads/juicy/Ju50x150ImgTitle';
-import JuBanner300x from '../../ads/juicy/JuBanner300x';
 import JuLeaderboard from '../../ads/juicy/JuLeaderboard';
 import GoUpBtn from '../../UI/GoUp/GoUpBtn';
+import HillAllDevBanner from '../../ads/Hillads/HillAllDevBanner';
+import AdstrBanner728x90 from '../../ads/adstraa/AdstrBanner728x90';
 
 
 const VideoPage: React.FC = () => {
@@ -46,25 +45,24 @@ const VideoPage: React.FC = () => {
                 <RecommentForYou />
 
                 {/* ads  */}
-                <div className='' >
+                <div className=' flex z-0 overflow-hidden w-full justify-center' >
                     <JuLeaderboard />
                 </div>
 
 
                 <FindVideoWithTags isTag='creampie' />
 
-                {/* ads */}
-                <div className=' z-0 flex justify-around' >
-                    <Ju125x125ImgTitle />
-                    <Ju50x150ImgTitle/>
+                {/* ads  */}
+                <div className=' flex justify-center z-0' >
+                    <JuNativeAds/>
                 </div>
 
                 <FindVideoWithTags isTag='Bondage' />
 
 
                 {/* ads  */}
-                <div className=' flex justify-center z-0' >
-                    <JuNativeAds/>
+                <div className=' w-full  flex overflow-hidden justify-center z-0' >
+                    <HillAllDevBanner/>
                 </div>
 
 
@@ -73,9 +71,11 @@ const VideoPage: React.FC = () => {
                 />
 
                 {/* ads  */}
-                <div className=' flex justify-center z-0' >
-                    <JuBanner300x/>
+                <div className=' w-full  flex overflow-hidden justify-center z-0' >
+                    <AdstrBanner728x90/>
                 </div>
+
+                
 
 
                 <MoviesWithGenre

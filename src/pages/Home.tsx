@@ -5,8 +5,6 @@ import TradingNow from '../components/UI/tradingNowButton/TradingNow';
 import SwiperBox from '../components/features/PopularModelSwiper/SwiperBox';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import AdstrBanner320x50 from '../components/ads/adstraa/AdstrBanner320x50';
-import HillMobileBanner from '../components/ads/Hillads/HillMobileBanner';
 import JuBanner300x from '../components/ads/juicy/JuBanner300x';
 
 
@@ -44,8 +42,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* ads  */}
-          <div className=' z-0' >
-            <HillMobileBanner />
+          <div className=' z-0 overflow-hidden w-full flex justify-center' >
             <JuBanner300x />
           </div>
 
@@ -59,10 +56,6 @@ const Home: React.FC = () => {
           </div>
 
 
-          {/* ads */}
-          <div className="flex justify-center mt-2 w-full overflow-hidden">
-            <AdstrBanner320x50 />
-          </div>
 
           {typePage === 'Video' && <VideoPage />}
 

@@ -4,13 +4,10 @@ import { useGetActressQuery } from '../../services/api/actress/getActress';
 import { Avatar } from '@nextui-org/react';
 import TVSkeleton from '../../components/UI/loader/TVSkeleton';
 import Pangination from '../../components/UI/pangination/Pangination';
-import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90';
-import AdstrBanner468x60 from '../../components/ads/adstraa/AdstrBanner468x60';
-import AdstrBanner320x50 from '../../components/ads/adstraa/AdstrBanner320x50';
-import HillMobileBanner from '../../components/ads/Hillads/HillMobileBanner';
-import HillAllDevBanner from '../../components/ads/Hillads/HillAllDevBanner';
 import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
+import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
 import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
+import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90';
 
 const AllActress: React.FC = () => {
   const location = useLocation();
@@ -58,14 +55,11 @@ const AllActress: React.FC = () => {
     <div className="container mx-auto px-4 mt-24">
 
       {/* ads  */}
-      <div className='' >
-        <HillMobileBanner />
+      <div className=' w-full flex justify-center overflow-hidden z-0' >
+        <JuLeaderboard />
       </div>
-      <div className="flex justify-center mt-2 w-full overflow-hidden">
-        <AdstrBanner320x50 />
-      </div>
-      <div className='' >
-        <HillAllDevBanner />
+      <div className=' w-full flex justify-center overflow-hidden' >
+        <AdstrBanner728x90 />
       </div>
 
       <h2 className="text-2xl montserrat font-bold text-center text-[var(--light-blue)] mb-8">
@@ -97,8 +91,8 @@ const AllActress: React.FC = () => {
       <div className=' flex justify-center mt-2 z-0' >
         <JuNativeAds />
       </div>
-      <div className=' w-full' >
-        <JuLeaderboard />
+      <div className=' flex justify-center mt-2 z-0' >
+        <JuBanner300x />
       </div>
 
 

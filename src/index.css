@@ -5,12 +5,12 @@
 
 #base {
   background-color: transparent;
-  /* background-color: var(--medium-blue); */
+  background-color: var(--medium-blue);
   /* background-image: url(./assets/background/background.gif); */
 }
 #root {
   background-color: transparent;
-  /* background-color: var(--medium-blue); */
+  background-color: var(--medium-blue);
   /* background-image: url(./assets/background/background.gif); */
   margin: 0;
   padding: 0;
@@ -20,8 +20,9 @@
 
 body {
   background-color: transparent;
-  /* background-color: var(--medium-blue); */
-  /* background-image: url(./assets/background/background.gif); */
+  background-color: var(--medium-blue);
+  margin: 0; 
+  padding: 0;
 }
 
 .ad-container {
