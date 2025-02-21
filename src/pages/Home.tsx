@@ -27,7 +27,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className='mt-20 flex flex-col mx-1 lg:mx-4 gap-y-8'>
+      <div className=' flex flex-col mx-1 lg:mx-4 gap-y-8'>
         <div className='' >
           {/* Popular Actress */}
           <div className=' mb-9 ' >
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* ads  */}
-          <div className=' z-0 overflow-hidden w-full flex justify-center' >
+          <div className=' overflow-hidden w-full flex justify-center' >
             <JuBanner300x />
           </div>
 

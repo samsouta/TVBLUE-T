@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, User } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRegisterMutation } from '../../../services/api/auth/auth';
 import { Alert } from '../alert/Alert';
@@ -63,7 +63,7 @@ const RegisterForm = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className=" "
+            className=""
         >
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -172,10 +172,10 @@ const RegisterForm = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
-                className="mt-6 text-center text-gray-600"
+                className="mt-6 text-center  text-[var(--soft-blue)]"
             >
                 Already have an account?{' '}
-                <Link to="/login" className="text-[#2265A2] hover:text-[#062654] font-semibold">
+                <Link to="/login" className=" text-gray-200 hover:text-[#062654] font-semibold">
                     Sign in
                 </Link>
             </motion.p>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Lock, Film, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../../services/api/auth/auth';
 import { Alert } from '../alert/Alert';
@@ -39,7 +39,7 @@ const LoginModal: React.FC = () => {
                 showAlert('error')
             }   
         } catch (err) {
-            showAlert('error')
+            showAlert('error' , err)
         }
     };
 
@@ -121,10 +121,10 @@ const LoginModal: React.FC = () => {
                     {isLoading ? 'Logging in...' : 'Sign In'}
                 </motion.button>
 
-                <p className="text-center text-gray-600">
+                <p className="text-center  text-[var(--soft-blue)] ">
                     Don't have an account?{' '}
                     <Link to={`/register`}
-                        className="text-[#2265A2] hover:text-[#062654] transition-colors font-semibold"
+                        className="text-gray-200 hover:text-[#062654] transition-colors font-semibold"
                     >
                         Sign up
                     </Link>
@@ -133,7 +133,7 @@ const LoginModal: React.FC = () => {
                 {/* Display any error message */}
                 {error && (
                     <p className="text-center text-red-600 mt-4">
-                        {error.message || 'An error occurred during login.'}
+                        {'An error occurred during login.'}
                     </p>
                 )}
             </form>

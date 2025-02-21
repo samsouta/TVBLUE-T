@@ -37,7 +37,7 @@ const AllVideoPage: React.FC = () => {
     }, [location.pathname]);
 
     return (
-        <div className="mt-24 mx-1 lg:mx-4">
+        <div className="mx-1 lg:mx-4">
 
             {/* ads  */}
             <div className=' w-full flex justify-center overflow-hidden z-0' >

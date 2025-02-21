@@ -44,7 +44,7 @@ const TradingPage: React.FC = () => {
 
     return (
         <>
-            <div className="mt-16 mx-1 lg:mx-4">
+            <div className=" mx-1 lg:mx-4">
                 <div className="grid grid-cols-12 gap-4">
                     {/* Main Slider - Takes 9 columns on xl screens */}
                     <div className="col-span-12 md:col-span-8">

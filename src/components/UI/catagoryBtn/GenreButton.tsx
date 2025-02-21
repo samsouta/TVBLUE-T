@@ -60,9 +60,9 @@ const GenreButton: React.FC<DataType> = ({ name, tag }) => {
 
     return (
         <div>
-            <Dropdown className="bg-white/20 backdrop-blur-xl">
+            <Dropdown className="bg-black/20 backdrop-blur-xl">
                 <DropdownTrigger>
-                    <h1 className="flex gap-x-2 items-center poppins-semibold text-[var(--dark-blue)] cursor-pointer text-lg bg-transparent hover:bg-transparent hover:text-[--soft-blue]">
+                    <h1 className="flex gap-x-2 items-center poppins-semibold text-[var(--light-blue)] cursor-pointer text-sm lg:text-lg bg-transparent hover:bg-transparent hover:text-[--soft-blue]">
                         {name}
                         <ChevronDown className="text-sm" />
                     </h1>
@@ -78,7 +78,7 @@ const GenreButton: React.FC<DataType> = ({ name, tag }) => {
                             key={subGenre.name}
                         >
                             <span
-                            className=" poppins-regular text-lg font-bold text-[var(--medium-blue)] "
+                            className=" poppins-regular text-sm lg:text-lg font-bold text-[var(--light-blue)] "
                             >{subGenre.name}</span>
                         </DropdownItem>
                     ))}

@@ -50,7 +50,7 @@ const MoreDetail: React.FC = () => {
     // }, [currentSection, dispatch]);
 
     return (
-        <div className="mt-24 mx-1 lg:mx-4">
+        <div className="mx-1 lg:mx-4">
 
             
             {/* ads  */}

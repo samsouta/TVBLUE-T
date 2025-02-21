@@ -39,10 +39,10 @@ const Patch: React.FC = () => {
       <Routes>
         {/* Video-related routes under LayoutVideo */}
         <Route path="/" element={<LayoutVideo />}>
-          <Route index element={<Navigate to="/trending-now" replace />} />
+          <Route index element={<Navigate to="/home" replace />} />
           <Route path="home" element={<Home />} />
           <Route path="videos/:id" element={<HomeDetail />} />
-          <Route path="contact" element={<Contact />} />
+          {/* <Route path="contact" element={<Contact />} /> */}
           <Route path="gn/:genre" element={<MoreDetail />} />
           <Route path="tags/:tag" element={<TagsDetail />} />
           <Route path="search/:query" element={<Search />} />

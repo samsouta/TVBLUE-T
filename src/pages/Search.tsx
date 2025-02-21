@@ -55,7 +55,7 @@ const Search: React.FC = () => {
     }, [currentSection, dispatch]);
 
     return (
-        <div ref={contentRef} className="mt-20 mx-1 lg:mx-4">
+        <div ref={contentRef} className=" mx-1 lg:mx-4">
 
             {/* ads  */}
             <div className=' w-full flex justify-center overflow-hidden z-0' >

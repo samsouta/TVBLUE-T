@@ -8,6 +8,7 @@ import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
 import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
 import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
 import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90';
+import { Avatar } from '@nextui-org/react';
 
 const ActressMovies: React.FC = () => {
   // Get the route param "id"
@@ -62,27 +63,53 @@ const ActressMovies: React.FC = () => {
   return (
     <div className="container mx-auto px-4 mt-24">
 
-       {/* ads  */}
-       <div className=' w-full flex justify-center overflow-hidden z-0' >
-                <JuLeaderboard />
-            </div>
-            <div className=' w-full flex justify-center overflow-hidden' >
-                <AdstrBanner728x90 />
-            </div>
-
-      <h2 className="text-2xl montserrat text-center text-[var(--light-blue)] mb-4">
-        <span className="font-bold">{actressName}</span>'s Movies
-      </h2>
-      <div className="flex-wrap grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
-        {movies.map((movie) => (
-          <HomeVideoPageChild key={movie.id} data={movie} />
-        ))}
+      {/* ads  */}
+      <div className=' w-full flex justify-center overflow-hidden z-0' >
+        <JuLeaderboard />
       </div>
-      {movies.length === 0 && (
-        <div className="text-center text-lg min-h-screen text-[var(--soft-blue)] py-8">
-          No movies found for this actress
+      <div className=' w-full flex justify-center overflow-hidden' >
+        <AdstrBanner728x90 />
+      </div>
+
+      {/* Actress info */}
+      <div className=' mt-5' >
+        <div className=' bg-black/30 p-10 rounded-lg shadow-md flex gap-x-6 md:justify-center' >
+          <Avatar
+            isBordered
+            color="success"
+            src={data?.actress?.image_url || undefined}
+            name={data?.actress?.name || undefined}
+            className="md:w-32 md:h-32 w-20 h-20"
+            style={{ objectPosition: 'top', objectFit: 'fill' }}
+          />
+          <h2 className=" text-[var(--light-blue)] mb-4 flex flex-col">
+            <span className="font-bold text-md md:text-xl montserrat ">{actressName} - ( {data?.actress?.age} ) yrs</span>
+            {/* // For DD/MM/YYYY format */}
+            <span className=' roboto text-sm md:text-lg' >
+              {data?.actress?.birth_date ? new Date(data.actress.birth_date).toLocaleDateString('en-GB') : undefined}
+            </span>
+            <span className=' roboto text-sm md:text-lg' >
+              {data?.actress?.description}
+            </span>
+            <span className=' roboto text-sm md:text-lg' >
+              {data?.actress?.nationality}
+            </span>
+            
+          </h2>
         </div>
-      )}
+
+        {/* // movies selection  */}
+        <div className="flex-wrap grid mt-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
+          {movies.map((movie) => (
+            <HomeVideoPageChild key={movie.id} data={movie} />
+          ))}
+        </div>
+        {movies.length === 0 && (
+          <div className="text-center text-lg min-h-screen text-[var(--soft-blue)] py-8">
+            No movies found for this actress
+          </div>
+        )}
+      </div>
 
       {/* ads */}
       <div className=' flex justify-center mt-2 z-0' >

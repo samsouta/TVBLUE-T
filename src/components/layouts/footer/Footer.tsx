@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {  Mail, Sparkles, Heart } from 'lucide-react';
-import Swal from 'sweetalert2';
 import { FaTelegram } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
@@ -16,24 +15,6 @@ const Footer: React.FC = () => {
         return regex.test(email);
     };
 
-    const handleSubscript = () => {
-        if (!email) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Please enter your email!',
-            });
-        } else if (!validateEmail(email)) {
-            Swal.fire({
-                icon: 'error',
-                text: 'Please enter a valid email address!',
-            });
-        } else {
-            setError('');
-            setEmail('');
-            Swal.fire('Thank you for subscribing!');
-        }
-    };
 
     return (
         <>

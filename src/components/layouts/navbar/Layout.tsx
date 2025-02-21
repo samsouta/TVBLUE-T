@@ -7,8 +7,9 @@ const Layout: React.FC = () => {
   return (
     <div>
       <TVNavbar />
+      <div className='mb-32 lg:mb-20' ></div>
       {/* Render child routes */}
-      <main>
+      <main >
         <Outlet />
       </main>
       <Footer />

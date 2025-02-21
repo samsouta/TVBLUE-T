@@ -13,7 +13,7 @@ const NavLinks: React.FC = () => {
 
 
   return (
-    <div className="hidden md:flex items-center gap-6">
+    <div className="flex items-center gap-4 lg:gap-6">
       {genreList?.map((gen) => (
         <GenreButton
           key={gen?.id}

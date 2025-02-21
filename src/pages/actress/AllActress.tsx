@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useGetActressQuery } from '../../services/api/actress/getActress';
 import { Avatar } from '@nextui-org/react';
-import TVSkeleton from '../../components/UI/loader/TVSkeleton';
 import Pangination from '../../components/UI/pangination/Pangination';
 import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
 import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
 import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
 import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90';
+import ModalLoader from '../../components/UI/loader/ModalLoader';
 
 const AllActress: React.FC = () => {
   const location = useLocation();
@@ -44,7 +44,7 @@ const AllActress: React.FC = () => {
       <div className="container mx-auto px-4 mt-24">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
           {[...Array(10)].map((_, index) => (
-            <TVSkeleton key={index} />
+            <ModalLoader key={index} />
           ))}
         </div>
       </div>
