@@ -64,6 +64,10 @@ const VideoDetail: React.FC = () => {
            <div className="flex justify-center xl:justify-start mt-2 w-full overflow-hidden">
                 <AdstrBanner728x90 />
             </div>
+            <div className=' flex flex-col items-center z-0 w-full overflow-hidden' >
+                
+                <JuLeaderboard />
+            </div>
            </div>
 
 
@@ -101,7 +105,7 @@ const VideoDetail: React.FC = () => {
 
                 {/* ads under video */}
                 <div className='flex justify-center overflow-hidden md:justify-start z-0 mt-2' >
-                    <JuLeaderboard />
+                <JuNativeAds />
                 </div>
 
                 <CommentUI

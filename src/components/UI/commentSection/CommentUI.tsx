@@ -33,7 +33,7 @@ const CommentUI: React.FC<CommentUIProps> = ({
 
     const handleActressClick = (actress: { id: number; name: string }) => {
         const formattedName = actress.name.toLowerCase().replace(/\s+/g, '');
-        navigate(`/actress/${actress.id}/${formattedName}`);
+        navigate(`/act/${actress.id}/${formattedName}`);
     };
 
     return (

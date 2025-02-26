@@ -55,6 +55,9 @@ const TagsDetail: React.FC = () => {
             <div className=' w-full flex justify-center overflow-hidden' >
                 <AdstrBanner728x90 />
             </div>
+            <div className=' flex justify-center mt-2 z-0' >
+                        <JuNativeAds />
+                    </div>
 
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-2xl montserrat font-bold">
@@ -79,9 +82,7 @@ const TagsDetail: React.FC = () => {
                     </div>
 
                     {/* ads */}
-                    <div className=' flex justify-center mt-2 z-0' >
-                        <JuNativeAds />
-                    </div>
+                   
                     <div className=' flex justify-center mt-2 z-0' >
                         <JuBanner300x />
                     </div>

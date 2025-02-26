@@ -5,7 +5,6 @@ import Pangination from '../../components/UI/pangination/Pangination';
 import { useGetMoviesWithGrenreQuery } from '../../services/api/Movies/getMovies';
 import { autoCorrect } from '../../utils/autoCorrect';
 import { Loader } from 'lucide-react';
-import HillAllDevBanner from '../../components/ads/Hillads/HillAllDevBanner';
 import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
 import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
 import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
@@ -60,6 +59,9 @@ const MoreDetail: React.FC = () => {
             <div className=' w-full flex justify-center overflow-hidden' >
                 <AdstrBanner728x90 />
             </div>
+            <div className=' flex justify-center mt-2 z-0' >
+                        <JuNativeAds />
+                    </div>
 
             <div className="flex justify-center items-center">
                 <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
@@ -84,9 +86,7 @@ const MoreDetail: React.FC = () => {
                     </div>
                     
                     {/* ads */}
-                    <div className=' flex justify-center mt-2 z-0' >
-                        <JuNativeAds />
-                    </div>
+                   
                     <div className=' flex justify-center mt-2 z-0' >
                         <JuBanner300x />
                     </div>

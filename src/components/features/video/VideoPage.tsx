@@ -65,14 +65,13 @@ const VideoPage: React.FC = () => {
                 <section className="space-y-6 md:space-y-12">
                     <div className="space-y-12">
                         <FindVideoWithTags isTag="creampie" />
+                        
                         <AdSection>
                             <JuNativeAds />
                         </AdSection>
 
                         <FindVideoWithTags isTag="Bondage" />
-                        {/* <AdSection>
-                            <HillAllDevBanner />
-                        </AdSection> */}
+                       
                     </div>
                 </section>
 

@@ -70,6 +70,9 @@ const ActressMovies: React.FC = () => {
       <div className=' w-full flex justify-center overflow-hidden' >
         <AdstrBanner728x90 />
       </div>
+      <div className=' flex justify-center mt-2 z-0' >
+        <JuNativeAds />
+      </div>
 
       {/* Actress info */}
       <div className=' mt-5' >
@@ -94,7 +97,7 @@ const ActressMovies: React.FC = () => {
             <span className=' roboto text-sm md:text-lg' >
               {data?.actress?.nationality}
             </span>
-            
+
           </h2>
         </div>
 
@@ -112,9 +115,7 @@ const ActressMovies: React.FC = () => {
       </div>
 
       {/* ads */}
-      <div className=' flex justify-center mt-2 z-0' >
-        <JuNativeAds />
-      </div>
+      
       <div className=' flex justify-center mt-2 z-0' >
         <JuBanner300x />
       </div>

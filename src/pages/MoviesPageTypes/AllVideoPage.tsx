@@ -46,6 +46,9 @@ const AllVideoPage: React.FC = () => {
             <div className=' w-full flex justify-center overflow-hidden' >
                 <AdstrBanner728x90 />
             </div>
+            <div className=' flex justify-center mt-2 z-0' >
+                <JuNativeAds />
+            </div>
 
 
             <div className="flex justify-center items-center">
@@ -72,9 +75,7 @@ const AllVideoPage: React.FC = () => {
 
 
                     {/* ads */}
-                    <div className=' flex justify-center mt-2 z-0' >
-                        <JuNativeAds />
-                    </div>
+
                     <div className=' flex justify-center mt-2 z-0' >
                         <JuBanner300x />
                     </div>
