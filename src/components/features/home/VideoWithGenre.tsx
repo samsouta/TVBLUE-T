@@ -1,28 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { useGetMoviesWithGrenreQuery } from '../../../services/api/movies';
 import { FaArrowRight } from 'react-icons/fa';
-import TVSkeleton from '../../UI/loader/TVSkeleton';
 import { useNavigate } from 'react-router-dom';
-import { useGetAllMoviesQuery } from '../../../services/api/movies';
+import { autoCorrect } from '../../../utils/autoCorrect';
+import TVSkeleton from '../../UI/loader/TVSkeleton';
 import VideoCard from '../../UI/VideoCard';
 
+type DataType = {
+    isGenre: string;
+};
 
-const RandomVideo: React.FC = () => {
-    /**
-     * @fetch data from api
-     */
-    const { data, isLoading } = useGetAllMoviesQuery(1);
+const MoviesWithGenre: React.FC<DataType> = ({ isGenre }) => {
+    const { data, isLoading } = useGetMoviesWithGrenreQuery({ genre: isGenre, page: 1 });
     const videos = data?.data || [];
+    const nav = useNavigate();
 
-    /**
-     * @router to more videos page
-     */
-    const router = useNavigate();
-
-    /**
-     * @handle more videos All video page
-     */
     const handleMoreVid = () => {
-        router(`/all-movies`);
+        nav(`/gn/${isGenre}`);
+        // Save genre to localStorage
+        localStorage.setItem('selectedGenre', isGenre);
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
@@ -36,7 +32,7 @@ const RandomVideo: React.FC = () => {
             }
             <div className="flex justify-between items-center">
                 <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
-                    All Video / Random
+                    {autoCorrect(isGenre)}
                 </h1>
                 <span
                     onClick={handleMoreVid}
@@ -63,14 +59,14 @@ const RandomVideo: React.FC = () => {
                     videos.map((item) => (
                         <VideoCard 
                         key={item?.id} 
-                        data={item}
+                        data={item} 
                         actData={item?.actresses}
                         />
                     ))
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default RandomVideo
+export default React.memo(MoviesWithGenre);

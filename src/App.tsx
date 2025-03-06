@@ -1,15 +1,18 @@
 import React from 'react';
-import Patch from './routes/Patch';
 // import ConnectVpn from './components/UI/alert/ConnectVpn';
-import AdultsModel from './components/UI/CheckAdultsModel/AdultsModel';
+import AdultsModel from './components/UI/AdultsModel';
 import { useDisclosure } from '@nextui-org/react';
+import Router from './routes/Router';
+import { HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
+
 
 const App: React.FC = () => {
   // const [accessAllowed, setAccessAllowed] = useState<boolean>(true);
   // const [isLoading, setIsLoading] = useState<boolean>(true);
-  
+
   // // Get the disclosure state from NextUI
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpenChange } = useDisclosure();
 
   // useEffect(() => {
   //   // Check the user's country access
@@ -53,9 +56,57 @@ const App: React.FC = () => {
   //   );
   // }
 
+  const siteStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "BlueTV - Best HD Porn & JAV Movies",
+    "description": "Stream trending Porn & JAV movies in HD quality on BlueTV. No ads, unlimited viewing.",
+    "thumbnailUrl": "https://bluetv.xyz/card.jpg",
+    "uploadDate": new Date().toISOString(),
+    "contentUrl": "https://bluetv.xyz/",
+    "duration": "PT2H",
+    "publisher": {
+      "@type": "Organization",
+      "name": "BlueTV",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bluetv.xyz/logo.png"
+      }
+    }
+  };
+
   return (
     <div>
-      <Patch />
+      <HelmetProvider>
+        <Helmet>
+          <title>BlueTV - Watch Free HD Adult Movies & JAV Videos</title>
+          <meta name="description" content="Watch free HD adult movies and live cam shows on BlueTV. Unlimited premium streaming with no ads." />
+          <meta name="keywords" content="HD adult movies, JAV videos, premium porn, streaming movies" />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://bluetv.xyz/" />
+
+          {/* Open Graph (Facebook) */}
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="BlueTV - Watch Free HD Adult Movies" />
+          <meta property="og:description" content="Unlimited access to the best HD adult movies and live cam shows. No ads, just streaming." />
+          <meta property="og:image" content="https://bluetv.xyz/card.jpg" />
+          <meta property="og:url" content="https://bluetv.xyz/" />
+
+          {/* Twitter Card */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="BlueTV - Free HD Adult Movies & JAV Videos" />
+          <meta name="twitter:description" content="Stream free HD adult movies and JAV videos with no ads on BlueTV." />
+          <meta name="twitter:image" content="https://bluetv.xyz/card.jpg" />
+
+          {/* Structured Data */}
+          <script type="application/ld+json">
+            {JSON.stringify(siteStructuredData)}
+          </script>
+        </Helmet>
+
+        <Router />
+      </HelmetProvider>
+
       {/* Pass the disclosure state to AdultsModel */}
       <AdultsModel isOpen={isOpen} onOpenChange={onOpenChange} />
     </div>

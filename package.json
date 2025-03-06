@@ -19,7 +19,7 @@
     "@mui/material": "^6.1.8",
     "@nextui-org/react": "^2.6.5",
     "@react-oauth/google": "^0.12.1",
-    "@reduxjs/toolkit": "^2.5.0",
+    "@reduxjs/toolkit": "^2.6.0",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -34,6 +34,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-google-login": "^5.2.2",
+    "react-helmet-async": "^2.0.5",
     "react-icons": "^5.3.0",
     "react-lazyload": "^3.2.1",
     "react-loader-spinner": "^6.1.6",
@@ -43,7 +44,8 @@
     "react-router-dom": "^6.28.2",
     "redux": "^5.0.1",
     "swiper": "^11.1.15",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^2.5.5",
+    "vite-plugin-sitemap": "^0.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

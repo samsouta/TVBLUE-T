@@ -1,28 +1,31 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import TVSkeleton from '../../UI/loader/TVSkeleton';
-import { useNavigate } from 'react-router-dom';
-import { useGetAllMoviesQuery } from '../../../services/api/movies';
+import { useFindTagsVideoQuery } from '../../../services/api/tag';
 import VideoCard from '../../UI/VideoCard';
 
+type TagProps = {
+    isTag: string;
+};
 
-const RandomVideo: React.FC = () => {
+const VideoWithTags: React.FC<TagProps> = ({isTag}) => {
     /**
-     * @fetch data from api
+     * @fetch data from API
      */
-    const { data, isLoading } = useGetAllMoviesQuery(1);
-    const videos = data?.data || [];
+    const { data, isLoading } = useFindTagsVideoQuery({ tag: isTag || '', page: 1 });
+    const videos = data?.data?.data || [];
 
     /**
-     * @router to more videos page
+     * @hook router 
      */
     const router = useNavigate();
 
     /**
-     * @handle more videos All video page
+     * @function handleMoreVid to go to more video page
      */
     const handleMoreVid = () => {
-        router(`/all-movies`);
+        router(`/tags/${isTag}`);
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
@@ -36,7 +39,7 @@ const RandomVideo: React.FC = () => {
             }
             <div className="flex justify-between items-center">
                 <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
-                    All Video / Random
+                    {isTag}
                 </h1>
                 <span
                     onClick={handleMoreVid}
@@ -73,4 +76,4 @@ const RandomVideo: React.FC = () => {
     )
 }
 
-export default RandomVideo
+export default VideoWithTags

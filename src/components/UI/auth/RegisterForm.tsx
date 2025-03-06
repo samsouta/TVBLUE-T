@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Lock, User } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRegisterMutation } from '../../../services/api/auth/auth';
+import { useRegisterMutation } from '../../../services/api/auth';
 import { Alert } from '../alert/Alert';
 
 const RegisterForm = () => {
