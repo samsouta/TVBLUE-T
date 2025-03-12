@@ -4,6 +4,10 @@ import { useGetNewReleaseMovieQuery } from '../services/api/movies'
 import { useSearchParams } from 'react-router-dom'
 import VideoCard from '../components/UI/VideoCard'
 import TVSkeleton from '../components/UI/loader/TVSkeleton'
+import JuBanner300x from '../components/ads/juicy/JuBanner300x'
+import JuLeaderboard from '../components/ads/juicy/JuLeaderboard'
+import JuNativeAds from '../components/ads/juicy/JuNativeAds'
+
 
 
 const NewRelease: React.FC = () => {
@@ -20,7 +24,7 @@ const NewRelease: React.FC = () => {
     /**
      * @fetch server data
      */
-    const { data, isLoading, isError,isFetching } = useGetNewReleaseMovieQuery(currentPage)
+    const { data, isLoading, isError, isFetching } = useGetNewReleaseMovieQuery(currentPage)
     const newRelease = data?.data
     const lastPage = data?.last_page
 
@@ -38,28 +42,37 @@ const NewRelease: React.FC = () => {
      */
     const handlePageChange = (page: number) => {
         setSearchParams({ page: page.toString() });
-      };
+    };
 
-  /**
-   * @loading and error handling
-   */
-  if (isLoading || isFetching) {
-    return (
-      <div className="flex-wrap grid mt-24 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
-        {[...Array(20)].map((_, index) => (
-          <TVSkeleton key={index} />
-        ))}
-      </div>
-    );
-  }
+    /**
+     * @loading and error handling
+     */
+    if (isLoading || isFetching) {
+        return (
+            <div className="flex-wrap grid mt-24 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
+                {[...Array(20)].map((_, index) => (
+                    <TVSkeleton key={index} />
+                ))}
+            </div>
+        );
+    }
 
 
     return (
         <div className=" mx-1 lg:mx-4">
-            <div className="flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-2xl montserrat font-bold">
                     New-Release
                 </h1>
+
+                {
+                    /* /** ADS ZONE */
+                }
+                <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                    <JuLeaderboard />
+                </div>
+
+
             </div>
 
 
@@ -77,11 +90,22 @@ const NewRelease: React.FC = () => {
                         ))}
                     </div>
 
+                    {
+                        /* /** ADS ZONE */
+                    }
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
+                        <JuBanner300x />
+                    </div>
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                        <JuNativeAds />
+                    </div>
+
                     <Pangination
                         lastPage={lastPage}
                         currentPage={currentPage}
                         setCurrentPage={handlePageChange}
                     />
+
 
                 </>
             )}

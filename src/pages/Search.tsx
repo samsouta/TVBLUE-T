@@ -8,6 +8,9 @@ import { useSearchVideosQuery } from '../services/api/searchEngine';
 import VideoCard from '../components/UI/VideoCard';
 import { useSearchParams } from 'react-router-dom';
 import TVSkeleton from '../components/UI/loader/TVSkeleton';
+import JuLeaderboard from '../components/ads/juicy/JuLeaderboard';
+import JuBanner300x from '../components/ads/juicy/JuBanner300x';
+import JuNativeAds from '../components/ads/juicy/JuNativeAds';
 
 const Search: React.FC = () => {
     /**
@@ -67,10 +70,18 @@ const Search: React.FC = () => {
     return (
         <div ref={contentRef} className=" mx-1 lg:mx-4">
 
-            <div className='flex justify-center items-center'>
+            <div className='flex flex-col justify-center items-center'>
                 <h1 className=' mb-6 text-[var(--light-blue)] my-2 text-2xl font-bold montserrat'>
                     {searchQuery}
                 </h1>
+
+                {
+                    /* /** ADS ZONE */
+                }
+                <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                    <JuLeaderboard />
+                </div>
+
             </div>
 
             {
@@ -94,6 +105,16 @@ const Search: React.FC = () => {
                                     actData={item?.actresses}
                                 />
                             ))}
+                        </div>
+
+                        {
+                            /* /** ADS ZONE */
+                        }
+                        <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
+                            <JuBanner300x />
+                        </div>
+                        <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                            <JuNativeAds />
                         </div>
 
 

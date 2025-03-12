@@ -13,6 +13,8 @@ import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
 import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
 import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
 import AdstrBanner728x90 from '../../components/ads/adstraa/AdstrBanner728x90';
+import EXOPcbanner from '../../components/ads/EXO/EXOPcbanner';
+import EXOMobileBanner from '../../components/ads/EXO/EXOMobileBanner';
 
 type MoviesDetailType = {
     movie: MovieDataType;
@@ -80,6 +82,7 @@ const Page: React.FC = () => {
         }
     }, [incrementView]);
 
+    
     /**
      * @error handling
      */
@@ -95,10 +98,23 @@ const Page: React.FC = () => {
     return (
         <>
             <div className="text-gray-100  px-2  ">
+
                 {
                     /* Video player Section */
                 }
                 <div>
+                    {
+                        /* ADS ZONE */
+                    }
+                    <div className=' flex flex-col items-center' >
+                        <div className=' hidden lg:block' >
+                            <EXOPcbanner />
+                        </div>
+                        <div className=' block lg:hidden' >
+                            <EXOMobileBanner />
+                        </div>
+                    </div>
+
                     <div className="flex xl:justify-between">
                         <div className="w-full relative  grid grid-cols-12 overflow-hidden">
                             <div className=' lg:col-span-8 col-span-12' >
@@ -109,9 +125,10 @@ const Page: React.FC = () => {
                                         height="100%"
                                         title="Video Player"
                                         loading="lazy"
-                                        sandbox="allow-scripts allow-same-origin allow-presentation"
                                         allowFullScreen
+                                        allow="fullscreen"
                                         onLoad={() => handleVideoPlayed(movies?.movie?.id || 0)}
+                                   
                                     />
                                     <div className="cursor-not-allowed absolute bottom-0 z-50 right-14 rounded-md bg-transparent w-8 h-8"></div>
                                 </div>

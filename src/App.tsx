@@ -88,7 +88,7 @@ const App: React.FC = () => {
           {/* Open Graph (Facebook) */}
           <meta property="og:type" content="website" />
           <meta property="og:title" content="BlueTV - Watch Free HD Adult Movies" />
-          <meta property="og:description" content="Unlimited access to the best HD adult movies and live cam shows. No ads, just streaming." />
+          <meta property="og:description" content="Unlimited access to the best HD adult movies and live cam shows, just streaming." />
           <meta property="og:image" content="https://bluetv.xyz/card.jpg" />
           <meta property="og:url" content="https://bluetv.xyz/" />
 

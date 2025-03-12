@@ -11,6 +11,8 @@ import JuBanner300x from '../components/ads/juicy/JuBanner300x';
 import JuLeaderboard from '../components/ads/juicy/JuLeaderboard';
 import JuNativeAds from '../components/ads/juicy/JuNativeAds';
 import AdstrBanner728x90 from '../components/ads/adstraa/AdstrBanner728x90';
+import EXOPcbanner from '../components/ads/EXO/EXOPcbanner';
+import EXOMobileBanner from '../components/ads/EXO/EXOMobileBanner';
 
 const Trending: React.FC = () => {
     /**
@@ -119,6 +121,17 @@ const Trending: React.FC = () => {
                         ))}
                 </div>
 
+                {
+                    /* ADS ZONE */
+                }
+                <div className=' flex flex-col items-center' >
+                    <div className=' hidden lg:block' >
+                        <EXOPcbanner />
+                    </div>
+                    <div className=' block lg:hidden' >
+                        <EXOMobileBanner />
+                    </div>
+                </div>
 
                 {
                     /* /* Pagination */
@@ -133,7 +146,7 @@ const Trending: React.FC = () => {
                     /* /** ADS ZONE */
                 }
                 <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
-                    <AdstrBanner728x90/>
+                    <AdstrBanner728x90 />
                 </div>
 
             </div>

@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom';
 import Pangination from '../../components/UI/loader/Pangination';
-import { autoCorrect } from '../../utils/autoCorrect';
 import VideoCard from '../../components/UI/VideoCard';
 import { useFindTagsVideoQuery } from '../../services/api/tag';
 import TVSkeleton from '../../components/UI/loader/TVSkeleton';
+import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
+import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
+import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
+import EXOPcbanner from '../../components/ads/EXO/EXOPcbanner';
+import EXOMobileBanner from '../../components/ads/EXO/EXOMobileBanner';
 
 const Page: React.FC = () => {
 
@@ -63,10 +67,17 @@ const Page: React.FC = () => {
     return (
         <div className=" mx-1 lg:mx-4">
 
-            <div className="flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
                 <h1 className="text-[var(--light-blue)] mb-6 text-2xl montserrat font-bold">
-                    {autoCorrect(tag || 'Unknown')}
+                    {tag || 'Unknown'}
                 </h1>
+
+                {
+                    /* /** ADS ZONE */
+                }
+                <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                    <JuLeaderboard />
+                </div>
             </div>
             {isError || !TagsVideo?.length ? (
                 <div className="text-center text-[var(--light-blue)]">No video found</div>
@@ -82,6 +93,16 @@ const Page: React.FC = () => {
                         ))}
                     </div>
 
+                    {
+                        /* /** ADS ZONE */
+                    }
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
+                        <JuBanner300x />
+                    </div>
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                        <JuNativeAds />
+                    </div>
+
 
                     {/* /** pang */}
                     <Pangination
@@ -89,6 +110,20 @@ const Page: React.FC = () => {
                         currentPage={currentPage}
                         setCurrentPage={handlePageChange}
                     />
+
+
+                    {
+                        /* ADS ZONE */
+                    }
+                    <div className=' flex flex-col items-center' >
+                        <div className=' hidden lg:block' >
+                            <EXOPcbanner />
+                        </div>
+                        <div className=' block lg:hidden' >
+                            <EXOMobileBanner />
+                        </div>
+                    </div>
+
                 </>
             )}
         </div>

@@ -1,66 +1,81 @@
-import React, { useEffect, useState } from 'react'
-import { Loader } from 'lucide-react'
+import React, { useEffect } from 'react'
 import Pangination from '../components/UI/loader/Pangination'
 import { useGetAllMoviesQuery } from '../services/api/movies'
-import { useLocation } from 'react-router-dom'
+
+import VideoCard from '../components/UI/VideoCard'
+import { useSearchParams } from 'react-router-dom'
+import TVSkeleton from '../components/UI/loader/TVSkeleton'
+import JuBanner300x from '../components/ads/juicy/JuBanner300x'
 import JuNativeAds from '../components/ads/juicy/JuNativeAds'
 import JuLeaderboard from '../components/ads/juicy/JuLeaderboard'
-import AdstrBanner728x90 from '../components/ads/adstraa/AdstrBanner728x90'
-import JuBanner300x from '../components/ads/juicy/JuBanner300x'
-import VideoCard from '../components/UI/VideoCard'
 
 
 const Random: React.FC = () => {
-    const location = useLocation(); // React to route changes
-    const [currentPage, setCurrentPage] = useState(() => {
-        const savedPage = localStorage.getItem('currentPage');
-        return savedPage ? parseInt(savedPage) : 1;
-    });
 
+    /**
+     * @hook for router location and search params
+     */
+    const [searchParams, setSearchParams] = useSearchParams();
 
+    /**
+     * @get current page from search params
+     */
+    const currentPage = Number(searchParams.get('page')) || 1;
 
-    const { data, isLoading, isError } = useGetAllMoviesQuery(currentPage);
-
+    /**
+     * @fetch server data
+     */
+    const { data, isLoading, isError , isFetching } = useGetAllMoviesQuery(currentPage);
     const genData = data?.data;
     const lastPage = data?.last_page;
 
-    // Save page number when it changes
+    /**
+     *  @set page number in URL when currentPage changes
+     */
     useEffect(() => {
-        localStorage.setItem('currentPage', currentPage.toString());
-    }, [currentPage]);
+        setSearchParams({ page: currentPage.toString() });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [currentPage, setSearchParams]);
 
-    // Clear localStorage when leaving the actresses page
-    useEffect(() => {
-        if (!location.pathname.includes('/all-movies')) {
-            localStorage.removeItem('currentPage');
-        }
-    }, [location.pathname]);
+    /**
+     * 
+     * @handle page change
+     */
+    const handlePageChange = (page: number) => {
+        setSearchParams({ page: page.toString() });
+    };
+
+    /**
+ * @loading and error handling
+ */
+    if (isLoading || isFetching) {
+        return (
+            <div className="flex-wrap grid mt-24 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
+                {[...Array(20)].map((_, index) => (
+                    <TVSkeleton key={index} />
+                ))}
+            </div>
+        );
+    }
 
     return (
         <div className="mx-1 lg:mx-4">
 
-            {/* ads  */}
-            <div className=' w-full flex justify-center overflow-hidden z-0' >
-                <JuLeaderboard />
-            </div>
-            <div className=' w-full flex justify-center overflow-hidden' >
-                <AdstrBanner728x90 />
-            </div>
-            <div className=' flex justify-center mt-2 z-0' >
-                <JuNativeAds />
-            </div>
 
-
-            <div className="flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
                 <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
                     All Videos
                 </h1>
-            </div>
-            {isLoading ? (
-                <div className="flex justify-center items-center mt-4">
-                    <Loader className="animate-spin text-green-400" size={34} />
+
+                {
+                    /* /** ADS ZONE */
+                }
+                <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                    <JuLeaderboard />
                 </div>
-            ) : isError || !genData?.length ? (
+
+            </div>
+            { isError || !genData?.length ? (
                 <div className="text-center text-[var(--light-blue)]">No video found</div>
             ) : (
                 <>
@@ -69,21 +84,26 @@ const Random: React.FC = () => {
                             <VideoCard
                                 key={item?.id}
                                 data={item}
+                                actData={item?.actresses}
                             />
                         ))}
                     </div>
 
 
-                    {/* ads */}
-
-                    <div className=' flex justify-center mt-2 z-0' >
+                    {
+                        /* /** ADS ZONE */
+                    }
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
                         <JuBanner300x />
+                    </div>
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                        <JuNativeAds />
                     </div>
 
                     <Pangination
                         lastPage={lastPage}
                         currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
+                        setCurrentPage={handlePageChange}
                     />
 
                 </>

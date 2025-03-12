@@ -5,6 +5,8 @@ import HomeChild from '../components/features/home/HomeChild';
 import TrendingBtn from '../components/UI/TrendingBtn';
 import ActressSwiper from '../components/UI/ActressSwiper';
 import JuBanner300x from '../components/ads/juicy/JuBanner300x';
+import EXOPcbanner from '../components/ads/EXO/EXOPcbanner';
+import EXOMobileBanner from '../components/ads/EXO/EXOMobileBanner';
 
 const Home: React.FC = () => {
 
@@ -44,9 +46,16 @@ const Home: React.FC = () => {
           {
             /* /** ADS ZONE */
           }
-          <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
+          <div className=' overflow-hidden z-0 md:col-span-4 w-full flex flex-col items-center' >
             <JuBanner300x />
+            <div className=' hidden lg:block' >
+              <EXOPcbanner />
+            </div>
+            <div className=' block lg:hidden' >
+              <EXOMobileBanner />
+            </div>
           </div>
+
 
           {
             /* video list  */

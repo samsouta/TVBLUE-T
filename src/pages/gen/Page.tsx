@@ -1,10 +1,14 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import Pangination from '../../components/UI/loader/Pangination';
 import { useGetMoviesWithGrenreQuery } from '../../services/api/movies';
-import { autoCorrect } from '../../utils/autoCorrect';
 import VideoCard from '../../components/UI/VideoCard';
 import TVSkeleton from '../../components/UI/loader/TVSkeleton';
+import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
+import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
+import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
+import EXOPcbanner from '../../components/ads/EXO/EXOPcbanner';
+import EXOMobileBanner from '../../components/ads/EXO/EXOMobileBanner';
 
 const Page: React.FC = () => {
     /**
@@ -21,7 +25,7 @@ const Page: React.FC = () => {
     /**
      * @fetch server data
      */
-    const { data, isLoading, isError,isFetching } = useGetMoviesWithGrenreQuery({
+    const { data, isLoading, isError, isFetching } = useGetMoviesWithGrenreQuery({
         genre: genre || '',
         page: currentPage,
     });
@@ -45,29 +49,38 @@ const Page: React.FC = () => {
         setSearchParams({ page: page.toString() });
     };
 
-  /**
-   * @loading and error handling
-   */
-  if (isLoading || isFetching) {
-    return (
-      <div className="flex-wrap grid mt-24 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
-        {[...Array(10)].map((_, index) => (
-          <TVSkeleton key={index} />
-        ))}
-      </div>
-    );
-  }
-  
+    /**
+     * @loading and error handling
+     */
+    if (isLoading || isFetching) {
+        return (
+            <div className="flex-wrap grid mt-24 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
+                {[...Array(10)].map((_, index) => (
+                    <TVSkeleton key={index} />
+                ))}
+            </div>
+        );
+    }
+
 
     return (
         <div className="mx-1 lg:mx-4">
 
-            <div className="flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
                 <h1 className="text-[var(--light-blue)] my-2 text-2xl font-bold montserrat">
-                    {autoCorrect(genre || 'Unknown')}
+                    {genre || 'Unknown'}
                 </h1>
+
+                {
+                    /* /** ADS ZONE */
+                }
+                <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                    <JuLeaderboard />
+                </div>
+
+
             </div>
-            { isError || !genData?.length ? (
+            {isError || !genData?.length ? (
                 <div className="text-center text-[var(--light-blue)]">No video found</div>
             ) : (
                 <>
@@ -81,12 +94,33 @@ const Page: React.FC = () => {
                         ))}
                     </div>
 
+                    {
+                        /* /** ADS ZONE */
+                    }
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
+                        <JuBanner300x />
+                    </div>
+                    <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+                        <JuNativeAds />
+                    </div>
 
                     <Pangination
                         lastPage={lastPage}
                         currentPage={currentPage}
                         setCurrentPage={handlePageChange}
                     />
+
+                    {
+                        /* ADS ZONE */
+                    }
+                    <div className=' flex flex-col items-center' >
+                        <div className=' hidden lg:block' >
+                            <EXOPcbanner />
+                        </div>
+                        <div className=' block lg:hidden' >
+                            <EXOMobileBanner />
+                        </div>
+                    </div>
 
                 </>
             )}

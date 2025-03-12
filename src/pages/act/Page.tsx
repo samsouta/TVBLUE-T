@@ -5,6 +5,11 @@ import { useGetActressWithIdQuery } from '../../services/api/actress';
 import Pangination from '../../components/UI/loader/Pangination';
 import { Avatar } from '@nextui-org/react';
 import VideoCard from '../../components/UI/VideoCard';
+import JuLeaderboard from '../../components/ads/juicy/JuLeaderboard';
+import JuBanner300x from '../../components/ads/juicy/JuBanner300x';
+import JuNativeAds from '../../components/ads/juicy/JuNativeAds';
+import EXOPcbanner from '../../components/ads/EXO/EXOPcbanner';
+import EXOMobileBanner from '../../components/ads/EXO/EXOMobileBanner';
 
 const Page: React.FC = () => {
   /**
@@ -88,6 +93,13 @@ const Page: React.FC = () => {
         </div>
 
         {
+          /* /** ADS ZONE */
+        }
+        <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+          <JuLeaderboard />
+        </div>
+
+        {
           /* // movies selection  */
         }
         <div className="flex-wrap grid mt-7 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2">
@@ -107,6 +119,15 @@ const Page: React.FC = () => {
       </div>
 
 
+      {
+        /* /** ADS ZONE */
+      }
+      <div className=' overflow-hidden z-0 md:col-span-4 w-full flex justify-center' >
+        <JuBanner300x />
+      </div>
+      <div className=' overflow-hidden z-0 md:col-span-4 w-full' >
+        <JuNativeAds />
+      </div>
 
       {
       /** pangination */}
@@ -115,6 +136,18 @@ const Page: React.FC = () => {
         currentPage={currentPage}
         setCurrentPage={(page) => setSearchParams({ page: page.toString(), actress: actressName })}
       />
+
+      {
+        /* ADS ZONE */
+      }
+      <div className=' flex flex-col items-center' >
+        <div className=' hidden lg:block' >
+          <EXOPcbanner />
+        </div>
+        <div className=' block lg:hidden' >
+          <EXOMobileBanner />
+        </div>
+      </div>
 
     </div>
   );
